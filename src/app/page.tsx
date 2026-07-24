@@ -7,7 +7,7 @@ import { projects } from "@/data/projects";
 import { site } from "@/data/site";
 
 export default function HomePage() {
-  const featured = projects.filter((p) => p.featured).slice(0, 4);
+  const featured = projects.slice(0, 6);
 
   return (
     <>
@@ -41,7 +41,7 @@ export default function HomePage() {
               All projects ({projects.length}) →
             </Link>
           </div>
-          <div className="work-grid">
+          <div className="work-grid work-grid--three">
             {featured.map((p) => (
               <ProjectCard key={p.slug} project={p} />
             ))}

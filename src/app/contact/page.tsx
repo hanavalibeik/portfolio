@@ -27,18 +27,29 @@ export default function ContactPage() {
             {" · "}
             {site.location} · {site.workingNote}
           </p>
-          {site.cv && (
-            <p style={{ marginBlockStart: "1.5rem" }}>
+          <p className="contact-actions">
+            {site.whatsapp && (
+              <a
+                href={`https://wa.me/${site.whatsapp}`}
+                target="_blank"
+                rel="noreferrer"
+                className="cv-link cv-link--solid"
+              >
+                Message on WhatsApp →
+              </a>
+            )}
+            {site.cv && (
               <a href={site.cv} download className="cv-link">
                 Download CV ↓
               </a>
-            </p>
-          )}
+            )}
+          </p>
         </div>
       </section>
 
       <section className="section" aria-label="Elsewhere" style={{ marginBlockEnd: "var(--section-gap)" }}>
-        <div className="container" style={{ maxWidth: "44rem", marginInline: "unset" }}>
+        <div className="container">
+          <div style={{ maxWidth: "44rem" }}>
           <p className="eyebrow" style={{ marginBlockEnd: "0.75rem" }}>
             Elsewhere
           </p>
@@ -52,6 +63,7 @@ export default function ContactPage() {
               </li>
             ))}
           </ul>
+          </div>
         </div>
       </section>
     </>

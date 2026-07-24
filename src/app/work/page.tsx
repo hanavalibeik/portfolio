@@ -5,7 +5,7 @@ import { ContactCta } from "@/components/ContactCta";
 export const metadata: Metadata = {
   title: "Work",
   description:
-    "Selected identity, UI, campaign and illustration projects.",
+    "Identity, campaign and illustration work — logotypes, bilingual lettering and the systems built around them.",
 };
 
 export default function WorkPage() {
@@ -16,8 +16,8 @@ export default function WorkPage() {
           <p className="eyebrow">Index</p>
           <h1 className="page-title">Work</h1>
           <p className="page-lede">
-            Logos, identities and printed matter, 2022–2026. Every project
-            starts the same way: a sharp brief and a soft pencil.
+            Identity, campaign and illustration work — logotypes, bilingual
+            lettering, and the systems built around them.
           </p>
         </div>
       </section>

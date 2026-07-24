@@ -218,20 +218,20 @@ code {
 
 /* ─── Hero: the wordmark under construction ────────────────── */
 .hero {
-  padding-block: clamp(3.5rem, 9vw, 7rem) 0;
+  padding-block: clamp(2.25rem, 5.5vw, 4rem) 0;
 }
 
 .construction {
   position: relative;
-  padding-block: clamp(1.5rem, 4vw, 2.5rem);
-  margin-block-end: clamp(1.5rem, 4vw, 2.25rem);
+  padding-block: clamp(1.25rem, 3vw, 1.9rem);
+  margin-block-end: clamp(1.25rem, 3vw, 1.75rem);
 }
 
 .wordmark {
   font-family: var(--font-display);
   font-weight: 900;
   font-variation-settings: "wdth" 125;
-  font-size: clamp(3.4rem, 13.5vw, 10.5rem);
+  font-size: clamp(3rem, 11vw, 8.25rem);
   line-height: 0.94;
   letter-spacing: -0.02em;
   text-transform: uppercase;
@@ -273,7 +273,7 @@ code {
 }
 
 .guide--cap {
-  top: clamp(1.5rem, 4vw, 2.5rem);
+  top: clamp(1.25rem, 3vw, 1.9rem);
 }
 
 .guide--x {
@@ -281,7 +281,7 @@ code {
 }
 
 .guide--base {
-  bottom: clamp(1.5rem, 4vw, 2.5rem);
+  bottom: clamp(1.25rem, 3vw, 1.9rem);
 }
 
 /* Dashed circle guide behind the first letter. */
@@ -414,6 +414,7 @@ code {
 }
 
 .card-media {
+  display: block;
   position: relative;
   aspect-ratio: 4 / 3;
   overflow: hidden;
@@ -1046,4 +1047,22 @@ code {
 .portrait img {
   display: block;
   filter: grayscale(1) contrast(1.02);
+}
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-block-start: 1.75rem;
+}
+
+.cv-link--solid {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.cv-link--solid:hover {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: var(--paper);
 }

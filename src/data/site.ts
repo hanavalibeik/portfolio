@@ -26,14 +26,22 @@ export const site = {
   /** Social links — set url to "" to hide one. */
   socials: [
     { label: "Instagram", url: "https://www.instagram.com/hanavalibeik_/" },
-    { label: "LinkedIn", url: "https://www.linkedin.com/in/hanavalibeik" },
+    {
+      label: "LinkedIn",
+      url: "https://www.linkedin.com/in/hana-valibeik-graphic-designer-504180187",
+    },
     { label: "Dribbble", url: "https://dribbble.com/hanavalibeik" },
   ],
   /** Secondary links, shown on the contact page only. */
   elsewhere: [
+    { label: "Threads", url: "https://www.threads.net/@hanavalibeik" },
+    { label: "Pinterest", url: "https://pin.it/5EvIWOBWQ" },
     { label: "Instagram — personal", url: "https://www.instagram.com/hanavalibeyk/" },
     { label: "Linktree", url: "https://linktr.ee/hanavalibeik" },
   ],
+  /** WhatsApp — the fastest reply channel for regional clients.
+   *  Digits only, no + or spaces. Set to "" to hide. */
+  whatsapp: "989138064515",
   /** Instagram integration. Add post permalinks to embed them on the home page,
    *  e.g. "https://www.instagram.com/p/XXXXXXXXX/". Empty = link band only. */
   instagram: {

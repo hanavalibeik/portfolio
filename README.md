@@ -48,14 +48,13 @@ All content lives in **two data files** and the `/public` folder:
 | Project images | `/public/work/<slug>/` |
 | Portrait photo | `/public/about/portrait.png` |
 | About page bio copy | `src/app/about/page.tsx` |
-| Favicon | `/public/favicon.svg` |
+| Favicon | `/public/icon.png` (her monogram) |
 
 ### Swapping in a real project
 
 1. Create `/public/work/my-project/` and drop in a cover plus any detail images (JPG/PNG/WebP all fine).
 2. In `src/data/projects.ts`, edit an entry (or copy one): update `slug`, `title`, copy fields, and point `cover`/`images` at your files. Write real `alt` text.
 3. Delete the placeholder projects you don't need — the grid, filters, case study pages and prev/next navigation all derive from that one array.
-4. Optional: delete `scripts/generate-placeholders.mjs` once no placeholder art remains.
 
 Categories are typed (`Identity | Logo | Print | Editorial`). To rename or add one, change the union type and the `categories` array at the bottom of `projects.ts`.
 
@@ -87,8 +86,6 @@ src/
 public/
   work/<slug>/            # project artwork
   about/portrait.svg
-scripts/
-  generate-placeholders.mjs
 ```
 
 Accessibility & performance are part of the build: fully static pages, semantic landmarks, visible focus states, `prefers-reduced-motion` respected, and no client JS except the nav's active state and the work-page filters.

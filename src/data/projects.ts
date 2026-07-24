@@ -2,18 +2,13 @@
  * ─────────────────────────────────────────────────────────────
  *  PROJECTS — every case study on the site lives in this file.
  *
- *  These six case studies are drafted from Hana's CV. The copy
- *  is a starting point — refine it in your own voice — and the
- *  artwork is generated placeholder SVG:
+ *  The images are Hana's real work. The written copy is a first
+ *  draft written from the visible design decisions — REVIEW AND
+ *  REWRITE IT IN YOUR OWN VOICE, especially the brief/outcome,
+ *  and correct anything about the client or the results.
  *
- *  1. Drop real images into  /public/work/<slug>/
- *     (a cover plus as many detail images as you like)
- *  2. Point `cover` and `images` at them and write real alt text.
- *  3. Add, remove or reorder projects freely — the grid, filters
- *     and case study pages all render from this array.
- *
- *  `accent` tints the project card while placeholder art is in
- *  use — once you use full-bleed images you can ignore it.
+ *  To add a project: create /public/work/<slug>/, drop the images
+ *  in, and copy one of the entries below.
  * ─────────────────────────────────────────────────────────────
  */
 
@@ -28,7 +23,7 @@ export type Project = {
   title: string;
   client: string;
   year: string;
-  category: "Identity" | "UI" | "Campaign" | "Illustration";
+  category: "Identity" | "Campaign" | "Illustration";
   sector: string;
   deliverables: string[];
   summary: string;
@@ -38,132 +33,158 @@ export type Project = {
   cover: ProjectImage;
   images: ProjectImage[];
   accent: string;
-  featured?: boolean;
 };
 
 export const projects: Project[] = [
   {
-    slug: "master-pipe",
-    title: "Master Pipe",
-    client: "Master Pipe",
-    year: "2025 — present",
+    slug: "sepidar",
+    title: "Sepidar",
+    client: "Sepidar",
+    year: "2024",
     category: "Identity",
-    sector: "Polymer piping manufacturer",
-    deliverables: [
-      "Logo refinement",
-      "Colour system",
-      "Brand book",
-      "Catalogs & brochures",
-      "Photo retouching",
-    ],
+    sector: "Innovation centre",
+    deliverables: ["Logotype", "Persian lettering", "Signage", "Brand colour"],
     summary:
-      "Redesigning the visual identity of an industrial manufacturer — from a refined logo and colour system to the brand book that keeps every sub-brand in line.",
+      "A hand-drawn Persian logotype paired with a geometric container mark — built for glass, walls and screens.",
     brief:
-      "Master Pipe manufactures polymer piping for domestic and international markets, with sub-brands and product lines that had drifted apart visually. The brand needed a refreshed identity strong enough for industry and disciplined enough to scale across every touchpoint.",
+      "Sepidar needed an identity that felt contemporary without abandoning Persian letterforms — something that would read as confidently on a storefront window as it does at thumbnail size.",
     approach:
-      "I led the redesign of the visual identity: refining the logo, rebuilding the colour system and codifying both in a main brand book. Sub-brands and product lines were brought into one consistent family, and industrial photography was retouched and enhanced — combining AI tools with advanced editing — to give the catalogs a unified look.",
+      "The name is drawn as custom Persian lettering with a single sweeping brush stroke carrying the eye right to left, then locked into a rounded rectangular frame that acts as a container mark. A single yellow field inside the frame gives the identity one memorable colour cue, so the mark stays recognisable even when the lettering is too small to read.",
     outcome:
-      "A consistent identity across all touchpoints, with catalogs and brochures for domestic and international markets, plus pricing catalogs aligned with the core brand to directly support the sales team.",
+      "A flexible identity that works as vinyl signage on glass, where the frame reads as an aperture onto the space behind it, and reduces cleanly to an app-sized mark.",
     cover: {
-      src: "/work/master-pipe/cover.svg",
-      alt: "Placeholder mark for the Master Pipe identity on an industrial blue field",
+      src: "/work/sepidar/cover.jpg",
+      alt: "Sepidar logotype applied as white vinyl signage on a storefront window",
     },
     images: [
       {
-        src: "/work/master-pipe/01.svg",
-        alt: "Placeholder construction sheet for the Master Pipe mark",
-        caption: "Placeholder — replace with logo refinement / brand book spreads.",
-      },
-      {
-        src: "/work/master-pipe/02.svg",
-        alt: "Placeholder applications sheet for the Master Pipe identity",
-        caption: "Placeholder — replace with catalog and brochure applications.",
+        src: "/work/sepidar/01.jpg",
+        alt: "Sepidar identity applied to storefront glass, reflecting the street",
+        caption: "Signage application — custom Persian lettering with the container mark.",
       },
     ],
-    accent: "#1B4F8A",
-    featured: true,
+    accent: "#F5C518",
   },
   {
-    slug: "tarazo",
-    title: "Tarazo",
-    client: "Tarazo",
-    year: "2025 — present",
+    slug: "recke",
+    title: "RECKE",
+    client: "RECKE",
+    year: "2024",
     category: "Campaign",
-    sector: "AI-powered legal startup",
+    sector: "Home appliances",
     deliverables: [
-      "Campaign key visuals",
-      "Social content system",
-      "Website banners",
-      "Brochures",
-      "Advertising copy",
+      "Advertising key visual",
+      "Photo retouching",
+      "Bilingual lockup",
+      "Campaign line",
     ],
     summary:
-      "Campaign visuals and a social content system for an AI-powered legal startup — key visuals, banners and messaging that stay brand-aligned at speed.",
+      "An advertising key visual where the steam itself becomes the message — retouched and composited into a single hero image.",
     brief:
-      "Tarazo brings AI to legal services — a complex product in a trust-driven category. It needed a steady stream of campaign assets for Instagram and LinkedIn that could explain the product clearly while building a credible, consistent brand presence.",
+      "RECKE sells multicookers in a category where every competitor photographs the same product on the same white background. The campaign needed one image that sold the food rather than the appliance.",
     approach:
-      "I developed the social media content strategy and designed the campaign assets, produced website banners in collaboration with the marketing team, and built key visuals for campaigns and advertising using AI-assisted workflows — keeping every asset brand-aligned and contributing to campaign messaging and copy along the way.",
+      "The product sits low in a dark, warm kitchen scene, and the steam rising from it is shaped — through retouching and compositing — into a chef's gesture. The eye reads the gesture before it reads the product, which does the persuading before any copy is involved. The brand lockup and Persian campaign line sit in the calm right-hand area of the frame.",
     outcome:
-      "A recognisable, repeatable campaign system across Instagram, LinkedIn and the web, with brochures and visual assets that let marketing move quickly without diluting the brand.",
+      "A key visual that carries the campaign across print and digital placements, with the steam gesture available as a repeatable device for future executions.",
     cover: {
-      src: "/work/tarazo/cover.svg",
-      alt: "Placeholder mark for Tarazo on a deep violet field",
+      src: "/work/recke/cover.jpg",
+      alt: "RECKE advertising key visual: steam from a multicooker forming a chef's gesture",
     },
     images: [
       {
-        src: "/work/tarazo/01.svg",
-        alt: "Placeholder construction sheet for the Tarazo mark",
-        caption: "Placeholder — replace with campaign key visuals.",
-      },
-      {
-        src: "/work/tarazo/02.svg",
-        alt: "Placeholder applications sheet for Tarazo campaign assets",
-        caption: "Placeholder — replace with social and banner applications.",
+        src: "/work/recke/01.jpg",
+        alt: "Full RECKE campaign poster with bilingual lockup and Persian campaign line",
+        caption: "Campaign key visual — composited steam, retouched product, bilingual lockup.",
       },
     ],
-    accent: "#3B2F8F",
-    featured: true,
+    accent: "#1A1A16",
   },
   {
-    slug: "hamkelasi-system",
-    title: "Hamkelasi System",
-    client: "Hamkelasi System",
-    year: "2023 – 2025",
-    category: "UI",
-    sector: "EdTech platform",
-    deliverables: [
-      "Navigation & icon system",
-      "Homepage design",
-      "Campaign key visuals",
-      "Illustration",
-      "Social & banner assets",
-    ],
+    slug: "bennebon",
+    title: "BenneBon",
+    client: "BenneBon",
+    year: "2023",
+    category: "Identity",
+    sector: "Organic sesame oil",
+    deliverables: ["Logotype", "Bilingual identity", "Custom Latin type", "Packaging direction"],
     summary:
-      "As Senior Graphic Designer & Art Director: a redesigned navigation and icon system that lifted feature discoverability by ~30%, based on user behaviour data.",
+      "A bilingual identity for organic sesame oil, where Persian letterforms are drawn as a molecular chain with a single golden drop.",
     brief:
-      "Hamkelasi System is an EdTech platform whose interface had outgrown its navigation — features existed that users simply never found. The product needed clearer wayfinding and a visual identity that held together across product and marketing.",
+      "An organic sesame oil producer needed a mark that would sit on shelf beside industrial brands and read as both natural and precise — and that had to work in Persian and Latin alike.",
     approach:
-      "Working from user behaviour data, I redesigned the navigation and icon system and the main website homepage, improved UI consistency so the product experience matched the brand, and created the illustrations, campaign visuals, GIF banners and social assets that carried the identity across every channel.",
+      "The Persian name is constructed from straight strokes and hard angles so it reads as a chemical chain — a nod to purity and composition — with the counters left open so the lettering breathes. One golden drop is the only colour in the system, falling exactly where the eye lands. The Latin wordmark is drawn to match the same angular skeleton, so the two scripts feel like one voice rather than a translation.",
     outcome:
-      "Feature discoverability increased by roughly 30%, and the visual identity scaled cleanly across product and marketing channels — one system from interface to campaign.",
+      "A dark, premium identity with a single ownable colour accent, designed to hold up on bottle labels where surface area is small and shelf competition is loud.",
     cover: {
-      src: "/work/hamkelasi-system/cover.svg",
-      alt: "Placeholder mark for Hamkelasi System on a green field",
+      src: "/work/bennebon/cover.jpg",
+      alt: "BenneBon logotype: angular Persian lettering with a golden oil drop, on dark brown",
     },
     images: [
       {
-        src: "/work/hamkelasi-system/01.svg",
-        alt: "Placeholder construction sheet for the Hamkelasi icon system",
-        caption: "Placeholder — replace with navigation / icon system screens.",
-      },
-      {
-        src: "/work/hamkelasi-system/02.svg",
-        alt: "Placeholder applications sheet for Hamkelasi visuals",
-        caption: "Placeholder — replace with homepage and campaign visuals.",
+        src: "/work/bennebon/01.jpg",
+        alt: "BenneBon bilingual logo lockup with the descriptor 'organic sesame oil'",
+        caption: "Primary lockup — Persian mark, matched Latin wordmark, single colour accent.",
       },
     ],
-    accent: "#1F7A4D",
-    featured: true,
+    accent: "#2F1D0C",
+  },
+  {
+    slug: "shiraz-day",
+    title: "Shiraz Day",
+    client: "Self-initiated",
+    year: "2024",
+    category: "Illustration",
+    sector: "Cultural / personal project",
+    deliverables: ["Line illustration", "Persian typography", "Poster"],
+    summary:
+      "A single-weight line drawing of Shiraz — cypresses, mountains and Persian type inside one octagonal frame.",
+    brief:
+      "A self-initiated piece for Shiraz Day: capture a city with a thousand visual clichés attached to it without reaching for any of them.",
+    approach:
+      "Everything is drawn at one consistent line weight — cypress trees, the mountain ridge, the birds, the lettering — so illustration and typography read as a single continuous system rather than type placed over art. The octagonal frame borrows from Persian architectural geometry, with small notches at the corners echoing tilework, and the Persian lettering is integrated into the landscape as terrain rather than sitting on top of it.",
+    outcome:
+      "A poster that works flat, at any scale, and in a single colour — the kind of restraint that makes cultural imagery travel.",
+    cover: {
+      src: "/work/shiraz-day/cover.jpg",
+      alt: "Line illustration of Shiraz with cypress trees and mountains inside an octagonal frame",
+    },
+    images: [
+      {
+        src: "/work/shiraz-day/01.jpg",
+        alt: "Full Shiraz Day poster: single-weight line illustration with integrated Persian typography",
+        caption: "Self-initiated poster — one line weight across illustration and lettering.",
+      },
+    ],
+    accent: "#FFCC29",
+  },
+  {
+    slug: "avicenna-tour",
+    title: "Avicenna Tour",
+    client: "Avicenna Tour",
+    year: "2023",
+    category: "Identity",
+    sector: "Travel",
+    deliverables: ["Logo mark", "Bilingual lockup", "Colour system"],
+    summary:
+      "A monogram built from architectural forms, locked to a two-weight bilingual wordmark.",
+    brief:
+      "A travel brand named after Ibn Sina needed a mark with a sense of place and passage — recognisable at small sizes on tickets, apps and stamps.",
+    approach:
+      "The mark is drawn as an interlocking form that reads as both an archway and a route turning back on itself — solid and outlined shapes overlapping so the eye completes the figure. The wordmark sets the brand name in warm amber against the mark's cooler blues, using weight rather than size to separate 'Avicenna' from 'tour'.",
+    outcome:
+      "A compact identity with strong figure-ground contrast, designed to survive being printed small and monochrome.",
+    cover: {
+      src: "/work/avicenna-tour/cover.jpg",
+      alt: "Avicenna Tour logo: interlocking blue archway monogram with amber wordmark on teal",
+    },
+    images: [
+      {
+        src: "/work/avicenna-tour/01.jpg",
+        alt: "Avicenna Tour primary lockup on the brand's deep teal field",
+        caption: "Primary lockup — overlapping mark, two-weight bilingual wordmark.",
+      },
+    ],
+    accent: "#01475B",
   },
   {
     slug: "mizan-gostar",
@@ -171,129 +192,37 @@ export const projects: Project[] = [
     client: "Mizan Gostar",
     year: "2020 – 2023",
     category: "Identity",
-    sector: "IT training company",
+    sector: "Business development & IT training",
     deliverables: [
       "Brand identity & brand book",
+      "Icon system",
+      "Print & exhibition materials",
       "UI for homepage & landing pages",
-      "Environmental graphics",
-      "Exhibition materials",
-      "Team leadership",
     ],
     summary:
-      "Brand identity and brand book for an IT training company — and a UI redesign that contributed to ~20% more engagement among programming learners.",
+      "Identity, icon system and marketing collateral for a business development agency — and a UI redesign that contributed to ~20% more engagement among programming learners.",
     brief:
-      "Mizan Gostar teaches programming, and its brand needed to work as hard as its courses: a coherent identity for the company and its products, a website that welcomed learners, and materials that could hold their own at exhibitions and tech events.",
+      "Mizan Gostar runs five service departments under one roof — legal, financial, graphic, software and human resources — plus a programming school. The brand had to hold all of it together without looking like five different companies.",
     approach:
-      "I led the development of the brand identity and brand book, designed the UI for the homepage and landing pages with key visuals for each section, and extended the identity into catalogs, brochures and environmental graphics for offices and exhibitions. I facilitated naming and branding sessions, worked closely with developers on faithful implementation, and managed and mentored the design team, including interns.",
+      "I led the development of the brand identity and brand book, then built an icon system so each department could be signalled at a glance. Marketing collateral uses one architectural curve as the recurring structural device, a data-like motif for the technical side of the business, and a tight blue-and-yellow palette that keeps every department visibly part of the same family. The same system carried into UI for the homepage and landing pages, and into environmental graphics for offices and exhibitions.",
     outcome:
-      "A stronger brand perception and a measurably better experience — the UI redesign contributed to a ~20% increase in user engagement among programming learners.",
+      "A brand that scales from a single poster to a full brand book, with the UI redesign contributing to a ~20% increase in engagement among programming learners.",
     cover: {
-      src: "/work/mizan-gostar/cover.svg",
-      alt: "Placeholder mark for Mizan Gostar on a warm orange field",
+      src: "/work/mizan-gostar/cover.jpg",
+      alt: "Mizan Gostar service poster in blue and yellow with departmental icon system",
     },
     images: [
       {
-        src: "/work/mizan-gostar/01.svg",
-        alt: "Placeholder construction sheet for the Mizan Gostar mark",
-        caption: "Placeholder — replace with brand book spreads.",
-      },
-      {
-        src: "/work/mizan-gostar/02.svg",
-        alt: "Placeholder applications sheet for the Mizan Gostar identity",
-        caption: "Placeholder — replace with UI screens and environmental graphics.",
+        src: "/work/mizan-gostar/01.jpg",
+        alt: "Mizan Gostar poster showing the five service departments with their icons",
+        caption: "Service poster — icon system, architectural curve, brand palette.",
       },
     ],
-    accent: "#D8622B",
-    featured: true,
-  },
-  {
-    slug: "chandmahameh",
-    title: "ChandMahameh",
-    client: "ChandMahameh",
-    year: "2019 – 2020",
-    category: "Illustration",
-    sector: "Children's product brand",
-    deliverables: [
-      "Mascots & character design",
-      "Interactive product illustration",
-      "Social & blog visuals",
-      "Product photography direction",
-      "Retouching",
-    ],
-    summary:
-      "Mascots, characters and interactive product illustration for a children's brand — plus the photography direction that sold it.",
-    brief:
-      "ChandMahameh makes products for children, where character is the product: the brand needed mascots and illustrated worlds that kids love and parents trust, carried consistently from digital platforms to product photography.",
-    approach:
-      "I illustrated and designed interactive products for children, created mascots and character designs for digital platforms, and produced social media and blog visuals with the marketing team. On the photography side, I directed product shoots — styling and composition — and handled professional retouching for web and social.",
-    outcome:
-      "A cast of characters and a visual world the brand could reuse everywhere, feeding sales-driven creative assets across social, blog and product pages.",
-    cover: {
-      src: "/work/chandmahameh/cover.svg",
-      alt: "Placeholder character mark for ChandMahameh on a warm yellow field",
-    },
-    images: [
-      {
-        src: "/work/chandmahameh/01.svg",
-        alt: "Placeholder construction sheet for the ChandMahameh character",
-        caption: "Placeholder — replace with mascot and character sheets.",
-      },
-      {
-        src: "/work/chandmahameh/02.svg",
-        alt: "Placeholder applications sheet for ChandMahameh illustration",
-        caption: "Placeholder — replace with product and social applications.",
-      },
-    ],
-    accent: "#E8A33D",
-  },
-  {
-    slug: "zeinteb",
-    title: "ZeinTeb",
-    client: "ZeinTeb",
-    year: "2019",
-    category: "Identity",
-    sector: "Health tourism platform",
-    deliverables: [
-      "Brand identity & logo",
-      "Brochures & catalogs",
-      "Social media content",
-      "Web & blog visuals",
-    ],
-    summary:
-      "Brand identity and logo for a health tourism platform, extended into the materials its healthcare partners hand to patients.",
-    brief:
-      "ZeinTeb connects patients with healthcare providers across borders — a service that lives or dies on trust. The platform needed a brand identity and logo that felt professional and calm, and a set of materials its partners could actually use.",
-    approach:
-      "I designed the brand identity and logo, collaborated with the content team on campaign concepts, and created brochures, catalogs and marketing materials for healthcare partners, alongside social media content and visuals for the website and blog.",
-    outcome:
-      "A complete starter identity for the platform — logo, print materials and digital content — consistent from the first partner brochure to the last blog post.",
-    cover: {
-      src: "/work/zeinteb/cover.svg",
-      alt: "Placeholder mark for ZeinTeb on a teal field",
-    },
-    images: [
-      {
-        src: "/work/zeinteb/01.svg",
-        alt: "Placeholder construction sheet for the ZeinTeb mark",
-        caption: "Placeholder — replace with logo construction / identity sheets.",
-      },
-      {
-        src: "/work/zeinteb/02.svg",
-        alt: "Placeholder applications sheet for the ZeinTeb identity",
-        caption: "Placeholder — replace with brochures and web applications.",
-      },
-    ],
-    accent: "#0E7C86",
+    accent: "#2E3192",
   },
 ];
 
-export const categories = [
-  "All",
-  "Identity",
-  "UI",
-  "Campaign",
-  "Illustration",
-] as const;
+export const categories = ["All", "Identity", "Campaign", "Illustration"] as const;
 
 export function getProject(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug);
