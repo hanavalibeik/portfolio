@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img">
+
+  <rect width="1200" height="900" fill="#1b4f8a"/>
+  <g transform="translate(360,210) scale(1.6)">
+    <path d="M78 252 V132 A72 72 0 0 1 222 132 V252" fill="none" stroke="#ffffff" stroke-width="34"/>
+    <rect x="52" y="216" width="52" height="15" fill="#ffffff"/>
+    <rect x="196" y="216" width="52" height="15" fill="#ffffff"/>
+  </g>
+  <text x="48" y="70" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="17" letter-spacing="2" fill="#ffffff" opacity="0.9">MASTER PIPE</text>
+  <text x="1152" y="856" text-anchor="end" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="15" letter-spacing="2" fill="#ffffff" opacity="0.65">PLACEHOLDER — REPLACE WITH YOUR WORK</text>
+  
+</svg>

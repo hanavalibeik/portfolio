@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img">
+
+  <rect width="1200" height="900" fill="#d8622b"/>
+  <g transform="translate(360,210) scale(1.6)">
+    <path d="M108 92 L52 150 L108 208" fill="none" stroke="#ffffff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M192 92 L248 150 L192 208" fill="none" stroke="#ffffff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="168" y1="84" x2="132" y2="216" stroke="#ffffff" stroke-width="16" stroke-linecap="round"/>
+  </g>
+  <text x="48" y="70" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="17" letter-spacing="2" fill="#ffffff" opacity="0.9">MIZAN GOSTAR</text>
+  <text x="1152" y="856" text-anchor="end" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="15" letter-spacing="2" fill="#ffffff" opacity="0.65">PLACEHOLDER — REPLACE WITH YOUR WORK</text>
+  
+</svg>

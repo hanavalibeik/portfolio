@@ -17,10 +17,9 @@
     <line x1="890" y1="170" x2="310" y2="750" opacity="0.6"/>
   </g>
   <g transform="translate(300,160) scale(2)">
-    <circle cx="150" cy="150" r="118" fill="#151510"/>
-    <rect x="34" y="104" width="222" height="17" fill="#fafaf8"/>
-    <rect x="62" y="142" width="180" height="13" fill="#fafaf8"/>
-    <rect x="90" y="176" width="140" height="9" fill="#fafaf8"/>
+    <path d="M108 92 L52 150 L108 208" fill="none" stroke="#151510" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M192 92 L248 150 L192 208" fill="none" stroke="#151510" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="168" y1="84" x2="132" y2="216" stroke="#151510" stroke-width="16" stroke-linecap="round"/>
   </g>
   <g stroke="#6fa9c6" stroke-width="1.5">
     <line x1="300" y1="136" x2="900" y2="136"/>
@@ -28,7 +27,7 @@
     <line x1="900" y1="128" x2="900" y2="144"/>
   </g>
   <text x="600" y="120" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="15" letter-spacing="2" fill="#6fa9c6" opacity="1">300 U</text>
-  <text x="48" y="70" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="17" letter-spacing="2" fill="#85847c" opacity="1">OSTWIND RECORDS — CONSTRUCTION</text>
+  <text x="48" y="70" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="17" letter-spacing="2" fill="#85847c" opacity="1">MIZAN GOSTAR — CONSTRUCTION</text>
   <text x="48" y="856" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="15" letter-spacing="2" fill="#85847c" opacity="0.8">GRID 300 U · SINGLE MARK · ©2026</text>
   <text x="1152" y="856" text-anchor="end" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="15" letter-spacing="2" fill="#85847c" opacity="0.65">PLACEHOLDER — REPLACE WITH YOUR WORK</text>
   

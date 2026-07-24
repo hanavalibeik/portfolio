@@ -26,66 +26,52 @@ const OUT = join(process.cwd(), "public");
    `bg` is used for cut-outs so the mark works on any field.     */
 
 const marks = {
-  "halden-coffee": (fg, bg) => `
-    <rect x="70" y="60" width="44" height="190" fill="${fg}"/>
-    <rect x="186" y="60" width="44" height="190" fill="${fg}"/>
-    <path d="M70 160 A80 80 0 0 1 230 160 L186 160 A36 36 0 0 0 114 160 Z" fill="${fg}"/>
+  "master-pipe": (fg) => `
+    <path d="M78 252 V132 A72 72 0 0 1 222 132 V252" fill="none" stroke="${fg}" stroke-width="34"/>
+    <rect x="52" y="216" width="52" height="15" fill="${fg}"/>
+    <rect x="196" y="216" width="52" height="15" fill="${fg}"/>
   `,
-  "ostwind-records": (fg, bg) => `
-    <circle cx="150" cy="150" r="118" fill="${fg}"/>
-    <rect x="34" y="104" width="222" height="17" fill="${bg}"/>
-    <rect x="62" y="142" width="180" height="13" fill="${bg}"/>
-    <rect x="90" y="176" width="140" height="9" fill="${bg}"/>
+  "tarazo": (fg) => `
+    <rect x="141" y="58" width="18" height="152" fill="${fg}"/>
+    <rect x="50" y="74" width="200" height="15" fill="${fg}"/>
+    <circle cx="68" cy="142" r="33" fill="none" stroke="${fg}" stroke-width="12"/>
+    <circle cx="232" cy="142" r="33" fill="none" stroke="${fg}" stroke-width="12"/>
+    <rect x="96" y="222" width="108" height="16" fill="${fg}"/>
   `,
-  "meridian-trail": (fg) => `
-    <polygon points="150,58 214,182 86,182" fill="${fg}"/>
-    <path d="M46 196 Q104 150 150 180 T254 170" fill="none" stroke="${fg}" stroke-width="11" stroke-linecap="round"/>
-    <rect x="46" y="216" width="208" height="11" fill="${fg}"/>
+  "hamkelasi-system": (fg, bg) => `
+    <rect x="56" y="56" width="88" height="88" rx="20" fill="none" stroke="${fg}" stroke-width="13"/>
+    <rect x="156" y="56" width="88" height="88" rx="20" fill="none" stroke="${fg}" stroke-width="13"/>
+    <rect x="56" y="156" width="88" height="88" rx="20" fill="none" stroke="${fg}" stroke-width="13"/>
+    <rect x="156" y="156" width="88" height="88" rx="20" fill="${fg}"/>
+    <circle cx="200" cy="200" r="20" fill="${bg}"/>
   `,
-  "kanal-7": (fg) => `
-    <rect x="58" y="58" width="184" height="38" fill="${fg}"/>
-    <polygon points="196,96 242,96 132,252 86,252" fill="${fg}"/>
-    <circle cx="76" cy="234" r="14" fill="${fg}"/>
+  "mizan-gostar": (fg) => `
+    <path d="M108 92 L52 150 L108 208" fill="none" stroke="${fg}" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M192 92 L248 150 L192 208" fill="none" stroke="${fg}" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="168" y1="84" x2="132" y2="216" stroke="${fg}" stroke-width="16" stroke-linecap="round"/>
   `,
-  "volta-cycling": (fg) => `
-    <ellipse cx="150" cy="152" rx="112" ry="72" fill="none" stroke="${fg}" stroke-width="15"/>
-    <path d="M62 84 L150 238 L238 84" fill="none" stroke="${fg}" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+  "chandmahameh": (fg, bg) => `
+    <circle cx="88" cy="72" r="26" fill="${fg}"/>
+    <circle cx="212" cy="72" r="26" fill="${fg}"/>
+    <circle cx="150" cy="160" r="92" fill="${fg}"/>
+    <circle cx="118" cy="142" r="13" fill="${bg}"/>
+    <circle cx="182" cy="142" r="13" fill="${bg}"/>
+    <path d="M112 186 Q150 220 188 186" fill="none" stroke="${bg}" stroke-width="13" stroke-linecap="round"/>
   `,
-  "formheft-press": (fg, bg) => `
-    <rect x="96" y="56" width="46" height="190" fill="${fg}"/>
-    <rect x="96" y="56" width="118" height="42" fill="${fg}"/>
-    <rect x="96" y="150" width="92" height="34" fill="${fg}"/>
-    <polygon points="214,56 214,98 172,56" fill="${bg}"/>
-    <polygon points="214,56 214,98 172,56" fill="${fg}" opacity="0.45" transform="translate(-42,0) scale(1)"/>
-  `,
-  "lumen-optics": (fg) => `
-    <circle cx="112" cy="150" r="76" fill="none" stroke="${fg}" stroke-width="14"/>
-    <circle cx="188" cy="150" r="76" fill="none" stroke="${fg}" stroke-width="14"/>
-    <circle cx="150" cy="150" r="23" fill="${fg}"/>
-  `,
-  "brauhaus-nord": (fg) => `
-    <g opacity="0.35">
-      <rect x="48" y="76" width="204" height="12" fill="${fg}"/>
-      <rect x="48" y="112" width="204" height="12" fill="${fg}"/>
-      <rect x="48" y="148" width="204" height="12" fill="${fg}"/>
-      <rect x="48" y="184" width="204" height="12" fill="${fg}"/>
-      <rect x="48" y="220" width="204" height="12" fill="${fg}"/>
-    </g>
-    <rect x="66" y="58" width="36" height="190" fill="${fg}"/>
-    <rect x="198" y="58" width="36" height="190" fill="${fg}"/>
-    <polygon points="66,58 102,58 234,248 198,248" fill="${fg}"/>
+  "zeinteb": (fg, bg) => `
+    <path d="M150 262 C150 262 62 180 62 120 A88 88 0 0 1 238 120 C238 180 150 262 150 262 Z" fill="${fg}"/>
+    <rect x="136" y="78" width="28" height="84" fill="${bg}"/>
+    <rect x="108" y="106" width="84" height="28" fill="${bg}"/>
   `,
 };
 
 const projects = [
-  { slug: "halden-coffee", title: "Halden Coffee Roasters", accent: "#e8a33d" },
-  { slug: "ostwind-records", title: "Ostwind Records", accent: "#23409f" },
-  { slug: "meridian-trail", title: "Meridian Trail Co.", accent: "#1f7a4d" },
-  { slug: "kanal-7", title: "Kanal 7 Film Festival", accent: "#d8432b" },
-  { slug: "volta-cycling", title: "Volta Cycling Club", accent: "#6b4fd8" },
-  { slug: "formheft-press", title: "Formheft Press", accent: "#8c8578" },
-  { slug: "lumen-optics", title: "Lumen Optics", accent: "#0e7c86" },
-  { slug: "brauhaus-nord", title: "Brauhaus Nord", accent: "#1a1a16" },
+  { slug: "master-pipe", title: "Master Pipe", accent: "#1b4f8a" },
+  { slug: "tarazo", title: "Tarazo", accent: "#3b2f8f" },
+  { slug: "hamkelasi-system", title: "Hamkelasi System", accent: "#1f7a4d" },
+  { slug: "mizan-gostar", title: "Mizan Gostar", accent: "#d8622b" },
+  { slug: "chandmahameh", title: "ChandMahameh", accent: "#e8a33d" },
+  { slug: "zeinteb", title: "ZeinTeb", accent: "#0e7c86" },
 ];
 
 /* ── Helpers ─────────────────────────────────────────────────── */

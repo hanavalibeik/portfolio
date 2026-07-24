@@ -31,25 +31,24 @@ export default function AboutPage() {
           </div>
           <div className="about-copy">
             <p className="lede">
-              A logo is the smallest thing a brand owns and the hardest thing to
-              get right. That contradiction is my whole job.
+              I'm a self-taught senior graphic designer and illustrator with
+              over seven years of experience in branding, UI design and visual
+              communication.
             </p>
             <p>
-              I've spent the last decade designing marks, wordmarks and identity
-              systems for independent businesses and cultural clients — the kind
-              of organisations where the founder still answers the phone. Every
-              engagement starts with the same tools: a sharp brief, a soft
-              pencil and a grid.
+              I create visually strong, functional solutions that clarify brand
+              identity, improve usability and make communication more
+              effective. My work starts with understanding context and goals,
+              then translating them into clear, consistent, scalable visual
+              systems — with close attention to typography, layout and colour,
+              always in service of the overall experience.
             </p>
             <p>
-              I work alone by choice, partnering with photographers, motion
-              designers and developers when a project asks for more hands. Small
-              on purpose: you brief me, you get me.
-            </p>
-            <p>
-              This copy is placeholder text — replace it with your own story in{" "}
-              <code>src/app/about/page.tsx</code> and{" "}
-              <code>src/data/site.ts</code>.
+              I've worked with teams across different industries, from cultural
+              projects to digital products, delivering work that is both
+              effective and user-focused — and along the way I've art-directed,
+              built brand books, redesigned interfaces and mentored design
+              teams.
             </p>
           </div>
         </div>
@@ -77,6 +76,25 @@ export default function AboutPage() {
                   <span>{r.label}</span>
                   <span className="detail">{r.detail}</span>
                 </li>
+              ))}
+            </ul>
+            <p className="eyebrow" style={{ marginBlock: "2.5rem 1rem" }}>
+              Education
+            </p>
+            <ul className="fact-list">
+              {site.education.map((e) => (
+                <li key={e.degree}>
+                  <span>{e.degree}</span>
+                  <span className="detail">{e.school}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="eyebrow" style={{ marginBlock: "2.5rem 1rem" }}>
+              Languages
+            </p>
+            <ul className="fact-list">
+              {site.languages.map((l) => (
+                <li key={l}>{l}</li>
               ))}
             </ul>
           </div>

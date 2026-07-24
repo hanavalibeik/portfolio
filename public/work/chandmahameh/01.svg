@@ -17,16 +17,12 @@
     <line x1="890" y1="170" x2="310" y2="750" opacity="0.6"/>
   </g>
   <g transform="translate(300,160) scale(2)">
-    <g opacity="0.35">
-      <rect x="48" y="76" width="204" height="12" fill="#151510"/>
-      <rect x="48" y="112" width="204" height="12" fill="#151510"/>
-      <rect x="48" y="148" width="204" height="12" fill="#151510"/>
-      <rect x="48" y="184" width="204" height="12" fill="#151510"/>
-      <rect x="48" y="220" width="204" height="12" fill="#151510"/>
-    </g>
-    <rect x="66" y="58" width="36" height="190" fill="#151510"/>
-    <rect x="198" y="58" width="36" height="190" fill="#151510"/>
-    <polygon points="66,58 102,58 234,248 198,248" fill="#151510"/>
+    <circle cx="88" cy="72" r="26" fill="#151510"/>
+    <circle cx="212" cy="72" r="26" fill="#151510"/>
+    <circle cx="150" cy="160" r="92" fill="#151510"/>
+    <circle cx="118" cy="142" r="13" fill="#fafaf8"/>
+    <circle cx="182" cy="142" r="13" fill="#fafaf8"/>
+    <path d="M112 186 Q150 220 188 186" fill="none" stroke="#fafaf8" stroke-width="13" stroke-linecap="round"/>
   </g>
   <g stroke="#6fa9c6" stroke-width="1.5">
     <line x1="300" y1="136" x2="900" y2="136"/>
@@ -34,7 +30,7 @@
     <line x1="900" y1="128" x2="900" y2="144"/>
   </g>
   <text x="600" y="120" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="15" letter-spacing="2" fill="#6fa9c6" opacity="1">300 U</text>
-  <text x="48" y="70" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="17" letter-spacing="2" fill="#85847c" opacity="1">BRAUHAUS NORD — CONSTRUCTION</text>
+  <text x="48" y="70" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="17" letter-spacing="2" fill="#85847c" opacity="1">CHANDMAHAMEH — CONSTRUCTION</text>
   <text x="48" y="856" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="15" letter-spacing="2" fill="#85847c" opacity="0.8">GRID 300 U · SINGLE MARK · ©2026</text>
   <text x="1152" y="856" text-anchor="end" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="15" letter-spacing="2" fill="#85847c" opacity="0.65">PLACEHOLDER — REPLACE WITH YOUR WORK</text>
   

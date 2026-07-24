@@ -33,7 +33,7 @@ export default function HomePage() {
             <div>
               <p className="eyebrow">Selected work</p>
               <h2 className="section-title" id="work-heading">
-                Marks that hold
+                Brand, UI & illustration
               </h2>
             </div>
             <Link href="/work" className="text-link">
@@ -56,9 +56,10 @@ export default function HomePage() {
               About
             </p>
             <p className="lede" style={{ marginBlock: "1rem 1.5rem" }}>
-              I design logos the old way — on grids, in sketchbooks, against a
-              brief — and build them into identity systems that clients can run
-              without me.
+              My work starts with understanding context and goals, then
+              translating them into clear, consistent, scalable visual systems
+              — typography, layout and colour always in service of the overall
+              experience.
             </p>
             <Link href="/about" className="text-link">
               More about me →
@@ -66,7 +67,7 @@ export default function HomePage() {
           </div>
           <div>
             <p className="mono" style={{ color: "var(--gray)", marginBlockEnd: "0.75rem" }}>
-              Selected clients
+              Companies & teams
             </p>
             <ul className="client-list">
               {site.clients.map((c) => (

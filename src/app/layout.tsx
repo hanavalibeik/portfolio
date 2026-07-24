@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     template: `%s — ${site.fullName}`,
   },
   description: site.tagline,
+  icons: { icon: "/favicon.svg" },
   openGraph: {
     title: `${site.fullName} — ${site.role}`,
     description: site.tagline,

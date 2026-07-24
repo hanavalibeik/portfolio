@@ -23,6 +23,8 @@ export default function ContactPage() {
             {site.email}
           </a>
           <p className="cta-note">
+            <a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a>
+            {" · "}
             {site.location} · {site.workingNote}
           </p>
         </div>

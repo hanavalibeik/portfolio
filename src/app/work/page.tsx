@@ -5,7 +5,7 @@ import { ContactCta } from "@/components/ContactCta";
 export const metadata: Metadata = {
   title: "Work",
   description:
-    "Selected logo, identity, print and editorial projects.",
+    "Selected identity, UI, campaign and illustration projects.",
 };
 
 export default function WorkPage() {
