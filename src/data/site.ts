@@ -16,7 +16,7 @@ export const site = {
   tagline:
     "Senior graphic designer and illustrator with 7+ years in branding, UI design and visual communication — building clear, consistent, scalable visual systems.",
   /** Where you are + how you work. */
-  location: "Isfahan, Iran",
+  location: "Muscat, Oman",
   workingNote: "Working remotely across industries and time zones",
   /** Availability line shown on the home page and contact page. */
   availability: "Open to new projects, roles and collaborations",
