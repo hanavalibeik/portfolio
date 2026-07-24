@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ConstructionWordmark } from "@/components/ConstructionWordmark";
 import { ProjectCard } from "@/components/ProjectCard";
 import { ContactCta } from "@/components/ContactCta";
+import InstagramStrip from "@/components/InstagramStrip";
 import { projects } from "@/data/projects";
 import { site } from "@/data/site";
 
@@ -77,6 +78,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <InstagramStrip />
 
       <ContactCta />
     </>

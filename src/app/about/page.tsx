@@ -23,11 +23,7 @@ export default function AboutPage() {
       <section className="section" aria-label="Biography">
         <div className="container about-grid">
           <div className="portrait">
-            {/* Replace /public/about/portrait.svg with your photo. */}
-            <img
-              src="/about/portrait.svg"
-              alt={`Portrait of ${site.fullName} (placeholder)`}
-            />
+            <img src="/about/portrait.png" alt={`Portrait of ${site.fullName}`} />
           </div>
           <div className="about-copy">
             <p className="lede">

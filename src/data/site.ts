@@ -14,7 +14,7 @@ export const site = {
   role: "Senior Graphic Designer — Brand & UI",
   /** Short positioning line for the hero. */
   tagline:
-    "Senior graphic designer and illustrator with 7+ years in branding, UI design and visual communication — building clear, consistent, scalable visual systems.",
+    "I help brands stand out with custom logo & identity design — 7+ years in branding, UI and illustration, building clear, consistent, scalable visual systems.",
   /** Where you are + how you work. */
   location: "Muscat, Oman",
   workingNote: "Working remotely across industries and time zones",
@@ -25,11 +25,24 @@ export const site = {
   phone: "+98 913 806 4515",
   /** Social links — set url to "" to hide one. */
   socials: [
+    { label: "Instagram", url: "https://www.instagram.com/hanavalibeik_/" },
     { label: "LinkedIn", url: "https://www.linkedin.com/in/hanavalibeik" },
-    { label: "Instagram — work", url: "https://www.instagram.com/hanavalibeik_/" },
-    { label: "Instagram — personal", url: "https://www.instagram.com/hanavalibeyk/" },
     { label: "Dribbble", url: "https://dribbble.com/hanavalibeik" },
   ],
+  /** Secondary links, shown on the contact page only. */
+  elsewhere: [
+    { label: "Instagram — personal", url: "https://www.instagram.com/hanavalibeyk/" },
+    { label: "Linktree", url: "https://linktr.ee/hanavalibeik" },
+  ],
+  /** Instagram integration. Add post permalinks to embed them on the home page,
+   *  e.g. "https://www.instagram.com/p/XXXXXXXXX/". Empty = link band only. */
+  instagram: {
+    handle: "hanavalibeik_",
+    url: "https://www.instagram.com/hanavalibeik_/",
+    posts: [] as string[],
+  },
+  /** Path to the downloadable CV in /public. Set to "" to hide the buttons. */
+  cv: "/Hana-Valibeik-CV.pdf",
   /** Companies & teams, shown on the about page / home strip. */
   clients: [
     "Master Pipe",
@@ -38,6 +51,12 @@ export const site = {
     "Mizan Gostar",
     "ChandMahameh",
     "ZeinTeb",
+    "RECKE",
+    "Sepidar",
+    "BenneBon",
+    "The Natural Stone Co.",
+    "Avicenna Tour",
+    "Codejudge",
   ],
   /** Services listed on the about page (from CV skills). */
   services: [
@@ -67,5 +86,5 @@ export const site = {
   /** Languages */
   languages: ["English", "Persian"],
   /** Used for metadata; set to your production URL after deploying. */
-  url: "https://example.com",
+  url: "https://portfolio-seven-nu-okzzzi5l4c.vercel.app",
 };

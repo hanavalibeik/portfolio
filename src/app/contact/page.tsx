@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
-  const socials = site.socials.filter((s) => s.url);
+  const socials = [...site.socials, ...site.elsewhere].filter((s) => s.url);
 
   return (
     <>
@@ -27,6 +27,13 @@ export default function ContactPage() {
             {" · "}
             {site.location} · {site.workingNote}
           </p>
+          {site.cv && (
+            <p style={{ marginBlockStart: "1.5rem" }}>
+              <a href={site.cv} download className="cv-link">
+                Download CV ↓
+              </a>
+            </p>
+          )}
         </div>
       </section>
 

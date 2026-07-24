@@ -973,3 +973,77 @@ code {
     transform: none;
   }
 }
+
+/* ─── Instagram strip ──────────────────────────────────────── */
+.ig-strip {
+  border-block-start: 1px solid var(--line);
+  padding-block: clamp(3rem, 7vw, 5rem);
+}
+
+.ig-handle {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-variation-settings: "wdth" 125, "wght" 900;
+  font-size: clamp(1.8rem, 5.2vw, 3.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink);
+  margin-block-start: 0.75rem;
+}
+
+.ig-handle:hover {
+  color: var(--blue);
+}
+
+.ig-arrow {
+  font-family: var(--font-mono);
+  font-size: 0.5em;
+  vertical-align: 0.5em;
+  letter-spacing: 0;
+}
+
+.ig-note {
+  color: var(--gray);
+  margin-block-start: 0.75rem;
+  max-width: 32rem;
+}
+
+.ig-embeds {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-block-start: 2.5rem;
+}
+
+.ig-embeds .instagram-media {
+  border: 1px solid var(--line) !important;
+  margin: 0 !important;
+  min-width: 0 !important;
+}
+
+/* ─── CV link ──────────────────────────────────────────────── */
+.cv-link {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+  padding: 0.7em 1.3em;
+  transition: background 140ms ease, color 140ms ease;
+}
+
+.cv-link:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* Real photo portrait: match the paper aesthetic */
+.portrait img {
+  display: block;
+  filter: grayscale(1) contrast(1.02);
+}

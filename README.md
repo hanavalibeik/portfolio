@@ -46,7 +46,7 @@ All content lives in **two data files** and the `/public` folder:
 | Name, role, tagline, email, socials, clients, services, availability | `src/data/site.ts` |
 | Projects (titles, case study copy, categories, image paths) | `src/data/projects.ts` |
 | Project images | `/public/work/<slug>/` |
-| Portrait photo | `/public/about/portrait.svg` (swap for your `.jpg` and update `src/app/about/page.tsx`) |
+| Portrait photo | `/public/about/portrait.png` |
 | About page bio copy | `src/app/about/page.tsx` |
 | Favicon | `/public/favicon.svg` |
 
@@ -92,3 +92,21 @@ scripts/
 ```
 
 Accessibility & performance are part of the build: fully static pages, semantic landmarks, visible focus states, `prefers-reduced-motion` respected, and no client JS except the nav's active state and the work-page filters.
+
+## Instagram embeds
+
+The home page shows an Instagram band linking to the work account. To embed real posts inline, add their permalinks in `src/data/site.ts`:
+
+```ts
+instagram: {
+  handle: "hanavalibeik_",
+  url: "https://www.instagram.com/hanavalibeik_/",
+  posts: [
+    "https://www.instagram.com/p/POST_ID_1/",
+    "https://www.instagram.com/p/POST_ID_2/",
+    "https://www.instagram.com/p/POST_ID_3/",
+  ],
+},
+```
+
+Get a permalink via ⋯ → Copy link on any post. Embeds load Instagram's official script on the live site only.

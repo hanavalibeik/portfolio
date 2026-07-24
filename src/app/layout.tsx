@@ -18,6 +18,13 @@ export const metadata: Metadata = {
     title: `${site.fullName} — ${site.role}`,
     description: site.tagline,
     type: "website",
+    images: [{ url: "/og.png", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${site.fullName} — ${site.role}`,
+    description: site.tagline,
+    images: ["/og.png"],
   },
 };
 
