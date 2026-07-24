@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img">
+
+  <rect width="1200" height="900" fill="#23409f"/>
+  <g transform="translate(360,210) scale(1.6)">
+    <circle cx="150" cy="150" r="118" fill="#ffffff"/>
+    <rect x="34" y="104" width="222" height="17" fill="#23409f"/>
+    <rect x="62" y="142" width="180" height="13" fill="#23409f"/>
+    <rect x="90" y="176" width="140" height="9" fill="#23409f"/>
+  </g>
+  <text x="48" y="70" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="17" letter-spacing="2" fill="#ffffff" opacity="0.9">OSTWIND RECORDS</text>
+  <text x="1152" y="856" text-anchor="end" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="15" letter-spacing="2" fill="#ffffff" opacity="0.65">PLACEHOLDER — REPLACE WITH YOUR WORK</text>
+  
+</svg>

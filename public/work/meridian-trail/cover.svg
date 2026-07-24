@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img">
+
+  <rect width="1200" height="900" fill="#1f7a4d"/>
+  <g transform="translate(360,210) scale(1.6)">
+    <polygon points="150,58 214,182 86,182" fill="#ffffff"/>
+    <path d="M46 196 Q104 150 150 180 T254 170" fill="none" stroke="#ffffff" stroke-width="11" stroke-linecap="round"/>
+    <rect x="46" y="216" width="208" height="11" fill="#ffffff"/>
+  </g>
+  <text x="48" y="70" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="17" letter-spacing="2" fill="#ffffff" opacity="0.9">MERIDIAN TRAIL CO.</text>
+  <text x="1152" y="856" text-anchor="end" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="15" letter-spacing="2" fill="#ffffff" opacity="0.65">PLACEHOLDER — REPLACE WITH YOUR WORK</text>
+  
+</svg>

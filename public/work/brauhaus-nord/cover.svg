@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img">
+
+  <rect width="1200" height="900" fill="#1a1a16"/>
+  <g transform="translate(360,210) scale(1.6)">
+    <g opacity="0.35">
+      <rect x="48" y="76" width="204" height="12" fill="#ffffff"/>
+      <rect x="48" y="112" width="204" height="12" fill="#ffffff"/>
+      <rect x="48" y="148" width="204" height="12" fill="#ffffff"/>
+      <rect x="48" y="184" width="204" height="12" fill="#ffffff"/>
+      <rect x="48" y="220" width="204" height="12" fill="#ffffff"/>
+    </g>
+    <rect x="66" y="58" width="36" height="190" fill="#ffffff"/>
+    <rect x="198" y="58" width="36" height="190" fill="#ffffff"/>
+    <polygon points="66,58 102,58 234,248 198,248" fill="#ffffff"/>
+  </g>
+  <text x="48" y="70" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="17" letter-spacing="2" fill="#ffffff" opacity="0.9">BRAUHAUS NORD</text>
+  <text x="1152" y="856" text-anchor="end" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="15" letter-spacing="2" fill="#ffffff" opacity="0.65">PLACEHOLDER — REPLACE WITH YOUR WORK</text>
+  
+</svg>

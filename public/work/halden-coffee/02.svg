@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img">
+
+  <rect width="1200" height="900" fill="#ecebe4"/>
+  
+  <g>
+    <rect x="60" y="60" width="522" height="372" fill="#e8a33d" stroke="#dddcd4" stroke-width="0"/>
+    <g transform="translate(213,138) scale(0.72)">
+    <rect x="70" y="60" width="44" height="190" fill="#ffffff"/>
+    <rect x="186" y="60" width="44" height="190" fill="#ffffff"/>
+    <path d="M70 160 A80 80 0 0 1 230 160 L186 160 A36 36 0 0 0 114 160 Z" fill="#ffffff"/>
+  </g>
+  </g>
+
+  <g>
+    <rect x="618" y="60" width="522" height="372" fill="#151510" stroke="#dddcd4" stroke-width="0"/>
+    <g transform="translate(771,138) scale(0.72)">
+    <rect x="70" y="60" width="44" height="190" fill="#ffffff"/>
+    <rect x="186" y="60" width="44" height="190" fill="#ffffff"/>
+    <path d="M70 160 A80 80 0 0 1 230 160 L186 160 A36 36 0 0 0 114 160 Z" fill="#ffffff"/>
+  </g>
+  </g>
+
+  <g>
+    <rect x="60" y="468" width="522" height="372" fill="#ffffff" stroke="#dddcd4" stroke-width="2"/>
+    <g transform="translate(213,546) scale(0.72)">
+    <rect x="70" y="60" width="44" height="190" fill="#e8a33d"/>
+    <rect x="186" y="60" width="44" height="190" fill="#e8a33d"/>
+    <path d="M70 160 A80 80 0 0 1 230 160 L186 160 A36 36 0 0 0 114 160 Z" fill="#e8a33d"/>
+  </g>
+  </g>
+
+  <g>
+    <rect x="618" y="468" width="522" height="372" fill="#ffffff" stroke="#dddcd4" stroke-width="2"/>
+    <g transform="translate(771,546) scale(0.72)">
+    <rect x="70" y="60" width="44" height="190" fill="#151510"/>
+    <rect x="186" y="60" width="44" height="190" fill="#151510"/>
+    <path d="M70 160 A80 80 0 0 1 230 160 L186 160 A36 36 0 0 0 114 160 Z" fill="#151510"/>
+  </g>
+  </g>
+  <text x="60" y="40" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="16" letter-spacing="2" fill="#85847c" opacity="1">HALDEN COFFEE ROASTERS — APPLICATIONS</text>
+  <text x="1140" y="878" text-anchor="end" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="15" letter-spacing="2" fill="#85847c" opacity="0.65">PLACEHOLDER — REPLACE WITH YOUR WORK</text>
+  
+</svg>

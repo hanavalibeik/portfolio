@@ -1,0 +1,975 @@
+/* ─────────────────────────────────────────────────────────────
+   TOKENS
+   Paper-white frame, ink type, one working blue for interaction,
+   and non-photo sketch blue for construction marks. The project
+   artwork brings all other colour.
+   ───────────────────────────────────────────────────────────── */
+:root {
+  --paper: #fafaf8;
+  --ink: #151510;
+  --blue: #2144e0;
+  --sketch: #9ec8dd;
+  --sketch-strong: #6fa9c6;
+  --gray: #85847c;
+  --line: #e5e4dc;
+  --card: #ffffff;
+
+  --font-display: "Archivo Variable", "Archivo", "Helvetica Neue", Arial,
+    sans-serif;
+  --font-body: "Archivo Variable", "Archivo", "Helvetica Neue", Arial,
+    sans-serif;
+  --font-mono: "Spline Sans Mono Variable", "Spline Sans Mono", ui-monospace,
+    "SF Mono", Menlo, monospace;
+
+  --container: 76rem;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --section-gap: clamp(4.5rem, 10vw, 8rem);
+}
+
+/* ─── Reset & base ─────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  font-variation-settings: "wdth" 100;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--sketch);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ─── Utilities ────────────────────────────────────────────── */
+.container {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Section eyebrow: mono label with a crosshair tick. */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gray);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.eyebrow::before {
+  content: "+";
+  color: var(--sketch-strong);
+  font-weight: 400;
+  font-size: 0.9rem;
+  line-height: 1;
+}
+
+.section {
+  margin-block-start: var(--section-gap);
+}
+
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  margin-block-end: clamp(1.75rem, 4vw, 2.75rem);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-variation-settings: "wdth" 110;
+  font-size: clamp(1.9rem, 4vw, 2.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+}
+
+.text-link {
+  color: var(--blue);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color 120ms ease;
+}
+
+.text-link:hover {
+  color: var(--ink);
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.8em;
+  background: #f0efe8;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 0.1em 0.35em;
+}
+
+/* ─── Header ───────────────────────────────────────────────── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  height: 4rem;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-variation-settings: "wdth" 125;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.brand sup {
+  font-size: 0.5em;
+  font-weight: 700;
+  margin-left: 0.15em;
+  transform: translateY(-0.2em);
+}
+
+.site-nav {
+  display: flex;
+  gap: clamp(1rem, 3vw, 2rem);
+}
+
+.site-nav a {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  padding-block: 0.35rem;
+  border-bottom: 2px solid transparent;
+  transition: color 120ms ease;
+}
+
+.site-nav a:hover {
+  color: var(--blue);
+}
+
+.site-nav a[aria-current="page"] {
+  color: var(--blue);
+  border-bottom-color: var(--blue);
+}
+
+/* ─── Hero: the wordmark under construction ────────────────── */
+.hero {
+  padding-block: clamp(3.5rem, 9vw, 7rem) 0;
+}
+
+.construction {
+  position: relative;
+  padding-block: clamp(1.5rem, 4vw, 2.5rem);
+  margin-block-end: clamp(1.5rem, 4vw, 2.25rem);
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-variation-settings: "wdth" 125;
+  font-size: clamp(3.4rem, 13.5vw, 10.5rem);
+  line-height: 0.94;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 2;
+  width: fit-content;
+}
+
+.wordmark sup {
+  font-size: 0.22em;
+  font-weight: 700;
+  vertical-align: super;
+  margin-left: 0.08em;
+  letter-spacing: 0;
+}
+
+/* Type guides — cap height, x-height, baseline. */
+.guide {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--sketch);
+  z-index: 1;
+  transform-origin: left center;
+}
+
+.guide-label {
+  position: absolute;
+  right: 0;
+  transform: translateY(-115%);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--sketch-strong);
+  background: var(--paper);
+  padding-inline-start: 0.5rem;
+}
+
+.guide--cap {
+  top: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.guide--x {
+  top: 50%;
+}
+
+.guide--base {
+  bottom: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+/* Dashed circle guide behind the first letter. */
+.guide-circle {
+  position: absolute;
+  top: 50%;
+  left: -0.5em;
+  width: clamp(9rem, 26vw, 20rem);
+  aspect-ratio: 1;
+  transform: translateY(-50%);
+  z-index: 0;
+  color: var(--sketch);
+}
+
+/* Crosshair corners of the construction area. */
+.crosshair {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  z-index: 1;
+  color: var(--sketch-strong);
+}
+
+.crosshair--tl {
+  top: 0;
+  left: 0;
+}
+.crosshair--tr {
+  top: 0;
+  right: 0;
+}
+.crosshair--bl {
+  bottom: 0;
+  left: 0;
+}
+.crosshair--br {
+  bottom: 0;
+  right: 0;
+}
+
+.hero-sub {
+  max-width: 34em;
+  font-size: clamp(1.0625rem, 1.8vw, 1.25rem);
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+  margin-block-start: 1.5rem;
+  color: var(--gray);
+}
+
+.hero-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hero-meta .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--blue);
+}
+
+/* Load animation for guides — disabled under reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .guide {
+    animation: draw-line 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .guide--x {
+    animation-delay: 120ms;
+  }
+  .guide--base {
+    animation-delay: 240ms;
+  }
+  .guide-label,
+  .guide-circle,
+  .crosshair {
+    animation: fade-in 500ms ease 500ms both;
+  }
+  @keyframes draw-line {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+/* ─── Work grid & cards ────────────────────────────────────── */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.5rem, 3.5vw, 2.5rem);
+}
+
+.work-grid--three {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 56rem) {
+  .work-grid,
+  .work-grid--three {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 36rem) {
+  .work-grid,
+  .work-grid--three {
+    grid-template-columns: 1fr;
+  }
+}
+
+.project-card {
+  display: block;
+}
+
+.card-media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--card);
+}
+
+.card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-card:hover .card-media img,
+.project-card:focus-visible .card-media img {
+  transform: scale(1.025);
+}
+
+/* Crop marks appear on hover — the card becomes "in production". */
+.crop {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  color: var(--paper);
+  opacity: 0;
+  transition: opacity 180ms ease;
+  z-index: 2;
+}
+
+.crop--tl {
+  top: 8px;
+  left: 8px;
+}
+.crop--tr {
+  top: 8px;
+  right: 8px;
+  transform: rotate(90deg);
+}
+.crop--br {
+  bottom: 8px;
+  right: 8px;
+  transform: rotate(180deg);
+}
+.crop--bl {
+  bottom: 8px;
+  left: 8px;
+  transform: rotate(270deg);
+}
+
+.project-card:hover .crop,
+.project-card:focus-visible .crop {
+  opacity: 0.9;
+}
+
+.card-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block-start: 0.8rem;
+}
+
+.card-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-variation-settings: "wdth" 105;
+  font-size: 1.0625rem;
+  letter-spacing: 0.005em;
+  transition: color 120ms ease;
+}
+
+.project-card:hover .card-title {
+  color: var(--blue);
+}
+
+.card-tags {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray);
+  white-space: nowrap;
+}
+
+/* ─── Filters (work page) ──────────────────────────────────── */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filter-btn {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.45rem 0.95rem;
+  cursor: pointer;
+  transition: color 120ms ease, border-color 120ms ease, background 120ms ease;
+}
+
+.filter-btn:hover {
+  color: var(--ink);
+  border-color: var(--gray);
+}
+
+.filter-btn[aria-pressed="true"] {
+  color: var(--paper);
+  background: var(--blue);
+  border-color: var(--blue);
+}
+
+/* ─── About strip (home) ───────────────────────────────────── */
+.about-strip {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  border-top: 1px solid var(--line);
+  padding-block-start: clamp(2rem, 5vw, 3rem);
+}
+
+@media (max-width: 48rem) {
+  .about-strip {
+    grid-template-columns: 1fr;
+  }
+}
+
+.about-strip .lede {
+  font-size: clamp(1.25rem, 2.4vw, 1.625rem);
+  line-height: 1.45;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  max-width: 24em;
+}
+
+.client-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  columns: 2;
+  column-gap: 2rem;
+}
+
+.client-list li {
+  padding-block: 0.55rem;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.9375rem;
+  break-inside: avoid;
+}
+
+/* ─── Contact CTA ──────────────────────────────────────────── */
+.cta {
+  margin-block-start: var(--section-gap);
+  border-top: 1px solid var(--line);
+  padding-block: clamp(3.5rem, 9vw, 6.5rem);
+}
+
+.cta-link {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-variation-settings: "wdth" 122;
+  font-size: clamp(2.4rem, 8.5vw, 6.5rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+  margin-block-start: 1.25rem;
+  transition: color 140ms ease;
+}
+
+.cta-link .arrow {
+  transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cta-link:hover {
+  color: var(--blue);
+}
+
+.cta-link:hover .arrow {
+  transform: translateX(0.12em);
+}
+
+.cta-note {
+  margin-block-start: 1.25rem;
+  color: var(--gray);
+}
+
+/* ─── Footer ───────────────────────────────────────────────── */
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding-block: 2.25rem 2.75rem;
+  margin-block-start: var(--section-gap);
+}
+
+.cta + .site-footer {
+  margin-block-start: 0;
+}
+
+.footer-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1.5rem 3rem;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.9375rem;
+  color: var(--gray);
+}
+
+.footer-col a:hover {
+  color: var(--blue);
+}
+
+.colophon {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ─── Page intro (work / about / contact) ──────────────────── */
+.page-intro {
+  padding-block-start: clamp(3rem, 7vw, 5rem);
+}
+
+.page-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-variation-settings: "wdth" 120;
+  font-size: clamp(2.6rem, 8vw, 5.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin-block: 0.75rem 1.25rem;
+}
+
+.page-lede {
+  max-width: 36em;
+  font-size: clamp(1.0625rem, 1.8vw, 1.1875rem);
+  color: var(--ink);
+}
+
+/* ─── Case study ───────────────────────────────────────────── */
+.cs-hero {
+  padding-block-start: clamp(2.5rem, 6vw, 4rem);
+}
+
+.cs-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-variation-settings: "wdth" 118;
+  font-size: clamp(2.2rem, 6.5vw, 4.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin-block: 0.75rem 1rem;
+  max-width: 14em;
+}
+
+.cs-summary {
+  max-width: 32em;
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.cs-cover {
+  margin-block-start: clamp(2rem, 5vw, 3rem);
+  border: 1px solid var(--line);
+}
+
+.cs-cover img {
+  width: 100%;
+  height: auto;
+}
+
+.cs-body {
+  display: grid;
+  grid-template-columns: minmax(0, 0.62fr) minmax(0, 1.38fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  margin-block-start: clamp(2.5rem, 6vw, 4rem);
+}
+
+@media (max-width: 52rem) {
+  .cs-body {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Spec-sheet sidebar. */
+.spec {
+  align-self: start;
+  position: sticky;
+  top: 5.5rem;
+  border: 1px solid var(--line);
+  background: var(--card);
+}
+
+@media (max-width: 52rem) {
+  .spec {
+    position: static;
+  }
+}
+
+.spec dl {
+  margin: 0;
+}
+
+.spec-row {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: 1rem;
+  padding: 0.8rem 1rem;
+}
+
+.spec-row + .spec-row {
+  border-top: 1px solid var(--line);
+}
+
+.spec dt {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray);
+  padding-block-start: 0.15rem;
+}
+
+.spec dd {
+  margin: 0;
+  font-size: 0.9375rem;
+}
+
+.cs-sections > section + section {
+  margin-block-start: clamp(2rem, 4.5vw, 3rem);
+}
+
+.cs-sections h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-variation-settings: "wdth" 110;
+  font-size: 1.25rem;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  margin-block-end: 0.6rem;
+}
+
+.cs-sections p {
+  max-width: 38em;
+}
+
+.cs-figures {
+  display: grid;
+  gap: clamp(1.5rem, 3.5vw, 2.5rem);
+  margin-block-start: clamp(2.5rem, 6vw, 4rem);
+}
+
+.cs-figure {
+  margin: 0;
+}
+
+.cs-figure .frame {
+  border: 1px solid var(--line);
+}
+
+.cs-figure img {
+  width: 100%;
+  height: auto;
+}
+
+.cs-figure figcaption {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray);
+  padding-block-start: 0.6rem;
+}
+
+/* Prev / next pagination. */
+.cs-pagination {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  border-top: 1px solid var(--line);
+  margin-block-start: var(--section-gap);
+  padding-block-start: 1.5rem;
+}
+
+.pag-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  max-width: 45%;
+}
+
+.pag-link .mono {
+  color: var(--gray);
+}
+
+.pag-link .pag-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-variation-settings: "wdth" 108;
+  font-size: 1.125rem;
+  transition: color 120ms ease;
+}
+
+.pag-link:hover .pag-title {
+  color: var(--blue);
+}
+
+.pag-link--next {
+  text-align: right;
+  margin-left: auto;
+}
+
+/* ─── About page ───────────────────────────────────────────── */
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  margin-block-start: clamp(2.5rem, 6vw, 4rem);
+}
+
+@media (max-width: 52rem) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.portrait {
+  border: 1px solid var(--line);
+  position: relative;
+}
+
+.portrait img {
+  width: 100%;
+  height: auto;
+}
+
+.about-copy p + p {
+  margin-block-start: 1rem;
+}
+
+.about-copy .lede {
+  font-size: clamp(1.25rem, 2.4vw, 1.5rem);
+  line-height: 1.45;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+}
+
+.fact-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.fact-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-block: 0.6rem;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.9375rem;
+}
+
+.fact-list .detail {
+  color: var(--gray);
+  text-align: right;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+@media (max-width: 40rem) {
+  .two-col {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─── Contact page ─────────────────────────────────────────── */
+.contact-email {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-variation-settings: "wdth" 116;
+  font-size: clamp(1.6rem, 5.5vw, 3.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  word-break: break-word;
+  display: inline-block;
+  margin-block: 1.5rem 0.5rem;
+  transition: color 140ms ease;
+}
+
+.contact-email:hover {
+  color: var(--blue);
+}
+
+.social-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.social-list li {
+  border-bottom: 1px solid var(--line);
+}
+
+.social-list a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 0.9rem;
+  font-weight: 500;
+  transition: color 120ms ease, padding-left 200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.social-list a:hover {
+  color: var(--blue);
+  padding-left: 0.5rem;
+}
+
+.social-list .mono {
+  color: var(--gray);
+}
+
+/* ─── Reduced motion: kill transforms & smooth scroll ──────── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+  .project-card:hover .card-media img {
+    transform: none;
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "reiner-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portfolio website for a logo & identity designer. Built with Next.js, deployable on Vercel.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@fontsource-variable/archivo": "^5.2.5",
+    "@fontsource-variable/spline-sans-mono": "^5.2.5",
+    "next": "^15.3.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.7.0"
+  }
+}

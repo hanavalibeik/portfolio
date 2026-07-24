@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img">
+
+  <rect width="1200" height="900" fill="#e8a33d"/>
+  <g transform="translate(360,210) scale(1.6)">
+    <rect x="70" y="60" width="44" height="190" fill="#ffffff"/>
+    <rect x="186" y="60" width="44" height="190" fill="#ffffff"/>
+    <path d="M70 160 A80 80 0 0 1 230 160 L186 160 A36 36 0 0 0 114 160 Z" fill="#ffffff"/>
+  </g>
+  <text x="48" y="70" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="17" letter-spacing="2" fill="#ffffff" opacity="0.9">HALDEN COFFEE ROASTERS</text>
+  <text x="1152" y="856" text-anchor="end" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="15" letter-spacing="2" fill="#ffffff" opacity="0.65">PLACEHOLDER — REPLACE WITH YOUR WORK</text>
+  
+</svg>
