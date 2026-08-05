@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ContactCta } from "@/components/ContactCta";
 import { site } from "@/data/site";
+import { assetPath } from "@/lib/assetPath";
 
 export const metadata: Metadata = {
   title: "About",
@@ -23,7 +24,10 @@ export default function AboutPage() {
       <section className="section" aria-label="Biography">
         <div className="container about-grid">
           <div className="portrait">
-            <img src="/about/portrait.png" alt={`Portrait of ${site.fullName}`} />
+            <img
+              src={assetPath("/about/portrait.png")}
+              alt={`Portrait of ${site.fullName}`}
+            />
           </div>
           <div className="about-copy">
             <p className="lede">

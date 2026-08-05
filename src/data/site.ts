@@ -94,5 +94,5 @@ export const site = {
   /** Languages */
   languages: ["English", "Persian"],
   /** Used for metadata; set to your production URL after deploying. */
-  url: "https://portfolio-seven-nu-okzzzi5l4c.vercel.app",
+  url: "https://hanavalibeik.github.io/portfolio",
 };

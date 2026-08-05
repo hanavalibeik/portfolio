@@ -25,7 +25,7 @@ export function SiteFooter() {
         <div className="footer-col colophon">
           <span>© {year} {site.fullName}</span>
           <span>Set in Archivo & Spline Sans Mono</span>
-          <span>Built with Next.js, deployed on Vercel</span>
+          <span>Built with Next.js, deployed on GitHub Pages</span>
         </div>
       </div>
     </footer>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { site } from "@/data/site";
+import { assetPath } from "@/lib/assetPath";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -39,7 +40,7 @@ export default function ContactPage() {
               </a>
             )}
             {site.cv && (
-              <a href={site.cv} download className="cv-link">
+              <a href={assetPath(site.cv)} download className="cv-link">
                 Download CV ↓
               </a>
             )}

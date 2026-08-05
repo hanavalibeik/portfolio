@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Project } from "@/data/projects";
+import { assetPath } from "@/lib/assetPath";
 import { Registration } from "./Marks";
 
 export function ProjectCard({ project }: { project: Project }) {
@@ -11,7 +12,11 @@ export function ProjectCard({ project }: { project: Project }) {
           When you swap in real photography, consider next/image for
           automatic optimisation — see the README.
         */}
-        <img src={project.cover.src} alt={project.cover.alt} loading="lazy" />
+        <img
+          src={assetPath(project.cover.src)}
+          alt={project.cover.alt}
+          loading="lazy"
+        />
         <Registration className="crop crop--tl" />
         <Registration className="crop crop--tr" />
         <Registration className="crop crop--br" />

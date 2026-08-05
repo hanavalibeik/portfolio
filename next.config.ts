@@ -1,9 +1,15 @@
 import type { NextConfig } from "next";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 const nextConfig: NextConfig = {
-  // Placeholder artwork ships as local SVGs, so no remote image domains are
-  // needed yet. When you swap in real photography/renders, either keep files
-  // in /public or configure `images.remotePatterns` here for a CDN.
+  output: "export",
+  basePath,
+  assetPrefix: basePath || undefined,
+  trailingSlash: true,
+  images: {
+    unoptimized: true,
+  },
 };
 
 export default nextConfig;

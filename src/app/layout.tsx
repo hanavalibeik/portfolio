@@ -5,26 +5,32 @@ import "./globals.css";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { site } from "@/data/site";
+import { assetPath } from "@/lib/assetPath";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(site.url),
+  // Next.js applies `basePath` to metadata asset paths. Use the origin here so
+  // social image URLs resolve to /portfolio/og.png exactly once.
+  metadataBase: new URL("/", site.url),
   title: {
     default: `${site.fullName} — ${site.role}`,
     template: `%s — ${site.fullName}`,
   },
   description: site.tagline,
-  icons: { icon: "/icon.png", apple: "/apple-icon.png" },
+  icons: {
+    icon: assetPath("/icon.png"),
+    apple: assetPath("/apple-icon.png"),
+  },
   openGraph: {
     title: `${site.fullName} — ${site.role}`,
     description: site.tagline,
     type: "website",
-    images: [{ url: "/og.png", width: 1200, height: 630 }],
+    images: [{ url: assetPath("/og.png"), width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${site.fullName} — ${site.role}`,
     description: site.tagline,
-    images: ["/og.png"],
+    images: [assetPath("/og.png")],
   },
 };
 

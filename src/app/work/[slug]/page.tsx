@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { adjacentProjects, getProject, projects } from "@/data/projects";
 import { ContactCta } from "@/components/ContactCta";
+import { assetPath } from "@/lib/assetPath";
 
 type Params = { slug: string };
 
@@ -46,7 +47,10 @@ export default async function ProjectPage({
             <h1 className="cs-title">{project.title}</h1>
             <p className="cs-summary">{project.summary}</p>
             <div className="cs-cover">
-              <img src={project.cover.src} alt={project.cover.alt} />
+              <img
+                src={assetPath(project.cover.src)}
+                alt={project.cover.alt}
+              />
             </div>
           </div>
         </header>
@@ -100,7 +104,11 @@ export default async function ProjectPage({
           {project.images.map((image) => (
             <figure key={image.src} className="cs-figure">
               <div className="frame">
-                <img src={image.src} alt={image.alt} loading="lazy" />
+                <img
+                  src={assetPath(image.src)}
+                  alt={image.alt}
+                  loading="lazy"
+                />
               </div>
               {image.caption ? (
                 <figcaption>{image.caption}</figcaption>
