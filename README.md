@@ -1,5 +1,6 @@
 # Reiner® — Designer Portfolio
 
+
 A portfolio website for a logo & identity designer, built with **Next.js 15** and ready to deploy on **Vercel**. Modeled on the conventions of the best working designers' sites: work visible immediately, a three-link nav, a quiet frame where the projects bring the color, and spec-sheet case studies.
 
 Everything on the site is **placeholder content** — one persona ("Alex Reiner"), eight fictional projects, and generated SVG artwork — designed to be replaced with your own work in a few minutes.
