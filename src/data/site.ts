@@ -51,6 +51,8 @@ export const site = {
   },
   /** Path to the downloadable CV in /public. Set to "" to hide the buttons. */
   cv: "/Hana-Valibeik-CV.pdf",
+  /** Path to the downloadable PDF portfolio in /public. */
+  portfolioPdf: "/Hana-Valibeik-Portfolio-2026.pdf",
   /** Companies & teams, shown on the about page / home strip. */
   clients: [
     "Master Pipe",

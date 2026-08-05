@@ -44,6 +44,15 @@ export default function ContactPage() {
                 Download CV ↓
               </a>
             )}
+            {site.portfolioPdf && (
+              <a
+                href={assetPath(site.portfolioPdf)}
+                download
+                className="cv-link"
+              >
+                Download Portfolio ↓
+              </a>
+            )}
           </p>
         </div>
       </section>
