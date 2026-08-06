@@ -791,9 +791,16 @@ code {
   border: 1px solid var(--line);
 }
 
-.cs-figure img {
+.cs-figure img,
+.cs-figure video {
+  display: block;
   width: 100%;
   height: auto;
+}
+
+.cs-figure video {
+  max-height: min(80vh, 64rem);
+  background: #111;
 }
 
 .cs-figure figcaption {

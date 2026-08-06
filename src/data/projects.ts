@@ -16,6 +16,8 @@ export type ProjectImage = {
   src: string;
   alt: string;
   caption?: string;
+  type?: "image" | "video";
+  poster?: string;
 };
 
 export type Project = {
@@ -23,7 +25,7 @@ export type Project = {
   title: string;
   client: string;
   year: string;
-  category: "Identity" | "Campaign" | "Illustration";
+  category: "Identity" | "Packaging" | "Editorial" | "Campaign" | "Illustration";
   sector: string;
   deliverables: string[];
   summary: string;
@@ -36,6 +38,236 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    slug: "shokouh-miyami",
+    title: "Shokouh Miyami",
+    client: "Iran Stone Co. / Shokouh Miyami",
+    year: "2025",
+    category: "Identity",
+    sector: "Natural stone",
+    deliverables: [
+      "Logo & visual identity",
+      "Stationery",
+      "Colour system",
+      "Campaign applications",
+    ],
+    summary:
+      "A geometric identity for a natural-stone brand, translating quarry cuts and material strength into a precise visual system.",
+    brief:
+      "Shokouh Miyami, commissioned by Iran Stone Co., needed an identity that could express the authenticity, strength and natural beauty of stone while remaining clear across stationery and large-format applications.",
+    approach:
+      "The symbol is constructed from interlocking rectangular cuts, echoing both extracted stone blocks and the measured geometry of fabrication. Deep navy anchors the system, while stone textures and a restrained gold accent connect the identity to the material without turning it into decoration.",
+    outcome:
+      "A consistent identity system demonstrated across business cards, letterhead and an architectural campaign application, with the mark retaining its structure from small print to outdoor scale.",
+    cover: {
+      src: "/work/shokouh-miyami/01.webp",
+      alt: "Shokouh Miyami natural-stone identity applied to business cards",
+    },
+    images: [
+      {
+        src: "/work/shokouh-miyami/02.webp",
+        alt: "Shokouh Miyami letterhead on a dark stone surface",
+        caption: "Stationery application — restrained colour, structured spacing and stone texture.",
+      },
+      {
+        src: "/work/shokouh-miyami/03.webp",
+        alt: "Shokouh Miyami outdoor poster applied to a stone building facade",
+        caption: "Campaign application — the identity scaled to an architectural setting.",
+      },
+    ],
+    accent: "#1F2E42",
+  },
+  {
+    slug: "pista-packaging",
+    title: "Pista Packaging",
+    client: "Pista",
+    year: "2025",
+    category: "Packaging",
+    sector: "Nuts & snacks",
+    deliverables: [
+      "Packaging design",
+      "Digital illustration",
+      "Product variants",
+      "Presentation mockups",
+    ],
+    summary:
+      "Illustrated nut packaging built as a warm, recognisable family across multiple product variants.",
+    brief:
+      "Pista needed a packaging direction that made each nut variety immediately appetising and distinct while keeping every pack visibly part of one brand family.",
+    approach:
+      "Each pack centres the product in an illustrated bowl, surrounded by a warm tonal field that changes by variety. The logo block, Persian product naming, seal and small botanical motif remain fixed, creating a stable hierarchy while colour and ingredient imagery carry the variation.",
+    outcome:
+      "A coherent five-view packaging presentation that shows how the system can expand across pistachio, almond and mixed-nut products without losing shelf recognition.",
+    cover: {
+      src: "/work/pista-packaging/01.webp",
+      alt: "Pista illustrated almond packaging in a warm brown colourway",
+    },
+    images: [
+      {
+        src: "/work/pista-packaging/02.webp",
+        alt: "Pista pistachio packaging in a burgundy and blue colourway",
+        caption: "Product variant — a consistent structure with a new ingredient palette.",
+      },
+      {
+        src: "/work/pista-packaging/03.webp",
+        alt: "Pista mixed-nut packaging in a rust colourway",
+      },
+      {
+        src: "/work/pista-packaging/04.webp",
+        alt: "Pista pistachio packaging in a burgundy and green colourway",
+      },
+      {
+        src: "/work/pista-packaging/05.webp",
+        alt: "Pista stand-up pouch packaging mockup on a neutral background",
+        caption: "Range application — the illustration and hierarchy adapted to a stand-up pouch.",
+      },
+    ],
+    accent: "#681C1F",
+  },
+  {
+    slug: "france-cafe",
+    title: "France Café",
+    client: "France Pastry 1965",
+    year: "2025",
+    category: "Identity",
+    sector: "Café & pastry",
+    deliverables: [
+      "Proposed logotype",
+      "Custom Persian lettering",
+      "Signage studies",
+      "Window application",
+    ],
+    summary:
+      "A proposed Persian logotype drawn as one continuous gesture and tested across signage and storefront glass.",
+    brief:
+      "France Café needed a proposed logotype with enough personality for a long-established pastry brand and enough clarity to work as both a compact mark and environmental signage.",
+    approach:
+      "The Persian name is drawn as a single flowing line, combining calligraphic movement with a deliberately simplified silhouette. A strict black-and-white system keeps the lettering central and lets the mark shift cleanly between illuminated signage, print and transparent glass.",
+    outcome:
+      "A focused identity concept that holds its recognisability from a simple lockup to exterior signage and window applications.",
+    cover: {
+      src: "/work/france-cafe/01.webp",
+      alt: "White France Café Persian logotype on a dark background",
+    },
+    images: [
+      {
+        src: "/work/france-cafe/02.webp",
+        alt: "Black France Café Persian logotype on a light background",
+        caption: "Primary lettering study — one continuous custom-drawn gesture.",
+      },
+      {
+        src: "/work/france-cafe/03.webp",
+        alt: "France Café logotype applied to an exterior lightbox sign",
+      },
+      {
+        src: "/work/france-cafe/04.webp",
+        alt: "France Café logotype applied to a storefront window",
+        caption: "Environmental tests — the same mark on an opaque sign and transparent glass.",
+      },
+    ],
+    accent: "#1E1A1C",
+  },
+  {
+    slug: "codejudge-catalog",
+    title: "Codejudge Catalog",
+    client: "Codejudge",
+    year: "2025",
+    category: "Editorial",
+    sector: "EdTech / interactive assessment",
+    deliverables: [
+      "Catalog design",
+      "Editorial system",
+      "Information diagrams",
+      "Presentation mockups",
+    ],
+    summary:
+      "A bright editorial system that turns an interactive assessment platform into a clear, scannable story.",
+    brief:
+      "Codejudge needed a compact catalog to explain its interactive evaluation system, platform journey and key benefits to educators and decision-makers without relying on dense product copy.",
+    approach:
+      "Cyan and violet accents divide the content into modules, while numbered steps, interface details and friendly illustrations turn technical processes into a visual sequence. Generous white space and consistent callout labels keep the spreads readable even when diagrams and screenshots share the page.",
+    outcome:
+      "A five-spread presentation system that gives the platform a coherent editorial voice and makes its evaluation flow easier to scan in print or on screen.",
+    cover: {
+      src: "/work/codejudge-catalog/01.webp",
+      alt: "Codejudge catalog shown as a folded editorial mockup",
+    },
+    images: [
+      {
+        src: "/work/codejudge-catalog/02.webp",
+        alt: "Codejudge catalog spread explaining the interactive evaluation system",
+        caption: "Platform overview — interface details connected to an illustrated process map.",
+      },
+      {
+        src: "/work/codejudge-catalog/03.webp",
+        alt: "Codejudge catalog spread with numbered instructional steps",
+      },
+      {
+        src: "/work/codejudge-catalog/04.webp",
+        alt: "Codejudge catalog spread showing a multi-step workflow diagram",
+      },
+      {
+        src: "/work/codejudge-catalog/05.webp",
+        alt: "Codejudge catalog spread with cyan diagrams and character illustration",
+        caption: "Editorial system — modular labels, diagrams and illustration in one consistent grid.",
+      },
+    ],
+    accent: "#56C4D4",
+  },
+  {
+    slug: "typographic-voice",
+    title: "Typographic Voice",
+    client: "Self-initiated",
+    year: "2025",
+    category: "Editorial",
+    sector: "Personal design study",
+    deliverables: ["Poster design", "Digital illustration", "Narrative layout", "Motion"],
+    summary:
+      "A six-second motion poster where a microphone grows a voice and typography becomes the sound.",
+    brief:
+      "A personal study exploring how layout can move beyond delivering information and become part of the expression itself — with form, image and type carrying one voice.",
+    approach:
+      "A vintage microphone is fused with an open mouth and drawn in a rough graphic style against a flat yellow field. The line “Amplify Your Words” enters diagonally and expands into supporting copy, turning typographic scale and direction into the visible trace of a voice.",
+    outcome:
+      "A compact motion study that progresses from silent image to typographic crescendo, demonstrating how a static poster system can gain narrative through timing.",
+    cover: {
+      src: "/work/typographic-voice/cover.jpg",
+      alt: "Illustrated microphone with a mouth and diagonal typography on a yellow poster",
+    },
+    images: [
+      {
+        src: "/work/typographic-voice/01.mp4",
+        type: "video",
+        poster: "/work/typographic-voice/cover.jpg",
+        alt: "Motion poster revealing the phrase Amplify Your Words from an illustrated microphone",
+        caption: "Motion study — illustration and type building from silence to a full visual voice.",
+      },
+    ],
+    accent: "#F2BA16",
+  },
+  {
+    slug: "a-minutes-silence",
+    title: "A Minute's Silence",
+    client: "Mohammad Pourriahi",
+    year: "2025",
+    category: "Campaign",
+    sector: "Film",
+    deliverables: ["Poster concept", "Art direction", "Typography", "Image compositing"],
+    summary:
+      "A monochrome film poster that stages the moment truth is revealed through fractured type, silhouettes and beams of light.",
+    brief:
+      "Create a poster for the film A Minute's Silence, directed by Mohammad Pourriahi, around the central idea: “When the truth is revealed.”",
+    approach:
+      "The title is broken into stacked, oversized words that double as the poster's architecture. Small human figures move between the letters while triangular beams cut through the darkness, turning revelation into a literal visual event within the typography.",
+    outcome:
+      "A single-image theatrical poster with a tense, investigative atmosphere and a title that functions simultaneously as message, setting and composition.",
+    cover: {
+      src: "/work/a-minutes-silence/01.webp",
+      alt: "A Minute's Silence film poster with fragmented type, silhouettes and light beams",
+    },
+    images: [],
+    accent: "#231F20",
+  },
   {
     slug: "sepidar",
     title: "Sepidar",
@@ -222,7 +454,14 @@ export const projects: Project[] = [
   },
 ];
 
-export const categories = ["All", "Identity", "Campaign", "Illustration"] as const;
+export const categories = [
+  "All",
+  "Identity",
+  "Packaging",
+  "Editorial",
+  "Campaign",
+  "Illustration",
+] as const;
 
 export function getProject(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug);

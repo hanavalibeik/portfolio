@@ -34,7 +34,7 @@ export default function HomePage() {
             <div>
               <p className="eyebrow">Selected work</p>
               <h2 className="section-title" id="work-heading">
-                Brand, UI & illustration
+                Brand, editorial & illustration
               </h2>
             </div>
             <Link href="/work" className="text-link">

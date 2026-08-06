@@ -104,11 +104,23 @@ export default async function ProjectPage({
           {project.images.map((image) => (
             <figure key={image.src} className="cs-figure">
               <div className="frame">
-                <img
-                  src={assetPath(image.src)}
-                  alt={image.alt}
-                  loading="lazy"
-                />
+                {image.type === "video" ? (
+                  <video
+                    controls
+                    playsInline
+                    preload="metadata"
+                    poster={image.poster ? assetPath(image.poster) : undefined}
+                    aria-label={image.alt}
+                  >
+                    <source src={assetPath(image.src)} type="video/mp4" />
+                  </video>
+                ) : (
+                  <img
+                    src={assetPath(image.src)}
+                    alt={image.alt}
+                    loading="lazy"
+                  />
+                )}
               </div>
               {image.caption ? (
                 <figcaption>{image.caption}</figcaption>
