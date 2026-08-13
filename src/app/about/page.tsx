@@ -54,7 +54,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="section" aria-label="Services and recognition">
+      <section className="section" id="services" aria-label="Services and recognition">
         <div className="container two-col">
           <div>
             <p className="eyebrow" style={{ marginBlockEnd: "1rem" }}>

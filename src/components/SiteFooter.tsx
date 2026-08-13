@@ -1,6 +1,12 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import { site } from "@/data/site";
 
 export function SiteFooter() {
+  const pathname = usePathname();
+  if (pathname === "/") return null;
+
   const year = new Date().getFullYear();
   const socials = site.socials.filter((s) => s.url);
 

@@ -12,13 +12,13 @@ const links = [
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const isHome = pathname === "/";
 
   return (
-    <header className="site-header">
+    <header className={`site-header${isHome ? " site-header--home" : ""}`}>
       <div className="container">
         <Link href="/" className="brand" aria-label={`${site.fullName} — home`}>
-          {site.name}
-          <sup>®</sup>
+          {isHome ? <span className="home-brand-mark">h</span> : <>{site.name}<sup>®</sup></>}
         </Link>
         <nav className="site-nav" aria-label="Main">
           {links.map((link) => {
