@@ -745,6 +745,12 @@ code {
   color: #fff;
 }
 
+.site-cta.cv-link,
+.site-cta.exact-pill,
+.site-cta.landing-hotspot--cta {
+  border-width: 2px;
+}
+
 .site-cta.cv-link--solid:hover,
 .site-cta.cv-link--solid:focus-visible {
   border-color: #fff;
