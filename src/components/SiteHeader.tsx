@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { site } from "@/data/site";
+import { assetPath } from "@/lib/assetPath";
 
 const links = [
   { href: "/work", label: "Work" },
@@ -18,7 +19,13 @@ export function SiteHeader() {
     <header className={`site-header${isHome ? " site-header--home" : ""}`}>
       <div className="container">
         <Link href="/" className="brand" aria-label={`${site.fullName} — home`}>
-          {isHome ? <span className="home-brand-mark">h</span> : <>{site.name}<sup>®</sup></>}
+          <img
+            className="site-logo"
+            src={assetPath("/brand/hana-logo.svg")}
+            alt=""
+            width="200"
+            height="200"
+          />
         </Link>
         <nav className="site-nav" aria-label="Main">
           {links.map((link) => {

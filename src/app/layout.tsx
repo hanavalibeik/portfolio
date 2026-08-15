@@ -17,7 +17,8 @@ export const metadata: Metadata = {
   },
   description: site.tagline,
   icons: {
-    icon: assetPath("/icon.png"),
+    icon: assetPath("/brand/hana-logo.svg"),
+    shortcut: assetPath("/brand/hana-logo.svg"),
     apple: assetPath("/apple-icon.png"),
   },
   openGraph: {
