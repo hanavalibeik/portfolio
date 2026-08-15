@@ -25,7 +25,7 @@ export default function AboutPage() {
         <div className="container about-grid">
           <div className="portrait">
             <img
-              src={assetPath("/about/portrait.png")}
+              src={assetPath("/about/portrait.webp")}
               alt={`Portrait of ${site.fullName}`}
             />
           </div>
