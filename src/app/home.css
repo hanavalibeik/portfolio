@@ -33,7 +33,7 @@ body:has(.exact-home) .site-header--home .container,
 }
 
 body:has(.exact-home) .site-header--home .container {
-  height: min(8vw, 7.2rem);
+  height: min(10.5vw, 9.2rem);
 }
 
 body:has(.exact-home) .home-brand-mark {
@@ -173,7 +173,7 @@ body:has(.exact-home) .site-header--home .site-nav a::after {
 
 .exact-portrait-stage {
   position: absolute;
-  top: 6.9vw;
+  top: 11.7vw;
   right: 0;
   width: 34vw;
   height: 43vw;
@@ -224,8 +224,8 @@ body:has(.exact-home) .site-header--home .site-nav a::after {
 .exact-orbit {
   position: absolute;
   z-index: 6;
-  top: 6.2vw;
-  left: -5vw;
+  top: 3.5vw;
+  left: 0;
   width: 10.8vw;
   height: 10.8vw;
   max-width: 9.6rem;
@@ -271,7 +271,7 @@ body:has(.exact-home) .site-header--home .site-nav a::after {
 
 .exact-node-line--bottom {
   right: 0;
-  bottom: 5.8vw;
+  bottom: 7.9vw;
   width: 50.5vw;
   height: 6.8vw;
   border-right: 1px solid;
@@ -354,6 +354,11 @@ body:has(.exact-home) .site-header--home .site-nav a::after {
 .exact-projects {
   position: relative;
   height: min(115vw, 98rem);
+}
+
+.exact-projects > .exact-shell {
+  position: relative;
+  height: 100%;
 }
 
 .exact-project-curve {
