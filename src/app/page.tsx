@@ -19,14 +19,40 @@ const disciplines = [
   ["Logo", "discipline-logo"],
 ] as const;
 
+const homeServices = [
+  "Branding & Identity",
+  "Packaging Design",
+  "Advertising",
+  "UI Design",
+  "Typography & Layout",
+  "Digital Illustration",
+  "Social Media Design",
+  "Image Editing & Retouching",
+  "Environmental Graphics",
+] as const;
+
 const footerLinks = [
-  { label: "WhatsApp", mark: "◔", url: `https://wa.me/${site.whatsapp}` },
-  { label: "Email", mark: "M", url: `mailto:${site.email}` },
-  { label: "LinkedIn", mark: "in", url: site.socials[1].url },
-  { label: "Dribbble", mark: "◉", url: site.socials[2].url },
-  { label: "Instagram", mark: "◎", url: site.socials[0].url },
-  { label: "Threads", mark: "Th", url: site.elsewhere[0].url },
-];
+  { label: "WhatsApp", icon: "whatsapp", url: `https://wa.me/${site.whatsapp}` },
+  { label: "Email", icon: "email", url: `mailto:${site.email}` },
+  { label: "LinkedIn", icon: "linkedin", url: site.socials[1].url },
+  { label: "Dribbble", icon: "dribbble", url: site.socials[2].url },
+  { label: "Instagram", icon: "instagram", url: site.socials[0].url },
+  { label: "Threads", icon: "threads", url: site.elsewhere[0].url },
+] as const;
+
+function FooterIcon({ name }: { name: (typeof footerLinks)[number]["icon"] }) {
+  if (name === "linkedin") return <strong aria-hidden="true">in</strong>;
+  if (name === "threads") return <strong className="threads-mark" aria-hidden="true">@</strong>;
+
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      {name === "whatsapp" && <><path d="M20 11.7a8 8 0 0 1-11.8 7L4 20l1.4-4A8 8 0 1 1 20 11.7Z" /><path d="M8.7 8.1c.4 3.3 2 5 5.2 6.1l1.3-1.4 2.2 1.1c-.5 1.9-1.6 2.6-3.3 2.3-4.2-.7-7.4-4-8-8.1-.2-1.5.5-2.6 2.2-3.1l1.2 2.1-.8 1Z" /></>}
+      {name === "email" && <><rect x="3" y="5.5" width="18" height="13" rx="1.8" /><path d="m4.5 7 7.5 6 7.5-6" /></>}
+      {name === "dribbble" && <><circle cx="12" cy="12" r="8.5" /><path d="M7.2 5.4c3 3.2 5 6.7 6.2 12.9M4 11.2c4.6.2 9.3-.8 13.4-3.3M7.2 17.9c2.7-3.3 6-4.7 11.9-3.6" /></>}
+      {name === "instagram" && <><rect x="4" y="4" width="16" height="16" rx="4" /><circle cx="12" cy="12" r="3.7" /><circle className="icon-dot" cx="17.2" cy="6.8" r=".8" /></>}
+    </svg>
+  );
+}
 
 export default function HomePage() {
   return (
@@ -66,7 +92,7 @@ export default function HomePage() {
             {homeProjects.map((project, index) => (
               <Link className={`exact-project-card${index === 0 ? " is-reference-hover" : ""}`} href={project.href} key={project.title} aria-label={`View ${project.title}`}>
                 <img src={assetPath(project.image)} alt={project.alt} />
-                <span className="exact-project-info"><strong>{project.title}</strong><small>{project.meta}</small><em>view project</em><i aria-hidden="true" /></span>
+                <span className="exact-project-info"><strong>{index === 0 ? "Project name" : project.title}</strong><small>{project.meta}</small><em>view project</em><i aria-hidden="true" /></span>
               </Link>
             ))}
           </div>
@@ -78,7 +104,7 @@ export default function HomePage() {
         <span className="exact-service-line" aria-hidden="true" />
         <div className="exact-services-main">
           <h2 className="exact-heading" id="services-heading">Services</h2>
-          <ServicesRail services={site.services} />
+          <ServicesRail services={homeServices} />
           <Link className="exact-pill exact-services-more" href="/about#services">view more</Link>
         </div>
       </section>
@@ -99,7 +125,7 @@ export default function HomePage() {
           <div className="exact-footer-bottom">
             <div><strong>{site.fullName}</strong><span>{site.role}</span></div>
             <nav className="exact-socials" aria-label="Social media">
-              {footerLinks.map((link) => <a key={link.label} href={link.url} target={link.url.startsWith("http") ? "_blank" : undefined} rel={link.url.startsWith("http") ? "noreferrer" : undefined} aria-label={link.label} title={link.label}>{link.mark}</a>)}
+              {footerLinks.map((link) => <a key={link.label} href={link.url} target={link.url.startsWith("http") ? "_blank" : undefined} rel={link.url.startsWith("http") ? "noreferrer" : undefined} aria-label={link.label} title={link.label}><FooterIcon name={link.icon} /></a>)}
             </nav>
           </div>
         </div>

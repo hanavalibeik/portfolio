@@ -32,6 +32,11 @@ body:has(.exact-home) .site-header--home .container,
   padding-inline: 0;
 }
 
+.exact-shell {
+  position: relative;
+  height: 100%;
+}
+
 body:has(.exact-home) .site-header--home .container {
   height: min(8vw, 7.2rem);
 }
@@ -62,7 +67,7 @@ body:has(.exact-home) .site-header--home .site-nav a::after {
   z-index: 5;
   width: fit-content;
   margin: 0 auto;
-  font-size: clamp(1rem, 3.35vw, 2.9rem);
+  font-size: clamp(0.9rem, 2.75vw, 2.4rem);
   font-weight: 730;
   font-variation-settings: "wdth" 110;
   line-height: 1;
@@ -89,8 +94,8 @@ body:has(.exact-home) .site-header--home .site-nav a::after {
   z-index: 1;
   display: inline-grid;
   place-items: center;
-  min-width: 9.8vw;
-  min-height: 2.2vw;
+  min-width: 13vw;
+  min-height: 3.7vw;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.92);
   border-radius: 999px;
@@ -277,22 +282,22 @@ body:has(.exact-home) .site-header--home .site-nav a::after {
 /* About */
 .exact-about {
   position: relative;
-  height: min(47vw, 40.5rem);
+  height: min(48.7vw, 42rem);
 }
 
 .exact-about > .exact-heading {
   position: absolute;
-  top: 3.4vw;
+  top: 5.1vw;
   left: 50%;
   transform: translateX(-50%);
 }
 
 .exact-about-grid {
   position: absolute;
-  top: 11.1vw;
+  top: 12.6vw;
   left: 0;
   width: 100%;
-  height: 34vw;
+  height: 33.6vw;
   max-height: 29.5rem;
   display: grid;
   place-items: center;
@@ -305,8 +310,8 @@ body:has(.exact-home) .site-header--home .site-nav a::after {
 .exact-about-card {
   position: relative;
   z-index: 4;
-  width: 47vw;
-  height: 34vw;
+  width: 46.8vw;
+  height: 33.6vw;
   max-width: 42rem;
   max-height: 29.5rem;
   display: flex;
@@ -317,8 +322,8 @@ body:has(.exact-home) .site-header--home .site-nav a::after {
   padding: 3vw 3.2vw;
   background: rgba(0, 0, 0, 0.96);
   text-align: center;
-  font-size: clamp(0.43rem, 1.2vw, 1.02rem);
-  line-height: 1.36;
+  font-size: clamp(0.46rem, 1.42vw, 1.08rem);
+  line-height: 1.35;
 }
 
 .exact-about-card p + p {
@@ -365,16 +370,16 @@ body:has(.exact-home) .site-header--home .site-nav a::after {
 
 .exact-projects .exact-heading {
   position: absolute;
-  top: 15.2vw;
+  top: 15vw;
   left: 0;
 }
 
 .exact-project-grid {
   position: absolute;
-  top: 23.7vw;
+  top: 23vw;
   left: 0;
   width: 100%;
-  height: 80vw;
+  height: 80.5vw;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
@@ -408,7 +413,7 @@ body:has(.exact-home) .site-header--home .site-nav a::after {
   grid-template-columns: 1fr auto;
   grid-template-rows: auto 1fr auto;
   padding: 3.1vw;
-  background: rgba(176, 176, 176, 0.88);
+  background: rgba(92, 92, 94, 0.92);
   color: #080808;
   opacity: 0;
   transition: opacity 260ms ease;
@@ -452,7 +457,7 @@ body:has(.exact-home) .site-header--home .site-nav a::after {
 
 .exact-project-more {
   position: absolute;
-  top: 108.1vw;
+  top: 107.5vw;
   right: 0.8vw;
 }
 
@@ -464,10 +469,10 @@ body:has(.exact-home) .site-header--home .site-nav a::after {
 
 .exact-service-line {
   position: absolute;
-  top: -10.8vw;
+  top: -11.8vw;
   left: 31.5vw;
   width: 0;
-  height: 42.8vw;
+  height: 46.6vw;
   border-left: 1px solid var(--exact-line);
 }
 
@@ -476,16 +481,16 @@ body:has(.exact-home) .site-header--home .site-nav a::after {
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 38vw;
+  width: 36.4vw;
   border-top: 1px solid var(--exact-line);
-  transform: rotate(148deg);
+  transform: rotate(150deg);
   transform-origin: left center;
 }
 
 .exact-services::after {
   content: "";
   position: absolute;
-  top: 31.8vw;
+  top: 34.8vw;
   left: 31.5vw;
   right: 0;
   border-top: 1px solid var(--exact-line);
@@ -494,26 +499,26 @@ body:has(.exact-home) .site-header--home .site-nav a::after {
 .exact-services-main {
   position: absolute;
   top: 0;
-  left: 44.2vw;
+  left: 44.3vw;
   right: 0;
   height: 100%;
 }
 
 .exact-services-main > .exact-heading {
   position: absolute;
-  top: 5.8vw;
+  top: 5vw;
   left: 0;
 }
 
 .exact-services-rail {
   position: absolute;
-  top: 13.8vw;
+  top: 13.2vw;
   left: 0;
   right: 0;
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: 20vw;
-  gap: 3vw;
+  grid-auto-columns: 19.8vw;
+  gap: 2.8vw;
   overflow-x: auto;
   overscroll-behavior-inline: contain;
   scroll-snap-type: x mandatory;
@@ -525,7 +530,7 @@ body:has(.exact-home) .site-header--home .site-nav a::after {
 
 .exact-service-card {
   position: relative;
-  height: 12.8vw;
+  height: 13vw;
   display: grid;
   place-items: center;
   overflow: hidden;
@@ -552,7 +557,7 @@ body:has(.exact-home) .site-header--home .site-nav a::after {
 .exact-services-more {
   position: absolute;
   top: 38.4vw;
-  left: 0.7vw;
+  left: 1.2vw;
 }
 
 /* Instagram */
@@ -563,22 +568,22 @@ body:has(.exact-home) .site-header--home .site-nav a::after {
 
 .exact-instagram .exact-heading {
   position: absolute;
-  top: 5.4vw;
+  top: 4.1vw;
   left: 0;
 }
 
 .exact-instagram-link {
   position: absolute;
-  top: 11.8vw;
+  top: 11vw;
   left: 0;
   width: 50vw;
-  height: 12.4vw;
+  height: 12.5vw;
   display: flex;
   align-items: center;
   gap: 3vw;
   border: 1px solid #fff;
   border-radius: 999px;
-  padding: 0 3vw;
+  padding: 0 5.3vw;
   transition: border-color 240ms ease, background 240ms ease, box-shadow 240ms ease;
 }
 
@@ -618,16 +623,16 @@ body:has(.exact-home) .site-header--home .site-nav a::after {
 
 .exact-instagram p {
   position: absolute;
-  top: 25.7vw;
+  top: 25.4vw;
   left: 0;
   color: rgba(255, 255, 255, 0.78);
-  font-size: clamp(0.38rem, 0.85vw, 0.72rem);
+  font-size: clamp(0.44rem, 0.95vw, 0.76rem);
 }
 
 /* Footer */
 .exact-footer {
   position: relative;
-  height: min(38vw, 32.5rem);
+  height: min(35.5vw, 30.5rem);
   overflow: hidden;
 }
 
@@ -667,7 +672,7 @@ body:has(.exact-home) .site-header--home .site-nav a::after {
 
 .exact-footer-cta h2 {
   margin: 0;
-  font-size: clamp(1.65rem, 5.4vw, 4.6rem);
+  font-size: clamp(1.55rem, 4.85vw, 4.2rem);
   font-weight: 760;
   font-variation-settings: "wdth" 108;
   line-height: 1;
@@ -700,13 +705,13 @@ body:has(.exact-home) .site-header--home .site-nav a::after {
   top: 10.8vw;
   left: 0;
   color: rgba(255, 255, 255, 0.8);
-  font-size: clamp(0.38rem, 0.85vw, 0.72rem);
+  font-size: clamp(0.44rem, 0.95vw, 0.76rem);
 }
 
 .exact-footer-bottom {
   position: absolute;
   z-index: 5;
-  top: 25.5vw;
+  top: 24.4vw;
   left: 0;
   right: 0;
   display: flex;
@@ -723,20 +728,45 @@ body:has(.exact-home) .site-header--home .site-nav a::after {
 
 .exact-socials {
   display: flex;
-  gap: 0.55vw;
+  gap: 0.7vw;
+  margin-right: 7vw;
 }
 
 .exact-socials a {
   display: grid;
   place-items: center;
-  width: 2.65vw;
-  height: 2.65vw;
+  width: 3.1vw;
+  height: 3.1vw;
   border: 1px solid rgba(255, 255, 255, 0.9);
   border-radius: 0.55vw;
-  font-family: var(--font-mono);
-  font-size: clamp(0.34rem, 0.72vw, 0.62rem);
+  font-family: var(--font-display);
+  font-size: clamp(0.34rem, 0.78vw, 0.68rem);
   font-weight: 650;
   transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.exact-socials svg {
+  width: 70%;
+  height: 70%;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.6;
+}
+
+.exact-socials .icon-dot {
+  fill: currentColor;
+  stroke: none;
+}
+
+.exact-socials strong {
+  font-size: 0.78em;
+  line-height: 1;
+}
+
+.exact-socials .threads-mark {
+  font-size: 0.9em;
 }
 
 .exact-socials a:hover,
@@ -764,11 +794,22 @@ body:has(.exact-home) .site-header--home .site-nav a::after {
   .exact-hero-copy p { margin-top: 0.5rem; }
   .exact-pill--cta { margin-top: 1rem; }
   .exact-pill { min-height: 1.35rem; }
-  .exact-about { min-height: 11rem; }
+  .exact-about { height: 74vw; min-height: 17.5rem; }
+  .exact-about > .exact-heading { top: 6vw; }
+  .exact-about-grid { top: 17vw; height: 55vw; }
+  .exact-about-card { width: 72vw; height: 55vw; padding: 4vw 5vw; }
   .exact-projects { min-height: 27rem; }
   .exact-services { min-height: 12.8rem; }
   .exact-instagram { min-height: 8rem; }
-  .exact-footer { min-height: 9rem; }
+  .exact-footer { height: 55vw; min-height: 13rem; }
+  .exact-footer::before { top: 24vw; height: 34vw; border-radius: 0 28vw 0 0; }
+  .exact-footer-cta { top: 5vw; gap: 2vw; }
+  .exact-footer-cta h2 { max-width: 72vw; font-size: clamp(1.2rem, 5.5vw, 1.55rem); line-height: 0.95; }
+  .exact-footer-cta > span { width: 5vw; height: 5vw; font-size: 3vw; }
+  .exact-footer > .exact-shell > p { top: 18vw; }
+  .exact-footer-bottom { top: 36vw; }
+  .exact-socials { gap: 1vw; margin-right: 2vw; }
+  .exact-socials a { width: 4.5vw; height: 4.5vw; }
 }
 
 @media (prefers-reduced-motion: reduce) {
