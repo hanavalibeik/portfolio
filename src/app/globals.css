@@ -5,14 +5,14 @@
    artwork brings all other colour.
    ───────────────────────────────────────────────────────────── */
 :root {
-  --paper: #fafaf8;
-  --ink: #151510;
+  --paper: #000000;
+  --ink: #f7f7f5;
   --blue: #2144e0;
   --sketch: #9ec8dd;
   --sketch-strong: #6fa9c6;
-  --gray: #85847c;
-  --line: #e5e4dc;
-  --card: #ffffff;
+  --gray: #a6a6a0;
+  --line: rgba(255, 255, 255, 0.2);
+  --card: #0b0b0b;
 
   --font-display: "Archivo Variable", "Archivo", "Helvetica Neue", Arial,
     sans-serif;
@@ -35,6 +35,7 @@
 
 html {
   scroll-behavior: smooth;
+  background: #000;
 }
 
 body {
@@ -152,7 +153,7 @@ a {
 code {
   font-family: var(--font-mono);
   font-size: 0.8em;
-  background: #f0efe8;
+  background: #111;
   border: 1px solid var(--line);
   border-radius: 3px;
   padding: 0.1em 0.35em;
@@ -446,7 +447,7 @@ code {
   position: absolute;
   width: 14px;
   height: 14px;
-  color: var(--paper);
+  color: #fff;
   opacity: 0;
   transition: opacity 180ms ease;
   z-index: 2;
@@ -534,7 +535,7 @@ code {
 }
 
 .filter-btn[aria-pressed="true"] {
-  color: var(--paper);
+  color: #fff;
   background: var(--blue);
   border-color: var(--blue);
 }
@@ -1078,7 +1079,7 @@ code {
 .cv-link--solid:hover {
   background: var(--blue);
   border-color: var(--blue);
-  color: var(--paper);
+  color: #fff;
 }
 
 /* ─────────────────────────────────────────────────────────────
