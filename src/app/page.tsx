@@ -1,5 +1,6 @@
 import Link from "next/link";
 import "./home.css";
+import "./landing.css";
 import { ServicesRail } from "@/components/ServicesRail";
 import { site } from "@/data/site";
 import { assetPath } from "@/lib/assetPath";
@@ -30,24 +31,20 @@ const footerLinks = [
 export default function HomePage() {
   return (
     <div className="exact-home">
-      <section className="exact-hero" aria-labelledby="home-title">
-        <div className="exact-shell exact-hero-inner">
-          <div className="exact-hero-copy">
-            <h1 id="home-title">Hi, I’m<span>Hana Vali</span></h1>
-            <p>Graphic design &amp; Illustration portfolio</p>
-            <a className="exact-pill exact-pill--cta" href={`mailto:${site.email}`}>Let’s collaborate</a>
-          </div>
-          <div className="exact-portrait-stage">
-            <div className="exact-blue-glow" aria-hidden="true" />
-            <svg className="exact-orbit" viewBox="0 0 100 100" aria-hidden="true">
-              <defs><path id="orbit-path" d="M50,50 m-36,0 a36,36 0 1,1 72,0 a36,36 0 1,1 -72,0" /></defs>
-              <text><textPath href="#orbit-path">Design, I’m here to make it · Design, I’m here to make it · </textPath></text>
-            </svg>
-            <div className="exact-portrait-mask"><img src={assetPath("/about/portrait.png")} alt="Hana Valibeik" /></div>
-            <span className="exact-node-line exact-node-line--top" aria-hidden="true" />
-            <span className="exact-node-line exact-node-line--bottom" aria-hidden="true" />
-          </div>
-        </div>
+      <section className="landing-art-hero" aria-labelledby="home-title">
+        <h1 className="landing-art-title" id="home-title">Hi, I’m Hana Vali — Graphic design &amp; Illustration portfolio</h1>
+        <img
+          className="landing-art-image"
+          src={assetPath("/landing/landing-01.webp")}
+          alt="Hana Vali graphic design and illustration portfolio landing page"
+          width="1920"
+          height="1080"
+        />
+        <Link className="landing-hotspot landing-hotspot--logo" href="/" aria-label="Hana Valibeik — home" />
+        <Link className="landing-hotspot landing-hotspot--work" href="/work">Work</Link>
+        <Link className="landing-hotspot landing-hotspot--about" href="/about">About</Link>
+        <Link className="landing-hotspot landing-hotspot--contact" href="/contact">Contact</Link>
+        <a className="landing-hotspot landing-hotspot--cta" href={`mailto:${site.email}`} aria-label="Let’s collaborate" />
       </section>
 
       <section className="exact-about" aria-labelledby="about-heading">
