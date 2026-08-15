@@ -70,7 +70,7 @@ export default function HomePage() {
         <Link className="landing-hotspot landing-hotspot--work" href="/work">Work</Link>
         <Link className="landing-hotspot landing-hotspot--about" href="/about">About</Link>
         <Link className="landing-hotspot landing-hotspot--contact" href="/contact">Contact</Link>
-        <a className="landing-hotspot landing-hotspot--cta" href={`mailto:${site.email}`} aria-label="Let’s collaborate" />
+        <a className="site-cta landing-hotspot landing-hotspot--cta" href={`mailto:${site.email}`}>Let’s collaborate</a>
       </section>
 
       <section className="exact-about" aria-labelledby="about-heading">
@@ -96,7 +96,7 @@ export default function HomePage() {
               </Link>
             ))}
           </div>
-          <Link className="exact-pill exact-project-more" href="/work">view more</Link>
+          <Link className="site-cta exact-pill exact-project-more" href="/work">view more</Link>
         </div>
       </section>
 
@@ -105,7 +105,7 @@ export default function HomePage() {
         <div className="exact-services-main">
           <h2 className="exact-heading" id="services-heading">Services</h2>
           <ServicesRail services={homeServices} />
-          <Link className="exact-pill exact-services-more" href="/about#services">view more</Link>
+          <Link className="site-cta exact-pill exact-services-more" href="/about#services">view more</Link>
         </div>
       </section>
 
@@ -120,7 +120,7 @@ export default function HomePage() {
       <section className="exact-footer" aria-labelledby="footer-cta-heading">
         <span className="exact-footer-glow" aria-hidden="true" />
         <div className="exact-shell">
-          <a className="exact-footer-cta" href={`mailto:${site.email}`}><h2 id="footer-cta-heading">Got a vision? Let’s bring it to life</h2><span aria-hidden="true">→</span></a>
+          <a className="site-cta exact-footer-cta" href={`mailto:${site.email}`}><h2 id="footer-cta-heading">Got a vision? Let’s bring it to life</h2><span aria-hidden="true">→</span></a>
           <p>{site.availability}</p>
           <div className="exact-footer-bottom">
             <div><strong>{site.fullName}</strong><span>{site.role}</span></div>

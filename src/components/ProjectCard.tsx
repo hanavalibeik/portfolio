@@ -17,6 +17,12 @@ export function ProjectCard({ project }: { project: Project }) {
           alt={project.cover.alt}
           loading="lazy"
         />
+        <span className="card-hover-info" aria-hidden="true">
+          <strong>{project.title}</strong>
+          <small>{project.category} · {project.year}</small>
+          <em>view project</em>
+          <i />
+        </span>
         <Registration className="crop crop--tl" />
         <Registration className="crop crop--tr" />
         <Registration className="crop crop--br" />

@@ -7,7 +7,7 @@ export function ContactCta() {
         <p className="eyebrow" id="cta-heading">
           New project?
         </p>
-        <a href={`mailto:${site.email}`} className="cta-link">
+        <a href={`mailto:${site.email}`} className="site-cta cta-link">
           Say hello <span className="arrow" aria-hidden="true">→</span>
         </a>
         <p className="cta-note">

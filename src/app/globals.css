@@ -442,6 +442,68 @@ code {
   transform: scale(1.025);
 }
 
+.card-hover-info {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-rows: auto auto 1fr auto;
+  padding: clamp(1rem, 2vw, 1.5rem);
+  background: rgba(184, 184, 184, 0.9);
+  color: #080808;
+  opacity: 0;
+  backdrop-filter: blur(2px);
+  transition: opacity 260ms ease;
+}
+
+.project-card:hover .card-hover-info,
+.project-card:focus-visible .card-hover-info {
+  opacity: 1;
+}
+
+.card-hover-info strong {
+  grid-column: 1 / -1;
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.7vw, 1.35rem);
+  font-weight: 650;
+  line-height: 1.1;
+}
+
+.card-hover-info small {
+  grid-column: 1 / -1;
+  margin-block-start: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.card-hover-info em {
+  grid-column: 1;
+  grid-row: 4;
+  align-self: end;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.card-hover-info i {
+  position: absolute;
+  right: clamp(1rem, 2vw, 1.5rem);
+  bottom: clamp(1rem, 2vw, 1.5rem);
+  width: 0.9rem;
+  height: 0.9rem;
+  border-right: 1px solid rgba(0, 0, 0, 0.58);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.58);
+}
+
+.project-card:hover .crop,
+.project-card:focus-visible .crop {
+  opacity: 0;
+}
+
 /* Crop marks appear on hover — the card becomes "in production". */
 .crop {
   position: absolute;
@@ -615,6 +677,154 @@ code {
 .cta-note {
   margin-block-start: 1.25rem;
   color: var(--gray);
+}
+
+/* Shared CTA capsule — based on Hana's supplied 3.5:1 outlined design. */
+.site-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(15rem, 26vw, 31rem);
+  max-width: 100%;
+  min-height: clamp(4rem, 7.4vw, 8.75rem);
+  padding: 0.8rem clamp(1.8rem, 4vw, 4rem);
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.94);
+  border-radius: 999px;
+  background: #000;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.65vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  text-align: center;
+  text-transform: none;
+  transition: background-color 320ms ease, color 320ms ease,
+    border-color 320ms ease, box-shadow 320ms ease,
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.site-cta:hover,
+.site-cta:focus-visible {
+  border-color: #fff;
+  background: #fff;
+  color: #000;
+  box-shadow: 0 0.9rem 2.6rem rgba(255, 255, 255, 0.14);
+  transform: translateY(-2px);
+}
+
+.site-cta:active {
+  box-shadow: 0 0.35rem 1rem rgba(255, 255, 255, 0.1);
+  transform: translateY(0) scale(0.992);
+}
+
+.site-cta:focus-visible {
+  outline: 2px solid #2f79ff;
+  outline-offset: 4px;
+}
+
+.site-cta.cta-link,
+.site-cta.cv-link,
+.site-cta.contact-email {
+  margin-block-start: 1.5rem;
+  font-size: clamp(1rem, 1.65vw, 1.75rem);
+  font-weight: 700;
+  font-variation-settings: normal;
+  letter-spacing: -0.025em;
+  text-transform: none;
+}
+
+.site-cta.contact-email {
+  width: min(100%, 45rem);
+  word-break: normal;
+}
+
+.site-cta.cv-link--solid {
+  background: #000;
+  color: #fff;
+}
+
+.site-cta.cv-link--solid:hover,
+.site-cta.cv-link--solid:focus-visible {
+  border-color: #fff;
+  background: #fff;
+  color: #000;
+}
+
+.site-cta.exact-pill {
+  width: clamp(10rem, 20vw, 31rem);
+  min-width: 0;
+  min-height: clamp(3rem, 5.7vw, 8.75rem);
+  padding-inline: clamp(1.5rem, 3vw, 3.5rem);
+  font-size: clamp(0.8rem, 1.35vw, 1.5rem);
+  font-weight: 700;
+}
+
+.site-cta.exact-pill::before {
+  display: none;
+}
+
+.site-cta.exact-pill:hover,
+.site-cta.exact-pill:focus-visible,
+.site-cta.contact-email:hover,
+.site-cta.contact-email:focus-visible {
+  border-color: #fff;
+  background: #fff;
+  color: #000;
+  box-shadow: 0 0.9rem 2.6rem rgba(255, 255, 255, 0.14);
+}
+
+.site-cta.landing-hotspot--cta {
+  top: 72.5%;
+  left: 8.1%;
+  width: 26vw;
+  max-width: none;
+  height: 7.4vw;
+  min-height: 0;
+  padding: 0 3vw;
+  border-color: rgba(255, 255, 255, 0.94);
+  color: #fff;
+  font-size: clamp(0.48rem, 1.45vw, 1.75rem);
+}
+
+.site-cta.landing-hotspot--cta:hover,
+.site-cta.landing-hotspot--cta:focus-visible {
+  border-color: #fff;
+  background: #fff;
+  color: #000;
+  box-shadow: 0 0.9rem 2.6rem rgba(255, 255, 255, 0.14);
+}
+
+.site-cta.exact-footer-cta {
+  top: 4.5vw;
+  width: 100%;
+  max-width: none;
+  min-height: 9vw;
+  padding-inline: 4vw;
+  gap: 1.5vw;
+}
+
+.site-cta.exact-footer-cta h2 {
+  font-size: clamp(0.9rem, 3.6vw, 3.1rem);
+  letter-spacing: -0.045em;
+}
+
+.site-cta.exact-footer-cta:hover > span,
+.site-cta.exact-footer-cta:focus-visible > span {
+  background: #000;
+  color: #fff;
+}
+
+@media (max-width: 36rem) {
+  .site-cta:not(.landing-hotspot--cta):not(.exact-footer-cta) {
+    width: min(100%, 22rem);
+    min-height: 4.25rem;
+  }
+
+  .contact-actions {
+    flex-direction: column;
+  }
 }
 
 /* ─── Footer ───────────────────────────────────────────────── */

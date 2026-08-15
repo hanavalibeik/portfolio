@@ -20,7 +20,7 @@ export default function ContactPage() {
             {site.availability}. The best briefs fit in one honest email: who
             you are, what you make, and why now.
           </p>
-          <a href={`mailto:${site.email}`} className="contact-email">
+          <a href={`mailto:${site.email}`} className="site-cta contact-email">
             {site.email}
           </a>
           <p className="cta-note">
@@ -34,13 +34,13 @@ export default function ContactPage() {
                 href={`https://wa.me/${site.whatsapp}`}
                 target="_blank"
                 rel="noreferrer"
-                className="cv-link cv-link--solid"
+                className="site-cta cv-link cv-link--solid"
               >
                 Message on WhatsApp →
               </a>
             )}
             {site.cv && (
-              <a href={assetPath(site.cv)} download className="cv-link">
+              <a href={assetPath(site.cv)} download className="site-cta cv-link">
                 Download CV ↓
               </a>
             )}
@@ -48,7 +48,7 @@ export default function ContactPage() {
               <a
                 href={assetPath(site.portfolioPdf)}
                 download
-                className="cv-link"
+                className="site-cta cv-link"
               >
                 Download Portfolio ↓
               </a>
