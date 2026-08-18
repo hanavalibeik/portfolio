@@ -1,17 +1,21 @@
 {
-  "name": "reiner-portfolio",
+  "name": "hanavalibeik-portfolio",
   "version": "1.0.0",
   "private": true,
-  "description": "Portfolio website for a logo & identity designer. Built with Next.js, deployable on Vercel.",
+  "description": "Portfolio and shop for Hana Valibeik, graphic designer & illustrator. Static Next.js site deployed to GitHub Pages.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "sync:instagram": "node scripts/sync-instagram.mjs"
+    "sync:instagram": "node scripts/sync-instagram.mjs",
+    "build:pages": "NEXT_PUBLIC_BASE_PATH=/portfolio next build",
+    "placeholders:products": "node scripts/generate-product-placeholders.mjs",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@fontsource-variable/archivo": "^5.2.5",
     "@fontsource-variable/spline-sans-mono": "^5.2.5",
+    "@fontsource-variable/vazirmatn": "^5.3.0",
     "next": "^15.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hanavalibeik.github.io/portfolio/sitemap.xml

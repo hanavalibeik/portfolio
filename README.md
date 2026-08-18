@@ -1,106 +1,119 @@
-# Reiner® — Designer Portfolio
+# Hana Valibeik — portfolio & shop
 
+Portfolio site for **Hana Valibeik**, graphic designer and illustrator: case
+studies, an about page, and a small shop for her printed products.
 
-A portfolio website for a logo & identity designer, built with **Next.js 15** and ready to deploy on **Vercel**. Modeled on the conventions of the best working designers' sites: work visible immediately, a three-link nav, a quiet frame where the projects bring the color, and spec-sheet case studies.
+Built with **Next.js 15** as a fully static site and deployed to **GitHub Pages**
+at <https://hanavalibeik.github.io/portfolio/>.
 
-Everything on the site is **placeholder content** — one persona ("Alex Reiner"), eight fictional projects, and generated SVG artwork — designed to be replaced with your own work in a few minutes.
-
-## Design language
-
-- **Signature**: the hero renders the name as a logo under construction — cap-height / x-height / baseline guides, a dashed circle guide and registration marks drawn in *non-photo blue* (the pencil color designers sketch with). Project cards echo it with registration marks on hover.
-- **Type**: [Archivo Variable](https://fonts.google.com/specimen/Archivo) (width 125 / weight 900 as a logotype-style display, normal width for body) + [Spline Sans Mono](https://fonts.google.com/specimen/Spline+Sans+Mono) for metadata. Self-hosted via Fontsource — no external font requests.
-- **Palette**: paper `#FAFAF8`, ink `#151510`, working blue `#2144E0`, sketch blue `#9EC8DD`. The chrome stays quiet; the work supplies the color.
+---
 
 ## Run it locally
 
 ```bash
 npm install
-npm run dev        # http://localhost:3000
+npm run dev          # http://localhost:3000
 ```
-
-## Deploy to Vercel
-
-**Option A — via GitHub (recommended):**
-
-1. Push this repo to GitHub/GitLab/Bitbucket:
-   ```bash
-   git remote add origin git@github.com:YOU/your-portfolio.git
-   git push -u origin main
-   ```
-2. Go to [vercel.com/new](https://vercel.com/new), import the repo, and click **Deploy**. Next.js is auto-detected; no configuration needed.
-
-**Option B — Vercel CLI:**
 
 ```bash
-npm i -g vercel
-vercel           # follow the prompts; `vercel --prod` to go live
+npm run build        # static export → out/
+npm run typecheck
 ```
 
-After deploying, set your production URL in `src/data/site.ts` (`url`) so social/OG metadata resolves correctly.
+## Deploying
 
-## Replace the placeholders
+Pushing to `main` triggers `.github/workflows/deploy-pages.yml`, which builds and
+publishes to GitHub Pages. Nothing else is needed.
 
-All content lives in **two data files** and the `/public` folder:
+The site is served from a **sub-path** (`/portfolio`), so the workflow builds
+with `NEXT_PUBLIC_BASE_PATH=/portfolio`. Two consequences worth knowing:
+
+- Any reference to a file in `public/` **must** go through `assetPath()` from
+  `src/lib/assetPath.ts`. A bare `src="/foo.png"` 404s in production.
+- `next/link` applies the base path itself — never wrap a `<Link href>` in
+  `assetPath()`.
+
+To preview the production export locally, serve it from a matching sub-path:
+
+```bash
+npm run build:pages
+rm -rf /tmp/site && mkdir -p /tmp/site/portfolio && cp -r out/* /tmp/site/portfolio/
+npx serve /tmp/site        # → http://localhost:3000/portfolio/
+```
+
+---
+
+## Where the content lives
 
 | What | Where |
-|---|---|
-| Name, role, tagline, email, socials, clients, services, availability | `src/data/site.ts` |
-| Projects (titles, case study copy, categories, image paths) | `src/data/projects.ts` |
-| Project images | `/public/work/<slug>/` |
-| Portrait photo | `/public/about/portrait.png` |
-| About page bio copy | `src/app/about/page.tsx` |
-| Favicon | `/public/icon.png` (her monogram) |
+| --- | --- |
+| Name, role, contact details, socials, clients, services | `src/data/site.ts` |
+| Case studies | `src/data/projects.ts` |
+| Products | `src/data/products.ts` |
+| Project images | `public/work/<slug>/` |
+| Product images | `public/products/<slug>/` |
+| Portrait | `public/about/portrait.webp` |
+| About page copy | `src/app/about/page.tsx` |
 
-### Swapping in a real project
+### Adding a project
 
-1. Create `/public/work/my-project/` and drop in a cover plus any detail images (JPG/PNG/WebP all fine).
-2. In `src/data/projects.ts`, edit an entry (or copy one): update `slug`, `title`, copy fields, and point `cover`/`images` at your files. Write real `alt` text.
-3. Delete the placeholder projects you don't need — the grid, filters, case study pages and prev/next navigation all derive from that one array.
+1. Create `public/work/<slug>/` and drop the images in.
+2. Copy an entry in `src/data/projects.ts`, update the fields, point
+   `cover`/`images` at the new files, and write real `alt` text.
 
-Categories are typed (`Identity | Logo | Print | Editorial`). To rename or add one, change the union type and the `categories` array at the bottom of `projects.ts`.
+The grid, filters, case study page and prev/next links all derive from that
+array.
 
-### Using next/image for photos
+### Adding a product
 
-Placeholder art is SVG rendered with plain `<img>`. When you switch to photography, consider replacing those `<img>` tags (in `ProjectCard.tsx` and `work/[slug]/page.tsx`) with [`next/image`](https://nextjs.org/docs/app/building-your-application/optimizing/images) for automatic resizing and lazy loading — on Vercel this works out of the box.
+1. Create `public/products/<slug>/` and add a square photo as `01.webp`
+   (1200 × 1200, under 250 KB). See `public/products/README.md`.
+2. Copy an entry in `src/data/products.ts` and fill in the name in both English
+   and Persian, size, material, price and blurb.
+3. Delete `placeholder: true` from the image once a real photo is in place.
 
-### Contact form (optional)
+The index page, detail pages, sitemap entries and structured data all derive
+from that array.
 
-The contact page uses a `mailto:` link, which needs no backend. If you want a form later, [Formspree](https://formspree.io), [Web3Forms](https://web3forms.com) or a small [Next.js route handler + Resend](https://resend.com) are easy drop-ins.
+**Ordering has no checkout.** Every order button opens an Instagram DM
+(`ig.me/m/<handle>`) with a copy-to-clipboard order summary, plus WhatsApp as an
+alternative. There is no cart, no payment gateway and no backend — by design.
 
-## Project structure
-
-```
-src/
-  app/
-    layout.tsx            # fonts, metadata, header/footer shell
-    page.tsx              # home: hero, selected work, about strip, CTA
-    globals.css           # the whole design system (tokens at the top)
-    work/page.tsx         # filterable index of all projects
-    work/[slug]/page.tsx  # case study template (static, from data)
-    about/page.tsx
-    contact/page.tsx
-    not-found.tsx
-  components/             # header, footer, cards, hero, marks
-  data/
-    site.ts               # ← your identity
-    projects.ts           # ← your work
-public/
-  work/<slug>/            # project artwork
-  about/portrait.svg
-```
-
-Accessibility & performance are part of the build: fully static pages, semantic landmarks, visible focus states, `prefers-reduced-motion` respected, and no client JS except the nav's active state and the work-page filters.
+---
 
 ## Automated Instagram feed
 
-The home page reads its four latest Instagram cards from `src/data/instagram.json`. The scheduled workflow at `.github/workflows/sync-instagram.yml` refreshes that file and the matching images once per day, then rebuilds and deploys GitHub Pages. Each card is generated from one API object so its image, caption, date and permalink cannot become mismatched.
+The home page reads its four latest Instagram cards from
+`src/data/instagram.json`. The scheduled workflow at
+`.github/workflows/sync-instagram.yml` refreshes that file and the matching
+images once a day, then rebuilds and deploys.
 
-One-time GitHub setup:
+One-time setup:
 
-1. Create a long-lived access token for the Instagram account through Meta's Instagram API.
-2. In the repository, open **Settings → Secrets and variables → Actions → Secrets**, then add `INSTAGRAM_ACCESS_TOKEN`. Never commit the token to the repository.
-3. If the token does not resolve the intended account through `me`, add an Actions variable named `INSTAGRAM_USER_ID` with the numeric Instagram user ID.
-4. Optionally set `INSTAGRAM_API_VERSION` as an Actions variable when upgrading from the script's default (`v24.0`).
-5. The workflow attempts its first sync when these files are deployed. You can also run **Actions → Sync Instagram and deploy → Run workflow** at any time; scheduled refreshes run every day at 03:17 UTC.
+1. Create a long-lived access token for the Instagram account through Meta's
+   Instagram API.
+2. In **Settings → Secrets and variables → Actions → Secrets**, add
+   `INSTAGRAM_ACCESS_TOKEN`. Never commit the token.
+3. If the token doesn't resolve the account through `me`, add an Actions
+   variable `INSTAGRAM_USER_ID` with the numeric ID.
+4. Optionally set `INSTAGRAM_API_VERSION` when upgrading from the script default.
 
-The public website never receives the access token. The workflow downloads the media into `public/instagram/`, and a failed API request leaves the last known-good feed unchanged. Long-lived Meta tokens expire and must be replaced before expiry; the workflow notice remains harmless until the secret is configured.
+Scheduled refreshes run daily at 03:17 UTC; you can also run the workflow
+manually. The public site never receives the token, and a failed API request
+leaves the last known-good feed in place.
+
+Meta tokens expire. When the synced feed is empty for any reason, the home page
+falls back to the hand-curated posts in `site.instagram.curated`, so the section
+never renders as a broken loading state.
+
+---
+
+## Notes on the build
+
+- Fully static (`output: "export"`), no server runtime.
+- Images are plain `<img>` with explicit dimensions; Next's image optimisation is
+  off because GitHub Pages can't run it.
+- Fonts are self-hosted through Fontsource: Archivo (display and body), Spline
+  Sans Mono (metadata), Vazirmatn (Persian).
+- Accessibility is part of the build: semantic landmarks, a skip link, visible
+  focus states, 44px touch targets and `prefers-reduced-motion` respected.
