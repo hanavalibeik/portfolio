@@ -10,11 +10,25 @@ const homeProjects = [
   { title: "Shokouh Miyami", meta: "Visual identity · 2025", image: "/work/shokouh-miyami/01.webp", href: "/work/shokouh-miyami", alt: "Shokouh Miyami identity applied to business cards" },
   { title: "Chandmahameh", meta: "Social media design", image: "/work/home-chandmahameh.webp", href: "/work", alt: "Chandmahameh social media post collection" },
   { title: "Tarazo", meta: "Brand and UI design", image: "/work/home-tarazo.webp", href: "/work", alt: "Tarazo website shown on two desktop displays" },
+  { title: "", meta: "", image: "/work/home-logotype.svg", href: "/work", alt: "Persian calligraphy logotype project" },
+  { title: "", meta: "", image: "/work/home-web-project.svg", href: "/work", alt: "Website design presented on two desktop monitors" },
 ];
 
 export default function HomePage() {
   return (
     <div className="exact-home">
+      <style>{`
+        @media (min-width: 701px) {
+          .exact-projects { height: 152.4vw; }
+          .exact-project-grid {
+            height: 119.7vw;
+            grid-template-rows: repeat(3, 1fr);
+          }
+          .exact-home .site-cta.exact-projects-more { top: 139.9vw; }
+          .exact-projects-tail-line { top: 135.48vw; }
+        }
+      `}</style>
+
       <section className="landing-art-hero" aria-labelledby="home-title">
         <h1 className="landing-art-title" id="home-title">Hi, I’m Hana Vali — Graphic design &amp; Illustration portfolio</h1>
         <img
@@ -56,21 +70,23 @@ export default function HomePage() {
             <Link
               className={`exact-project-card${index === 0 ? " exact-project-card--inset" : ""}`}
               href={project.href}
-              key={project.title}
-              aria-label={`View more about ${project.title}: ${project.meta}`}
+              key={project.image}
+              aria-label={project.title ? `View more about ${project.title}: ${project.meta}` : project.alt}
             >
               <span className="exact-project-media">
                 <img src={assetPath(project.image)} alt={project.alt} loading="lazy" />
               </span>
-              <span
-                className="exact-project-info"
-                aria-hidden="true"
-                style={{ background: "rgba(0, 0, 0, 0.5)", color: "#fff" }}
-              >
-                <strong>{project.title}</strong>
-                <em>view more</em>
-                <i aria-hidden="true" style={{ borderColor: "rgba(255, 255, 255, 0.82)" }} />
-              </span>
+              {project.title ? (
+                <span
+                  className="exact-project-info"
+                  aria-hidden="true"
+                  style={{ background: "rgba(0, 0, 0, 0.5)", color: "#fff" }}
+                >
+                  <strong>{project.title}</strong>
+                  <em>view more</em>
+                  <i aria-hidden="true" style={{ borderColor: "rgba(255, 255, 255, 0.82)" }} />
+                </span>
+              ) : null}
             </Link>
           ))}
         </div>
