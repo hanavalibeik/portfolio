@@ -232,10 +232,10 @@ body:has(.exact-home) {
    part of the old hero that never needed rebuilding. */
 .landing-orbit-text {
   position: absolute;
-  z-index: 3;
-  top: -2.5rem;
-  right: 0;
-  width: clamp(6rem, 16vw, 10rem);
+  z-index: 8;
+  bottom: 4%;
+  left: -34%;
+  width: clamp(6rem, 14vw, 9.5rem);
   aspect-ratio: 1;
   overflow: visible;
   color: #f7f7f5;
@@ -257,6 +257,11 @@ body:has(.exact-home) {
   font-size: 19px;
   font-weight: 430;
   letter-spacing: 0.7px;
+  /* The ring straddles the black ground and the edge of the photograph. */
+  paint-order: stroke fill;
+  stroke: rgba(0, 0, 0, 0.55);
+  stroke-width: 2.4px;
+  stroke-linejoin: round;
 }
 
 @keyframes landing-orbit-spin {

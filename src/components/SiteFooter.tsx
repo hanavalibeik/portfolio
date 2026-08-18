@@ -35,10 +35,16 @@ export function SiteFooter() {
     <footer className="unified-footer" aria-labelledby="footer-cta-heading">
       <span className="unified-footer__glow" aria-hidden="true" />
       <div className="unified-footer__shell">
-        <a className="site-cta unified-footer__cta" href={`mailto:${site.email}`}>
-          <h2 id="footer-cta-heading">Got a vision? Let’s bring it to life</h2>
-          <span className="unified-footer__arrow" aria-hidden="true">→</span>
-        </a>
+        {/* The link sits inside the heading, not the other way round. An <a>
+            wrapping an <h2> is valid HTML but announces as a link whose name is
+            the whole heading, and it drops the heading out of the rotor in some
+            screen readers. */}
+        <h2 className="unified-footer__cta-heading" id="footer-cta-heading">
+          <a className="site-cta unified-footer__cta" href={`mailto:${site.email}`}>
+            <span>Got a vision? Let’s bring it to life</span>
+            <span className="unified-footer__arrow" aria-hidden="true">→</span>
+          </a>
+        </h2>
         <p className="unified-footer__note">{site.availability}</p>
         <nav className="unified-footer__links" aria-label="Footer">
           <Link href="/work/">Work</Link>

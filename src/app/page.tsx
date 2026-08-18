@@ -3,9 +3,11 @@ import "./home.css";
 import "./products.css";
 import { InstagramFeed } from "@/components/InstagramFeed";
 import { ProductCard } from "@/components/ProductCard";
+import { ServicesRail } from "@/components/ServicesRail";
 import { collections, products } from "@/data/products";
 import { site } from "@/data/site";
 import { assetPath } from "@/lib/assetPath";
+import { JsonLd, absoluteAsset, canonical } from "@/lib/seo";
 
 const homeProjects = [
   {
@@ -48,8 +50,40 @@ export default function HomePage() {
   const collection = collections[0];
   const featuredProducts = products.slice(0, 3);
 
+  /* `sameAs` is the signal that ties this site to the Instagram, LinkedIn,
+     Dribbble and Behance profiles, so a search for the name resolves to one
+     person rather than four unconnected accounts. */
+  const personLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: site.fullName,
+    jobTitle: site.role,
+    description: site.tagline,
+    url: canonical("/"),
+    image: absoluteAsset("/about/portrait.webp"),
+    email: `mailto:${site.email}`,
+    address: { "@type": "PostalAddress", addressLocality: site.location },
+    knowsAbout: site.services,
+    sameAs: [
+      ...site.socials.map((social) => social.url),
+      ...site.elsewhere.map((link) => link.url),
+      "https://www.behance.net/hanavalibeik",
+    ].filter(Boolean),
+  };
+
+  const siteLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: `${site.fullName} — ${site.role}`,
+    url: canonical("/"),
+    inLanguage: "en",
+    author: { "@type": "Person", name: site.fullName },
+  };
+
   return (
     <div className="exact-home">
+      <JsonLd data={personLd} />
+      <JsonLd data={siteLd} />
       {/* ── Hero ──────────────────────────────────────────────
           Real text, not an image of text. The headline, the role
           line and the call to action are selectable, translatable
@@ -67,35 +101,41 @@ export default function HomePage() {
             </a>
           </div>
 
-          <div className="exact-portrait-stage" aria-hidden="true">
-            <span className="exact-blue-glow" />
+          {/* The stage as a whole is not decorative — it contains a photograph
+              of Hana. Only the drawn ornaments inside it are. */}
+          <div className="exact-portrait-stage">
+            <span className="exact-blue-glow" aria-hidden="true" />
             <span className="exact-portrait-mask">
               <img
                 src={assetPath("/about/portrait.webp")}
-                alt=""
+                alt={`${site.fullName}, ${site.role}`}
                 width="1111"
                 height="1416"
                 fetchPriority="high"
                 decoding="async"
               />
             </span>
-            <span className="exact-node-line exact-node-line--top" />
-          </div>
+            <span className="exact-node-line exact-node-line--top" aria-hidden="true" />
 
-          <svg className="landing-orbit-text" viewBox="0 0 200 200" aria-hidden="true">
-            <defs>
-              <path
-                id="landing-orbit-path"
-                d="M100 25a75 75 0 1 1 0 150a75 75 0 1 1 0-150"
-              />
-            </defs>
-            <text>
-              <textPath href="#landing-orbit-path" startOffset="0%">
-                Graphic Designer  I&rsquo;m here, if you are looking for a Graphic
-                Designer
-              </textPath>
-            </text>
-          </svg>
+            {/* The rotating badge belongs to the portrait, so it is positioned
+                against the portrait. It used to sit outside this element and
+                resolve against the page shell at top/right, which parked it
+                under the navigation and hung it off the right edge. */}
+            <svg className="landing-orbit-text" viewBox="0 0 200 200" aria-hidden="true">
+              <defs>
+                <path
+                  id="landing-orbit-path"
+                  d="M100 25a75 75 0 1 1 0 150a75 75 0 1 1 0-150"
+                />
+              </defs>
+              <text>
+                <textPath href="#landing-orbit-path" startOffset="0%">
+                  Graphic Designer  I&rsquo;m here, if you are looking for a Graphic
+                  Designer
+                </textPath>
+              </text>
+            </svg>
+          </div>
         </div>
       </section>
 
@@ -179,36 +219,7 @@ export default function HomePage() {
           <h2 className="exact-heading" id="services-heading">
             Services
           </h2>
-          {/* The rail auto-scrolls, so it needs a clipping frame. The card set
-              is rendered twice: the animation travels exactly one set's width,
-              which makes the loop seamless instead of snapping back. The second
-              copy is hidden from assistive tech and taken out of the tab order
-              so the same three links aren't announced or focused twice. */}
-          <div className="exact-services-main">
-            <div className="exact-services-rail">
-              {homeServices.map((service) => (
-                <Link
-                  className="exact-service-card"
-                  href="/work/"
-                  key={service}
-                  aria-label={`View ${service} work`}
-                >
-                  <h3>{service}</h3>
-                </Link>
-              ))}
-              {homeServices.map((service) => (
-                <Link
-                  className="exact-service-card"
-                  href="/work/"
-                  key={`${service}-loop`}
-                  aria-hidden="true"
-                  tabIndex={-1}
-                >
-                  <h3>{service}</h3>
-                </Link>
-              ))}
-            </div>
-          </div>
+          <ServicesRail services={homeServices} />
           <Link className="exact-pill exact-services-more" href="/work/">
             View all work
           </Link>
