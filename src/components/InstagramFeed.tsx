@@ -39,16 +39,6 @@ export function InstagramFeed() {
             <p className="instagram-feed__eyebrow">Latest posts</p>
             <h2 id="instagram-heading">Instagram</h2>
           </div>
-          <a
-            className="instagram-feed__profile"
-            href={site.instagram.url}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <span aria-hidden="true">◎</span>
-            <strong>@{site.instagram.handle}</strong>
-            <span aria-hidden="true">↗</span>
-          </a>
         </div>
 
         {feed.posts.length > 0 ? (
@@ -97,6 +87,19 @@ export function InstagramFeed() {
           </a>
         )}
 
+        <a
+          className="instagram-feed__closing-link"
+          href={site.instagram.url}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={`Follow ${site.instagram.handle} on Instagram`}
+        >
+          <svg className="instagram-feed__search" viewBox="0 0 96 96" aria-hidden="true">
+            <circle cx="55" cy="41" r="24" />
+            <path d="m37.5 58.5-18 18a8 8 0 0 0 11.3 11.3l18-18" />
+          </svg>
+          <strong>{site.instagram.handle}</strong>
+        </a>
         <p className="instagram-feed__note">Logofolio, identity work and process — posted as it happens.</p>
       </div>
     </section>
