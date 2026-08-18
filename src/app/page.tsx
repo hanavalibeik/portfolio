@@ -2,7 +2,6 @@ import Link from "next/link";
 import "./home.css";
 import "./landing.css";
 import { InstagramFeed } from "@/components/InstagramFeed";
-import { ServicesRail } from "@/components/ServicesRail";
 import { site } from "@/data/site";
 import { assetPath } from "@/lib/assetPath";
 
@@ -12,18 +11,6 @@ const homeProjects = [
   { title: "Chandmahameh", meta: "Social media design", image: "/work/home-chandmahameh.webp", href: "/work", alt: "Chandmahameh social media post collection" },
   { title: "Tarazo", meta: "Brand and UI design", image: "/work/home-tarazo.webp", href: "/work", alt: "Tarazo website shown on two desktop displays" },
 ];
-
-const homeServices = [
-  "Branding & Identity",
-  "Packaging Design",
-  "Advertising",
-  "UI Design",
-  "Typography & Layout",
-  "Digital Illustration",
-  "Social Media Design",
-  "Image Editing & Retouching",
-  "Environmental Graphics",
-] as const;
 
 export default function HomePage() {
   return (
@@ -87,13 +74,14 @@ export default function HomePage() {
         <span className="exact-projects-tail-line" aria-hidden="true" />
       </section>
 
-      <section className="exact-services" aria-labelledby="services-heading">
-        <span className="exact-service-line" aria-hidden="true" />
-        <div className="exact-services-main">
-          <h2 className="exact-heading" id="services-heading">Services</h2>
-          <ServicesRail services={homeServices} />
-          <Link className="site-cta exact-pill exact-services-more" href="/about#services">view more</Link>
-        </div>
+      <section className="section-four-art" aria-label="Selected visual work">
+        <img
+          className="section-four-art__image"
+          src={assetPath("/sections/section-04.svg")}
+          alt="Selected portfolio work"
+          width="1920"
+          height="1080"
+        />
       </section>
 
       <InstagramFeed />
