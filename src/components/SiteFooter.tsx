@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { site } from "@/data/site";
 
 const footerLinks = [
@@ -39,6 +40,12 @@ export function SiteFooter() {
           <span className="unified-footer__arrow" aria-hidden="true">→</span>
         </a>
         <p className="unified-footer__note">{site.availability}</p>
+        <nav className="unified-footer__links" aria-label="Footer">
+          <Link href="/work/">Work</Link>
+          <Link href="/products/">Products</Link>
+          <Link href="/about/">About</Link>
+          <Link href="/contact/">Contact</Link>
+        </nav>
         <div className="unified-footer__bottom">
           <div className="unified-footer__identity">
             <strong>{site.fullName}</strong>
