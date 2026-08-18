@@ -309,7 +309,7 @@ body:has(.exact-home) .site-header--home .site-nav a::after {
 .exact-projects {
   position: relative;
   width: 100%;
-  height: 102vw;
+  height: 112.5vw;
   overflow: hidden;
   background: #000;
 }
@@ -451,11 +451,49 @@ body:has(.exact-home) .site-header--home .site-nav a::after {
   border-bottom: 1px solid rgba(0, 0, 0, 0.72);
 }
 
+.exact-projects-more {
+  position: absolute;
+  z-index: 3;
+  top: 99.9vw;
+  right: 9.53vw;
+  width: 12.77vw;
+  height: 3.31vw;
+  display: grid;
+  place-items: center;
+  border: clamp(1.3px, 0.135vw, 2.6px) solid rgba(255, 255, 255, 0.96);
+  border-radius: 999px 0 999px 999px;
+  padding: 0 1.2rem;
+  background: #231f20;
+  color: #fff;
+  font-size: clamp(0.78rem, 1.25vw, 1.5rem);
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  transition: border-color 220ms ease, background 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+}
+
+.exact-projects-more:hover,
+.exact-projects-more:focus-visible {
+  border-color: #3774ff;
+  background: #0b4ad0;
+  box-shadow: 0 0 1.8rem rgba(18, 88, 255, 0.42);
+  transform: translateY(-1px);
+}
+
+.exact-projects-tail-line {
+  position: absolute;
+  top: 95.7vw;
+  bottom: 0;
+  left: 31.58vw;
+  border-left: 1px solid var(--exact-line);
+  pointer-events: none;
+}
+
 @media (max-width: 700px) {
   .exact-projects {
     height: auto;
     overflow: visible;
-    padding: 5.75rem 1rem 4rem;
+    padding: 5.75rem 1rem 4.5rem;
   }
 
   .exact-project-curve {
@@ -505,6 +543,20 @@ body:has(.exact-home) .site-header--home .site-nav a::after {
     bottom: 1.25rem;
     width: 1rem;
     height: 1rem;
+  }
+
+  .exact-projects-more {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 9.5rem;
+    height: 3rem;
+    margin: 2rem 0 0 auto;
+    font-size: 0.9rem;
+  }
+
+  .exact-projects-tail-line {
+    display: none;
   }
 }
 

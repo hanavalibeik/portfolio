@@ -37,25 +37,6 @@ export default function HomePage() {
           width="1920"
           height="1080"
         />
-        <span className="landing-orbit-cleaner" aria-hidden="true" />
-        <svg
-          className="landing-orbit-text"
-          viewBox="0 0 320 320"
-          aria-hidden="true"
-        >
-          <defs>
-            <path
-              id="landing-orbit-path"
-              d="M 160,160 m 0,-112 a 112,112 0 1,1 0,224 a 112,112 0 1,1 0,-224"
-              pathLength="100"
-            />
-          </defs>
-          <text>
-            <textPath href="#landing-orbit-path" startOffset="1.5%">
-              I’m here, if you are looking for a Graphic Designer
-            </textPath>
-          </text>
-        </svg>
         <Link className="landing-hotspot landing-hotspot--logo" href="/" aria-label="Hana Valibeik — home" />
         <Link className="landing-hotspot landing-hotspot--work" href="/work">Work</Link>
         <Link className="landing-hotspot landing-hotspot--about" href="/about">About</Link>
@@ -102,6 +83,8 @@ export default function HomePage() {
             </Link>
           ))}
         </div>
+        <Link className="site-cta exact-projects-more" href="/work">view more</Link>
+        <span className="exact-projects-tail-line" aria-hidden="true" />
       </section>
 
       <section className="exact-services" aria-labelledby="services-heading">
