@@ -1,11 +1,20 @@
 import type { Metadata } from "next";
 import { WorkGrid } from "@/components/WorkGrid";
 import { ContactCta } from "@/components/ContactCta";
+import { canonical } from "@/lib/seo";
+
+const workDescription =
+  "Identity, packaging, editorial, campaign and illustration work — from logotypes to complete visual systems.";
 
 export const metadata: Metadata = {
   title: "Work",
-  description:
-    "Identity, packaging, editorial, campaign and illustration work — from logotypes to complete visual systems.",
+  description: workDescription,
+  alternates: { canonical: canonical("/work") },
+  openGraph: {
+    title: "Work",
+    description: workDescription,
+    url: canonical("/work"),
+  },
 };
 
 export default function WorkPage() {

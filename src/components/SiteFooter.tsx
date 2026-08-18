@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { site } from "@/data/site";
 
 const footerLinks = [
@@ -34,11 +35,32 @@ export function SiteFooter() {
     <footer className="unified-footer" aria-labelledby="footer-cta-heading">
       <span className="unified-footer__glow" aria-hidden="true" />
       <div className="unified-footer__shell">
-        <a className="site-cta unified-footer__cta" href={`mailto:${site.email}`}>
-          <h2 id="footer-cta-heading">Got a vision? Let’s bring it to life</h2>
-          <span className="unified-footer__arrow" aria-hidden="true">→</span>
-        </a>
+        {/* The link sits inside the heading, not the other way round. An <a>
+            wrapping an <h2> is valid HTML but announces as a link whose name is
+            the whole heading, and it drops the heading out of the rotor in some
+            screen readers. */}
+        <h2 className="unified-footer__cta-heading" id="footer-cta-heading">
+          <a className="site-cta unified-footer__cta" href={`mailto:${site.email}`}>
+            <span>Got a vision? Let’s bring it to life</span>
+            <span className="unified-footer__arrow" aria-hidden="true">
+            {/* An SVG, not a "→" glyph. Text is centred on the font's ascent
+                and descent, not on the ink of the character, and Archivo's
+                arrow sits low in its em box — it landed 7px below the middle
+                of a 57px circle. A path centred in its own viewBox cannot
+                drift with the font. */}
+            <svg viewBox="0 0 24 24" focusable="false">
+              <path d="M4 12h16M14 6l6 6-6 6" />
+            </svg>
+          </span>
+          </a>
+        </h2>
         <p className="unified-footer__note">{site.availability}</p>
+        <nav className="unified-footer__links" aria-label="Footer">
+          <Link href="/work/">Work</Link>
+          <Link href="/products/">Products</Link>
+          <Link href="/about/">About</Link>
+          <Link href="/contact/">Contact</Link>
+        </nav>
         <div className="unified-footer__bottom">
           <div className="unified-footer__identity">
             <strong>{site.fullName}</strong>

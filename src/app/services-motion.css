@@ -1,15 +1,31 @@
-/* Homepage services section — match supplied 1920×1080 artwork and auto-scroll cards. */
-.exact-home .exact-services {
-  position: relative;
-  width: 100%;
-  height: 56.25vw;
-  min-height: 0;
-  overflow: hidden;
-  background: #000;
-}
+/* ─────────────────────────────────────────────────────────────
+   HOME — SERVICES RAIL
 
+   Auto-scrolling card marquee. This file owns the rail and the
+   cards outright; home.css supplies only the section container,
+   the heading and the trailing link, so no property is declared
+   in two places.
+
+   Three changes from the original pass, all behaviour rather
+   than design — the card treatment and the motion are as
+   authored:
+
+   1. The loop is seamless. The card set is rendered twice in
+      page.tsx and the animation travels exactly one set's width,
+      so it no longer snaps back to the start.
+   2. The section is no longer a fixed 56.25vw band. That height
+      existed to match a 1920×1080 mockup while its contents were
+      absolutely positioned; with the contents in normal flow it
+      only produced dead space below the cards.
+   3. Sizes stop scaling above 1920px, so ultrawide monitors get
+      the 1920 design rather than a magnified one.
+   ───────────────────────────────────────────────────────────── */
+
+/* Clipping frame — cards scroll in and out of this, and without it the
+   rail would overflow and give the page a horizontal scrollbar. */
 .exact-home .exact-services-main {
   overflow: hidden;
+  margin-block-start: clamp(2rem, 5vw, 3.5rem);
 }
 
 .exact-home .exact-services-rail {
@@ -22,11 +38,42 @@
 }
 
 .exact-home .exact-services-rail:hover,
-.exact-home .exact-services-rail:focus-within {
+.exact-home .exact-services-rail:focus-within,
+.exact-home .exact-services-rail[data-paused="true"] {
   animation-play-state: paused;
 }
 
+/* Explicit pause control — hover and focus-within cover mouse and keyboard,
+   but not touch. WCAG 2.2.2 wants a mechanism, not just an interaction. */
+.exact-home .exact-services-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 2.75rem;
+  margin-block-start: clamp(1rem, 2vw, 1.5rem);
+  padding: 0.5rem 1.15rem;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.86);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+}
+
+.exact-home .exact-services-toggle:hover,
+.exact-home .exact-services-toggle:focus-visible {
+  border-color: #fff;
+  background: #fff;
+  color: #000;
+}
+
 .exact-home .exact-service-card {
+  position: relative;
+  isolation: isolate;
   flex: 0 0 19.77vw;
   width: 19.77vw;
   height: 12.86vw;
@@ -82,23 +129,43 @@
   filter: brightness(1.05) saturate(1.08);
 }
 
+/* One set = 3 cards + 3 gaps. The rail holds two sets, so 50% of its width
+   falls half a gap short of one full set — hence the half-gap correction,
+   which is what makes the loop invisible. */
 @keyframes exactServicesAutoScroll {
   from { transform: translate3d(0, 0, 0); }
-  to { transform: translate3d(-22.61vw, 0, 0); }
+  to { transform: translate3d(calc(-50% - 1.42vw), 0, 0); }
 }
 
-@media (prefers-reduced-motion: reduce) {
+/* Above 1920px the design stops scaling: these are the vw values resolved at
+   1920px, so an ultrawide monitor gets the intended design rather than a
+   magnified one. */
+@media (min-width: 120rem) {
   .exact-home .exact-services-rail {
-    animation: none;
+    gap: 3.408rem;
+  }
+
+  .exact-home .exact-service-card {
+    flex-basis: 23.724rem;
+    width: 23.724rem;
+    min-width: 23.724rem;
+    height: 15.432rem;
+    border-radius: 2.688rem;
+  }
+
+  .exact-home .exact-service-card h3 {
+    font-size: 2.124rem;
+  }
+
+  @keyframes exactServicesAutoScroll {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(calc(-50% - 1.704rem), 0, 0); }
   }
 }
 
-@media (max-width: 700px) {
-  .exact-home .exact-services {
-    height: auto;
-    min-height: 0;
-  }
-
+/* Below 52rem the vw-sized cards would drop the label under 12px, so they
+   switch to a fixed comfortable size. */
+@media (max-width: 52rem) {
   .exact-home .exact-services-rail {
     gap: 1rem;
     animation-duration: 12s;
@@ -119,6 +186,12 @@
 
   @keyframes exactServicesAutoScroll {
     from { transform: translate3d(0, 0, 0); }
-    to { transform: translate3d(calc(-1 * (min(78vw, 22rem) + 1rem)), 0, 0); }
+    to { transform: translate3d(calc(-50% - 0.5rem), 0, 0); }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .exact-home .exact-services-rail {
+    animation: none;
   }
 }

@@ -2,10 +2,18 @@ import type { Metadata } from "next";
 import { ContactCta } from "@/components/ContactCta";
 import { site } from "@/data/site";
 import { assetPath } from "@/lib/assetPath";
+import { absoluteAsset, canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "About",
   description: `About ${site.fullName} — ${site.role}.`,
+  alternates: { canonical: canonical("/about") },
+  openGraph: {
+    title: `About — ${site.fullName}`,
+    description: `About ${site.fullName} — ${site.role}.`,
+    url: canonical("/about"),
+    images: [{ url: absoluteAsset("/about/portrait.webp") }],
+  },
 };
 
 export default function AboutPage() {

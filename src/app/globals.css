@@ -20,6 +20,8 @@
     sans-serif;
   --font-mono: "Spline Sans Mono Variable", "Spline Sans Mono", ui-monospace,
     "SF Mono", Menlo, monospace;
+  /* Persian product names — Archivo has no Arabic-script coverage. */
+  --font-fa: "Vazirmatn Variable", "Vazirmatn", "IRANSans", Tahoma, sans-serif;
 
   --container: 76rem;
   --gutter: clamp(1.25rem, 4vw, 2.5rem);
@@ -2285,9 +2287,21 @@ body:has(.home-page) ::selection {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1px;
+  margin: 0;
+  padding: 0;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.74);
   background: rgba(255, 255, 255, 0.74);
+  list-style: none;
+}
+
+.instagram-feed__synced {
+  color: rgba(255, 255, 255, 0.55);
+  font-family: var(--font-mono);
+  font-size: 0.63rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .instagram-card {
@@ -2300,12 +2314,18 @@ body:has(.home-page) ::selection {
 .instagram-card__media {
   position: relative;
   display: grid;
+  width: 100%;
   place-items: center;
   aspect-ratio: 1 / 1;
+  padding: 0;
   overflow: hidden;
+  border: 0;
   background:
     radial-gradient(circle at 72% 28%, rgba(29, 102, 255, 0.5), transparent 38%),
     #0a0a0a;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
 }
 
 .instagram-card__media img {
@@ -2405,14 +2425,26 @@ body:has(.home-page) ::selection {
   letter-spacing: -0.02em;
 }
 
+/* The pill is sized by its contents, not by a fixed width and aspect ratio.
+   Previously it was `width: min(64%, 47rem)` with `aspect-ratio: 4.08 / 1`,
+   which pins the width at 47rem above ~1175px while the handle keeps growing
+   with 5.6vw until ~1543px. Past that the text simply outgrew its container
+   and the trailing underscore punched through the right-hand curve.
+
+   Two rules keep it honest now: the box grows with the text, and the inline
+   padding is never smaller than the cap radius (half the height), because a
+   999px radius means the border is already curving inward at the height the
+   underscore sits at. Space inside the padding box is not the same as space
+   inside the outline. */
 .instagram-feed__closing-link {
-  display: flex;
-  width: min(64%, 47rem);
-  aspect-ratio: 4.08 / 1;
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+  min-height: clamp(6rem, 11.5vw, 11rem);
   align-items: center;
   gap: clamp(1.1rem, 2.4vw, 2.3rem);
   margin-block-start: clamp(4rem, 9vw, 8.5rem);
-  padding-inline: clamp(1.5rem, 5vw, 5rem);
+  padding-inline: clamp(3.25rem, 6vw, 6rem);
   border: 2px solid rgba(255, 255, 255, 0.94);
   border-radius: 999px;
   color: #f1f1f1;
@@ -2497,30 +2529,49 @@ body:has(.home-page) ::selection {
   align-items: flex-start;
 }
 
+/* The heading is the widest element on the site, so it sets its own rules:
+   it is a flex row with the arrow as a real sibling rather than an absolutely
+   positioned overlay, and the type is allowed to wrap. Previously the heading
+   was `text-wrap: nowrap` at up to 5.7rem, which made one 36-character line
+   roughly 1600px wide inside a 1200px shell — it ran off the right edge of
+   every page and dragged a horizontal scrollbar with it. */
+.unified-footer__cta-heading {
+  width: 100%;
+  margin: 0;
+}
+
 .site-cta.unified-footer__cta {
   display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: clamp(1.25rem, 3vw, 3rem);
   width: 100%;
   max-width: none;
   min-height: 0;
   aspect-ratio: auto;
-  justify-content: flex-start;
   margin: 0;
-  padding: 0 clamp(4.5rem, 8vw, 8.5rem) 0 0;
+  padding: 0;
   overflow: visible;
   border: 0;
   border-radius: 0;
   background: transparent;
-  font-size: clamp(2rem, 4.75vw, 5.7rem);
+  font-size: clamp(1.9rem, 4.1vw, 4.4rem);
   font-weight: 760;
   font-variation-settings: "wdth" 108;
-  line-height: 0.95;
-  letter-spacing: -0.06em;
+  line-height: 0.98;
+  letter-spacing: -0.055em;
   text-align: left;
 }
 
 .unified-footer__cta > :first-child {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 14ch;
+  margin: 0;
+  font: inherit;
+  letter-spacing: inherit;
   text-align: left;
-  text-wrap: nowrap;
+  text-wrap: balance;
 }
 
 .site-cta.unified-footer__cta:hover,
@@ -2533,8 +2584,8 @@ body:has(.home-page) ::selection {
 }
 
 .unified-footer__arrow {
-  position: absolute;
-  right: 0;
+  position: static;
+  flex: 0 0 auto;
   display: grid;
   width: clamp(2.35rem, 4vw, 4.2rem);
   aspect-ratio: 1;
@@ -2542,8 +2593,19 @@ body:has(.home-page) ::selection {
   border-radius: 50%;
   background: #fff;
   color: #000;
-  font-size: 0.7em;
   transition: color 240ms ease, background 240ms ease, transform 300ms ease;
+}
+
+.unified-footer__arrow svg {
+  /* 55% reproduces the ink width of the glyph this replaced (24px in a 57px
+     circle), so the button reads at the weight it was designed at. */
+  width: 55%;
+  height: 55%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .unified-footer__cta:hover .unified-footer__arrow,
@@ -2656,31 +2718,32 @@ body:has(.home-page) ::selection {
   }
 
   .instagram-feed__closing-link {
-    width: 100%;
-    min-height: 6.25rem;
-    aspect-ratio: auto;
+    width: fit-content;
+    max-width: 100%;
+    min-height: 5rem;
     margin-block-start: 4.5rem;
-    padding-inline: 1.5rem;
+    /* 2.6rem clears the 2.5rem cap radius of a 5rem-tall pill. */
+    padding-inline: 2.6rem;
+    gap: 0.9rem;
   }
 
   .instagram-feed__closing-link strong {
-    font-size: clamp(1.65rem, 9.5vw, 2.8rem);
+    font-size: clamp(1.35rem, 7vw, 2.8rem);
   }
 
   .instagram-feed__search {
-    width: clamp(2.25rem, 11vw, 3.35rem);
+    width: clamp(1.75rem, 8vw, 3.35rem);
   }
 
   .site-cta.unified-footer__cta {
     width: 100%;
     min-height: 0;
-    padding-inline: 0 3.4rem;
-    font-size: clamp(1.75rem, 9vw, 3.1rem);
+    gap: 1rem;
+    font-size: clamp(1.75rem, 8.4vw, 3.1rem);
   }
 
   .unified-footer__cta > :first-child {
-    max-width: 15ch;
-    text-wrap: balance;
+    max-width: 11ch;
   }
 
   .unified-footer__bottom {
@@ -2691,4 +2754,303 @@ body:has(.home-page) ::selection {
   .unified-footer__socials {
     justify-content: flex-start;
   }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   MOBILE NAVIGATION
+
+   The nav carries four items. Below 40rem they collapse behind a
+   disclosure button. The links are always in the HTML — only the
+   visibility is CSS — so they stay reachable without JavaScript.
+   ───────────────────────────────────────────────────────────── */
+.nav-toggle {
+  display: none;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 2.75rem;
+  min-width: 2.75rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.nav-toggle__bars {
+  display: grid;
+  gap: 4px;
+  width: 1rem;
+}
+
+.nav-toggle__bars span {
+  display: block;
+  height: 1px;
+  background: currentColor;
+}
+
+@media (max-width: 40rem) {
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .site-header .container {
+    flex-wrap: wrap;
+    row-gap: 0;
+  }
+
+  .site-nav {
+    display: none;
+    order: 3;
+    flex-basis: 100%;
+    flex-direction: column;
+    gap: 0;
+    margin-inline: calc(-1 * var(--gutter));
+    padding-inline: var(--gutter);
+    padding-block-end: 0.75rem;
+    /* Opaque: on the home page the header floats over the artwork. */
+    background: #000;
+  }
+
+  .site-header--open .site-nav {
+    display: flex;
+  }
+
+  .site-nav a {
+    display: flex;
+    align-items: center;
+    min-height: 3rem;
+    border-bottom: 1px solid var(--line);
+    font-size: 1.0625rem;
+  }
+
+  .site-nav a::after {
+    display: none;
+  }
+
+  .site-header--home.site-header--open {
+    background: #000;
+  }
+}
+
+/* ─── Skip link ────────────────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--gutter);
+  z-index: 999;
+  padding: 0.75rem 1.25rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.skip-link:focus {
+  top: 0.75rem;
+}
+
+/* ─── Footer navigation ────────────────────────────────────── */
+.unified-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin-block-start: 1.5rem;
+}
+
+.unified-footer__links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+.unified-footer__links a:hover,
+.unified-footer__links a:focus-visible {
+  color: var(--ink);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   INSTAGRAM LIGHTBOX
+
+   A native <dialog>, so the focus trap, the Escape key, the inert
+   background and the return of focus to the thumbnail all come from
+   the browser rather than from hand-written key handling.
+   ───────────────────────────────────────────────────────────── */
+.ig-lightbox {
+  width: min(94vw, 62rem);
+  max-width: none;
+  max-height: 92vh;
+  padding: 0;
+  overflow: visible;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: #050505;
+  color: #fff;
+}
+
+.ig-lightbox::backdrop {
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(6px);
+}
+
+.ig-lightbox__panel {
+  position: relative;
+  display: grid;
+  max-height: 92vh;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+}
+
+.ig-lightbox__figure {
+  display: grid;
+  margin: 0;
+  place-items: center;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+
+.ig-lightbox__figure img {
+  display: block;
+  width: 100%;
+  max-height: 92vh;
+  object-fit: contain;
+}
+
+.ig-lightbox__missing {
+  padding: 3rem 1.5rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.ig-lightbox__copy {
+  display: grid;
+  align-content: start;
+  gap: 1.25rem;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  overflow-y: auto;
+  border-inline-start: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.ig-lightbox__meta {
+  display: flex;
+  gap: 1rem;
+  padding-inline-end: 2.5rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: var(--font-mono);
+  font-size: 0.63rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.ig-lightbox__caption {
+  font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+.ig-lightbox__link {
+  justify-self: start;
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 999px;
+  font-weight: 600;
+  transition: background-color 220ms ease, color 220ms ease;
+}
+
+.ig-lightbox__link:hover,
+.ig-lightbox__link:focus-visible {
+  background: #fff;
+  color: #000;
+}
+
+.ig-lightbox__close,
+.ig-lightbox__nav button {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 1.15rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+.ig-lightbox__close {
+  position: absolute;
+  z-index: 2;
+  top: 0.75rem;
+  right: 0.75rem;
+  font-size: 1.5rem;
+}
+
+.ig-lightbox__close:hover,
+.ig-lightbox__close:focus-visible,
+.ig-lightbox__nav button:hover,
+.ig-lightbox__nav button:focus-visible {
+  background: #fff;
+  color: #000;
+}
+
+.ig-lightbox__nav {
+  position: absolute;
+  bottom: clamp(1rem, 2.5vw, 1.75rem);
+  right: clamp(1.5rem, 3vw, 2.5rem);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+}
+
+@media (max-width: 52rem) {
+  .ig-lightbox__panel {
+    grid-template-columns: minmax(0, 1fr);
+    overflow-y: auto;
+  }
+
+  .ig-lightbox__figure img {
+    max-height: 52vh;
+  }
+
+  .ig-lightbox__copy {
+    border-inline-start: 0;
+    border-block-start: 1px solid rgba(255, 255, 255, 0.18);
+    padding-block-end: 5rem;
+  }
+
+  .ig-lightbox__nav {
+    right: 50%;
+    transform: translateX(50%);
+  }
+}
+
+/* Visible to screen readers, not on screen. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }

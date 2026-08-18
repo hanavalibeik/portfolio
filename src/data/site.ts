@@ -48,6 +48,17 @@ export const site = {
     handle: "hanavalibeik_",
     url: "https://www.instagram.com/hanavalibeik_/",
     posts: [] as string[],
+    /** Hand-curated fallback, used whenever the synced feed is empty (the Meta
+     *  token expires periodically). Drop images into /public/instagram/ and add
+     *  an entry here — the home page will show these instead of an empty state. */
+    curated: [] as {
+      id: string;
+      caption: string;
+      permalink: string;
+      timestamp: string;
+      mediaType: string;
+      image: string | null;
+    }[],
   },
   /** Path to the downloadable CV in /public. Set to "" to hide the buttons. */
   cv: "/Hana-Valibeik-CV.pdf",

@@ -1,12 +1,14 @@
 import type { Metadata, Viewport } from "next";
 import "@fontsource-variable/archivo/wdth.css";
 import "@fontsource-variable/spline-sans-mono";
+import "@fontsource-variable/vazirmatn";
 import "./globals.css";
 import "./services-motion.css";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { site } from "@/data/site";
 import { assetPath } from "@/lib/assetPath";
+import { canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
   // Next.js applies `basePath` to metadata asset paths. Use the origin here so
@@ -22,7 +24,11 @@ export const metadata: Metadata = {
     shortcut: assetPath("/brand/hana-logo.svg"),
     apple: assetPath("/apple-icon.png"),
   },
+  alternates: { canonical: canonical("/") },
   openGraph: {
+    siteName: site.fullName,
+    locale: "en",
+    url: canonical("/"),
     title: `${site.fullName} — ${site.role}`,
     description: site.tagline,
     type: "website",
@@ -48,8 +54,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <a className="skip-link" href="#main">
+          Skip to content
+        </a>
         <SiteHeader />
-        <main>{children}</main>
+        <main id="main">{children}</main>
         <SiteFooter />
       </body>
     </html>
