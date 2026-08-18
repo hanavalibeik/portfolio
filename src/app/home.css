@@ -309,66 +309,84 @@ body:has(.exact-home) .site-header--home .site-nav a::after {
 .exact-projects {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
-  min-height: 34rem;
-  max-height: 67.5rem;
+  height: 102vw;
   overflow: hidden;
+  background: #000;
 }
 
-.exact-projects-title {
+.exact-project-curve {
   position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  top: -1.85vw;
+  left: -10.4vw;
+  width: 78.1vw;
+  height: 17.63vw;
+  border-top: 1px solid var(--exact-line);
+  border-right: 1px solid var(--exact-line);
+  border-top-right-radius: 38vw 22vw;
+  pointer-events: none;
 }
 
-.exact-project-stage {
+.exact-projects-heading {
   position: absolute;
-  top: 0;
-  left: 8.44%;
-  width: 82.71%;
-  height: 70.09%;
+  z-index: 2;
+  top: 7.3vw;
+  left: 8.44vw;
+  margin: 0;
+  color: #f1f1f1;
+  font-size: 3.15vw;
+  font-weight: 760;
+  font-variation-settings: "wdth" 110;
+  line-height: 1;
+  letter-spacing: -0.055em;
+}
+
+.exact-projects-heading::after {
+  content: "";
+  position: absolute;
+  right: -0.62em;
+  bottom: -0.3em;
+  width: 0.58em;
+  height: 0.58em;
+  border-right: 1px solid rgba(255, 255, 255, 0.7);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
 }
 
 .exact-project-grid {
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  top: 15.78vw;
+  left: 8.44vw;
+  width: 82.71vw;
+  height: 79.8vw;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  border: 1px solid rgba(255, 255, 255, 0.82);
+  grid-template-rows: 1fr 1fr;
+  border-top: 1px solid rgba(255, 255, 255, 0.88);
+  border-left: 1px solid rgba(255, 255, 255, 0.88);
 }
 
 .exact-project-card {
   position: relative;
+  display: block;
   min-width: 0;
   min-height: 0;
-  display: block;
   overflow: hidden;
-  background: #b2b2b2;
+  border-right: 1px solid rgba(255, 255, 255, 0.88);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.88);
+  background: #b7b7b7;
 }
 
-.exact-project-card:first-child {
-  border-right: 1px solid rgba(255, 255, 255, 0.82);
-}
-
-.exact-project-image {
+.exact-project-media {
   position: absolute;
+  inset: 0;
   display: block;
   overflow: hidden;
 }
 
-.exact-project-card--inset .exact-project-image {
-  inset: 9.54% 10% 8.31% 10.78%;
+.exact-project-card--inset .exact-project-media {
+  inset: 9.5% 10% 8.3% 10.8%;
 }
 
-.exact-project-card--full .exact-project-image {
-  inset: 0;
-}
-
-.exact-project-image img {
+.exact-project-media img {
   display: block;
   width: 100%;
   height: 100%;
@@ -376,88 +394,127 @@ body:has(.exact-home) .site-header--home .site-nav a::after {
   transition: transform 460ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.exact-project-card--inset img { object-position: center 64%; }
-.exact-project-card--full img { object-position: center; }
+.exact-project-card--inset .exact-project-media img {
+  object-position: center 64%;
+}
 
-.exact-project-label {
+.exact-project-info {
   position: absolute;
-  left: 1.4rem;
-  bottom: 1.4rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.18rem;
-  max-width: calc(100% - 2.8rem);
-  border: 1px solid rgba(255, 255, 255, 0.82);
-  border-radius: 0.85rem;
-  padding: 0.72rem 0.9rem;
-  background: rgba(0, 0, 0, 0.72);
-  color: #fff;
-  backdrop-filter: blur(0.55rem);
+  inset: 0;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: 3.25vw;
+  background: #969696;
+  color: #050505;
   opacity: 0;
-  transform: translateY(0.45rem);
-  transition: opacity 220ms ease, transform 260ms ease;
+  pointer-events: none;
+  transition: opacity 240ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.exact-project-card:hover .exact-project-label,
-.exact-project-card:focus-visible .exact-project-label {
+.exact-project-card:hover .exact-project-info,
+.exact-project-card:focus-visible .exact-project-info {
   opacity: 1;
-  transform: translateY(0);
 }
 
-.exact-project-card:hover .exact-project-image img,
-.exact-project-card:focus-visible .exact-project-image img {
+.exact-project-card:hover .exact-project-media img,
+.exact-project-card:focus-visible .exact-project-media img {
   transform: scale(1.025);
 }
 
-.exact-project-label strong {
-  font-size: clamp(0.72rem, 1vw, 1rem);
-  font-weight: 580;
-  line-height: 1.1;
+.exact-project-card:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: -4px;
 }
 
-.exact-project-label small {
-  color: rgba(255, 255, 255, 0.76);
-  font-family: var(--font-mono);
-  font-size: clamp(0.55rem, 0.66vw, 0.7rem);
-  line-height: 1.2;
+.exact-project-info strong {
+  font-size: 1.7vw;
+  font-weight: 650;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
 }
 
-.exact-project-more {
-  position: absolute;
-  z-index: 2;
-  top: 77.61%;
-  right: 9.53%;
-  width: 11.15%;
-  min-width: 9.5rem;
-  height: 5.89%;
-  min-height: 3rem;
-  display: grid;
-  place-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.94);
-  border-radius: 999px 0 999px 999px;
-  padding: 0 1.4rem;
-  background: #231f20;
-  color: #fff;
-  font-size: clamp(0.78rem, 1.15vw, 1.45rem);
-  font-weight: 700;
+.exact-project-info em {
+  align-self: end;
+  font-size: 1.12vw;
+  font-weight: 500;
+  font-style: normal;
   line-height: 1;
-  transition: border-color 220ms ease, background 220ms ease, box-shadow 220ms ease, transform 220ms ease;
 }
 
-.exact-project-more:hover,
-.exact-project-more:focus-visible {
-  border-color: #3774ff;
-  background: #0b4ad0;
-  box-shadow: 0 0 1.8rem rgba(18, 88, 255, 0.42);
-  transform: translateY(-1px);
-}
-
-.exact-project-construction-line {
+.exact-project-info i {
   position: absolute;
-  top: 70.09%;
-  bottom: 0;
-  left: 31.56%;
-  border-left: 1px solid var(--exact-line);
+  right: 3.05vw;
+  bottom: 3.55vw;
+  width: 1.35vw;
+  height: 1.35vw;
+  border-right: 1px solid rgba(0, 0, 0, 0.72);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.72);
+}
+
+@media (max-width: 700px) {
+  .exact-projects {
+    height: auto;
+    overflow: visible;
+    padding: 5.75rem 1rem 4rem;
+  }
+
+  .exact-project-curve {
+    top: -0.6rem;
+    left: -30vw;
+    width: 98vw;
+    height: 6rem;
+    border-top-right-radius: 54vw 7rem;
+  }
+
+  .exact-projects-heading {
+    position: relative;
+    top: auto;
+    left: auto;
+    margin: 0 0 2.5rem;
+    font-size: 2rem;
+  }
+
+  .exact-project-grid {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+  }
+
+  .exact-project-card {
+    aspect-ratio: 1 / 1;
+  }
+
+  .exact-project-info {
+    padding: 1.25rem;
+  }
+
+  .exact-project-info strong {
+    font-size: 1.25rem;
+  }
+
+  .exact-project-info em {
+    font-size: 0.9rem;
+  }
+
+  .exact-project-info i {
+    right: 1.25rem;
+    bottom: 1.25rem;
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+@media (hover: none) {
+  .exact-project-info {
+    inset: auto 0 0;
+    min-height: 36%;
+    background: rgba(150, 150, 150, 0.94);
+    opacity: 1;
+  }
 }
 
 /* Services */
@@ -809,50 +866,6 @@ body:has(.exact-home) .site-header--home .site-nav a::after {
   .exact-hero-copy p { margin-top: 0.5rem; }
   .exact-pill--cta { margin-top: 1rem; }
   .exact-pill { min-height: 1.35rem; }
-  .exact-projects {
-    aspect-ratio: auto;
-    min-height: 44rem;
-    padding-top: 2.25rem;
-  }
-  .exact-project-stage {
-    position: relative;
-    left: 7%;
-    width: 86%;
-    height: 34rem;
-  }
-  .exact-project-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
-  }
-  .exact-project-card:first-child {
-    border-right: 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.82);
-  }
-  .exact-project-card--inset .exact-project-image {
-    inset: 8% 8.5%;
-  }
-  .exact-project-label {
-    left: 0.8rem;
-    bottom: 0.8rem;
-    max-width: calc(100% - 1.6rem);
-    padding: 0.58rem 0.72rem;
-    opacity: 1;
-    transform: none;
-  }
-  .exact-project-more {
-    top: auto;
-    right: 7%;
-    bottom: 2.4rem;
-    width: auto;
-    height: 3rem;
-    min-width: 9rem;
-    font-size: 0.86rem;
-  }
-  .exact-project-construction-line {
-    top: 36.25rem;
-    bottom: 0;
-    left: 31.56%;
-  }
   .exact-services { min-height: 12.8rem; }
   .exact-instagram { min-height: 8rem; }
   .exact-footer { height: 55vw; min-height: 13rem; }

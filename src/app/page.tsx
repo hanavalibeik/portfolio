@@ -9,6 +9,8 @@ import { assetPath } from "@/lib/assetPath";
 const homeProjects = [
   { title: "Codejudge Catalog", meta: "Editorial · 2025", image: "/work/codejudge-catalog/01.webp", href: "/work/codejudge-catalog", alt: "Codejudge catalog displayed as an open editorial mockup" },
   { title: "Shokouh Miyami", meta: "Visual identity · 2025", image: "/work/shokouh-miyami/01.webp", href: "/work/shokouh-miyami", alt: "Shokouh Miyami identity applied to business cards" },
+  { title: "Chandmahameh", meta: "Social media design", image: "/work/home-chandmahameh.webp", href: "/work", alt: "Chandmahameh social media post collection" },
+  { title: "Tarazo", meta: "Brand and UI design", image: "/work/home-tarazo.webp", href: "/work", alt: "Tarazo website shown on two desktop displays" },
 ];
 
 const homeServices = [
@@ -60,24 +62,27 @@ export default function HomePage() {
       </section>
 
       <section className="exact-projects" aria-labelledby="projects-heading">
-        <h2 className="exact-projects-title" id="projects-heading">Selected projects</h2>
-        <div className="exact-project-stage">
-          <div className="exact-project-grid">
-            {homeProjects.map((project, index) => (
-              <Link className={`exact-project-card exact-project-card--${index === 0 ? "inset" : "full"}`} href={project.href} key={project.title} aria-label={`View ${project.title}: ${project.meta}`}>
-                <span className="exact-project-image">
-                  <img src={assetPath(project.image)} alt={project.alt} />
-                </span>
-                <span className="exact-project-label" aria-hidden="true">
-                  <strong>{project.title}</strong>
-                  <small>{project.meta}</small>
-                </span>
-              </Link>
-            ))}
-          </div>
+        <span className="exact-project-curve" aria-hidden="true" />
+        <h2 className="exact-projects-heading" id="projects-heading">Projects</h2>
+        <div className="exact-project-grid">
+          {homeProjects.map((project, index) => (
+            <Link
+              className={`exact-project-card${index === 0 ? " exact-project-card--inset" : ""}`}
+              href={project.href}
+              key={project.title}
+              aria-label={`View more about ${project.title}: ${project.meta}`}
+            >
+              <span className="exact-project-media">
+                <img src={assetPath(project.image)} alt={project.alt} loading="lazy" />
+              </span>
+              <span className="exact-project-info" aria-hidden="true">
+                <strong>{project.title}</strong>
+                <em>view more</em>
+                <i aria-hidden="true" />
+              </span>
+            </Link>
+          ))}
         </div>
-        <Link className="site-cta exact-project-more" href="/work">view more</Link>
-        <span className="exact-project-construction-line" aria-hidden="true" />
       </section>
 
       <section className="exact-services" aria-labelledby="services-heading">
