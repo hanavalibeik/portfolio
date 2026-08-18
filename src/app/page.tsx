@@ -14,6 +14,12 @@ const homeProjects = [
   { title: "", meta: "", image: "/work/home-web-project.svg", href: "/work", alt: "Website design presented on two desktop monitors" },
 ];
 
+const homeServices = [
+  "Branding & Identity",
+  "Packaging Design",
+  "Advertising Campaign",
+];
+
 export default function HomePage() {
   return (
     <div className="exact-home">
@@ -26,6 +32,118 @@ export default function HomePage() {
           }
           .exact-home .site-cta.exact-projects-more { top: 139.9vw; }
           .exact-projects-tail-line { top: 135.48vw; }
+        }
+
+        .exact-services {
+          min-height: 56.25vw;
+          background: #000;
+        }
+
+        .exact-service-card {
+          isolation: isolate;
+          border: 0;
+          background:
+            radial-gradient(circle at 22% 18%, rgba(255,255,255,.26), transparent 22%),
+            linear-gradient(135deg, #ececec 0%, #d7d7d7 55%, #f3f3f3 100%);
+          box-shadow: none;
+          transition: transform 320ms cubic-bezier(.22,1,.36,1), filter 320ms ease;
+        }
+
+        .exact-service-card::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          z-index: -1;
+          background:
+            linear-gradient(120deg, transparent 10%, rgba(255,255,255,.46) 48%, transparent 72%),
+            radial-gradient(circle at 76% 78%, rgba(0,0,0,.08), transparent 35%);
+          opacity: .6;
+        }
+
+        .exact-service-card h3 {
+          position: relative;
+          z-index: 1;
+          color: #0a0a0a;
+          font-size: clamp(.78rem, 1.75vw, 2.1rem);
+          font-weight: 500;
+          letter-spacing: -.035em;
+        }
+
+        .exact-service-card:hover,
+        .exact-service-card:focus-visible {
+          transform: translateY(-.35vw);
+          filter: brightness(1.04);
+          outline: none;
+        }
+
+        @media (max-width: 700px) {
+          .exact-services {
+            height: auto;
+            min-height: 0;
+            padding: 5rem 1rem 5.5rem;
+          }
+
+          .exact-service-line {
+            top: 0;
+            left: 31.5vw;
+            height: 4.5rem;
+          }
+
+          .exact-service-line::after {
+            display: none;
+          }
+
+          .exact-services::after {
+            top: 4.5rem;
+            left: 31.5vw;
+          }
+
+          .exact-services-main {
+            position: relative;
+            inset: auto;
+            height: auto;
+            margin-left: 31.5vw;
+            padding-top: 5.5rem;
+          }
+
+          .exact-services-main > .exact-heading {
+            position: relative;
+            top: auto;
+            left: auto;
+            margin: 0 0 2rem;
+            font-size: 2rem;
+          }
+
+          .exact-services-rail {
+            position: relative;
+            top: auto;
+            left: auto;
+            right: auto;
+            grid-auto-columns: minmax(15rem, 78vw);
+            gap: 1rem;
+            margin-right: -1rem;
+            padding-right: 1rem;
+          }
+
+          .exact-service-card {
+            height: auto;
+            aspect-ratio: 379.63 / 247;
+            border-radius: 1.75rem;
+            padding: 1.5rem;
+          }
+
+          .exact-service-card h3 {
+            font-size: 1.15rem;
+          }
+
+          .exact-services-more {
+            position: relative;
+            top: auto;
+            left: auto;
+            width: 9.5rem;
+            min-height: 3rem;
+            margin-top: 2rem;
+          }
         }
       `}</style>
 
@@ -108,6 +226,21 @@ export default function HomePage() {
         </div>
         <Link className="site-cta exact-projects-more" href="/work">view more</Link>
         <span className="exact-projects-tail-line" aria-hidden="true" />
+      </section>
+
+      <section className="exact-services" aria-labelledby="services-heading">
+        <span className="exact-service-line" aria-hidden="true" />
+        <div className="exact-services-main">
+          <h2 className="exact-heading exact-heading--left" id="services-heading">Services</h2>
+          <div className="exact-services-rail" aria-label="Services">
+            {homeServices.map((service) => (
+              <Link className="exact-service-card" href="/work" key={service} aria-label={`View ${service} work`}>
+                <h3>{service}</h3>
+              </Link>
+            ))}
+          </div>
+          <Link className="exact-pill exact-services-more" href="/work">view more</Link>
+        </div>
       </section>
 
       <InstagramFeed />
