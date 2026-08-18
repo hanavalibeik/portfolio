@@ -1,4 +1,9 @@
-name: Sync Instagram and deploy
+name: Sync Instagram
+
+# Pulls the four most recent posts from Instagram, downloads their images into
+# public/instagram/ and writes src/data/instagram.json. Committing that back to
+# main is what triggers "Deploy Next.js site to Pages" — this workflow does not
+# build or deploy anything itself, so there is exactly one deploy path.
 
 on:
   push:
@@ -12,48 +17,81 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 concurrency:
-  group: pages
+  group: sync-instagram
   cancel-in-progress: false
 
 jobs:
-  sync-and-deploy:
+  sync:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-        with:
-          fetch-depth: 0
 
       - name: Check Instagram configuration
         id: configuration
         env:
           INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          ROTATION_PAT: ${{ secrets.INSTAGRAM_TOKEN_ROTATION_PAT }}
         run: |
           if [ -n "$INSTAGRAM_ACCESS_TOKEN" ]; then
             echo "enabled=true" >> "$GITHUB_OUTPUT"
           else
             echo "enabled=false" >> "$GITHUB_OUTPUT"
-            echo "::notice::Add the INSTAGRAM_ACCESS_TOKEN repository secret to enable the daily feed sync."
+            echo "::warning::INSTAGRAM_ACCESS_TOKEN is not set, so the home page feed is showing its fallback. See the README section 'Instagram feed'."
           fi
+
+          if [ -n "$ROTATION_PAT" ]; then
+            echo "rotate=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "rotate=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      # Instagram long-lived tokens expire after 60 days. Refreshing on every
+      # run keeps that window permanently ~60 days out, so the feed does not
+      # quietly freeze two months after launch.
+      #
+      # Writing the new token back needs a fine-grained PAT with
+      # "Secrets: read and write" on this repository, stored as
+      # INSTAGRAM_TOKEN_ROTATION_PAT. Without it the sync still works — it just
+      # stops working whenever the current token lapses.
+      - name: Refresh the long-lived token
+        id: refresh
+        if: steps.configuration.outputs.enabled == 'true' && steps.configuration.outputs.rotate == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.INSTAGRAM_TOKEN_ROTATION_PAT }}
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+        run: |
+          response=$(curl -sS --get \
+            --data-urlencode "grant_type=ig_refresh_token" \
+            --data-urlencode "access_token=$INSTAGRAM_ACCESS_TOKEN" \
+            "https://graph.instagram.com/refresh_access_token")
+
+          refreshed=$(printf '%s' "$response" | jq -r '.access_token // empty')
+          expires=$(printf '%s' "$response" | jq -r '.expires_in // 0')
+
+          if [ -z "$refreshed" ]; then
+            echo "::warning::Token refresh returned no new token. Re-issue INSTAGRAM_ACCESS_TOKEN from the Meta app dashboard."
+            exit 0
+          fi
+
+          printf '%s' "$refreshed" | gh secret set INSTAGRAM_ACCESS_TOKEN --repo "$GITHUB_REPOSITORY"
+          echo "::add-mask::$refreshed"
+          echo "token=$refreshed" >> "$GITHUB_OUTPUT"
+          echo "::notice::Instagram token refreshed — valid for a further $((expires / 86400)) days."
 
       - name: Setup Node
         if: steps.configuration.outputs.enabled == 'true'
         uses: actions/setup-node@v6
         with:
           node-version: "20"
-          cache: npm
 
       - name: Sync latest Instagram posts
         if: steps.configuration.outputs.enabled == 'true'
         env:
-          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          # Prefer the token just refreshed; fall back to the stored one.
+          INSTAGRAM_ACCESS_TOKEN: ${{ steps.refresh.outputs.token || secrets.INSTAGRAM_ACCESS_TOKEN }}
           INSTAGRAM_USER_ID: ${{ vars.INSTAGRAM_USER_ID }}
           INSTAGRAM_API_VERSION: ${{ vars.INSTAGRAM_API_VERSION }}
         run: node scripts/sync-instagram.mjs
@@ -65,34 +103,9 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add src/data/instagram.json public/instagram
           if git diff --cached --quiet; then
-            echo "Instagram feed is already current."
+            echo "Instagram feed is already current — nothing to deploy."
           else
             git commit -m "Update Instagram feed"
             git pull --rebase origin main
             git push origin HEAD:main
           fi
-
-      - name: Setup Pages
-        if: steps.configuration.outputs.enabled == 'true'
-        uses: actions/configure-pages@v5
-
-      - name: Install dependencies
-        if: steps.configuration.outputs.enabled == 'true'
-        run: npm ci
-
-      - name: Build with Next.js
-        if: steps.configuration.outputs.enabled == 'true'
-        run: npm run build
-        env:
-          NEXT_PUBLIC_BASE_PATH: /portfolio
-
-      - name: Upload Pages artifact
-        if: steps.configuration.outputs.enabled == 'true'
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: ./out
-
-      - name: Deploy to GitHub Pages
-        if: steps.configuration.outputs.enabled == 'true'
-        id: deployment
-        uses: actions/deploy-pages@v5
