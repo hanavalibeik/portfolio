@@ -38,6 +38,22 @@ export default function HomePage() {
           width="1920"
           height="1080"
         />
+
+        <span className="landing-orbit-cleaner" aria-hidden="true" />
+        <svg className="landing-orbit-text" viewBox="0 0 200 200" aria-hidden="true">
+          <defs>
+            <path
+              id="landing-orbit-path"
+              d="M100 25a75 75 0 1 1 0 150a75 75 0 1 1 0-150"
+            />
+          </defs>
+          <text>
+            <textPath href="#landing-orbit-path" startOffset="0%">
+              Graphic Designer  I’m here, if you are looking for a Graphic Designer
+            </textPath>
+          </text>
+        </svg>
+
         <Link className="landing-hotspot landing-hotspot--logo" href="/" aria-label="Hana Valibeik — home" />
         <Link className="landing-hotspot landing-hotspot--work" href="/work">Work</Link>
         <Link className="landing-hotspot landing-hotspot--about" href="/about">About</Link>
