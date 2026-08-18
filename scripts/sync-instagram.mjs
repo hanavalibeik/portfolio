@@ -78,6 +78,7 @@ async function downloadImage(url, id) {
   const response = await fetch(url, {
     headers: { "User-Agent": "Hana-Valibeik-Portfolio-Instagram-Sync/1.0" },
     redirect: "follow",
+    signal: AbortSignal.timeout(30_000),
   });
 
   if (!response.ok) {
@@ -87,6 +88,11 @@ async function downloadImage(url, id) {
   const extension = extensionFor(response.headers.get("content-type") || "");
   if (!extension) {
     throw new Error("media response was not a supported image");
+  }
+
+  const declaredSize = Number(response.headers.get("content-length") || 0);
+  if (declaredSize > maximumImageBytes) {
+    throw new Error("media response was larger than 25 MB");
   }
 
   const bytes = Buffer.from(await response.arrayBuffer());
@@ -121,6 +127,7 @@ async function fetchMedia() {
 
   const response = await fetch(endpoint, {
     headers: { Authorization: `Bearer ${accessToken}` },
+    signal: AbortSignal.timeout(30_000),
   });
 
   const payload = await response.json().catch(() => null);
