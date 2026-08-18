@@ -9,7 +9,6 @@
     "start": "next start",
     "sync:instagram": "node scripts/sync-instagram.mjs",
     "build:pages": "NEXT_PUBLIC_BASE_PATH=/portfolio next build",
-    "placeholders:products": "node scripts/generate-product-placeholders.mjs",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

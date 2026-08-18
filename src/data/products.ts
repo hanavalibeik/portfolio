@@ -88,9 +88,10 @@ export const products: Product[] = [
     blurb: "A postcard from the Shiraz line drawings.",
     images: [
       {
-        src: "/products/shiraz-postcard/01.svg",
-        alt: "Shiraz Collection postcard",
-        placeholder: true,
+        src: "/products/shiraz-postcard/01.webp",
+        alt: "The Shiraz Collection line drawing as printed on the postcard — a cypress, stepped clouds and Persian brick motifs in black on off-white",
+        // TODO(owner): swap for a photograph of the printed card in hand when
+        // one exists. This is the artwork itself, laid flat on paper white.
       },
     ],
     available: true,
@@ -107,9 +108,12 @@ export const products: Product[] = [
     blurb: "A ceramic mug printed with the Shiraz line drawings.",
     images: [
       {
-        src: "/products/shiraz-mug/01.svg",
-        alt: "Shiraz Collection ceramic mug",
-        placeholder: true,
+        src: "/products/shiraz-mug/01.webp",
+        alt: "The Shiraz Collection mug in yellow and in white, resting on a sunlit windowsill",
+      },
+      {
+        src: "/products/shiraz-mug/02.webp",
+        alt: "The white Shiraz Collection mug photographed straight on, showing the full wrap of the line drawing",
       },
     ],
     available: true,
@@ -126,9 +130,8 @@ export const products: Product[] = [
     blurb: "A cotton calico tote printed with the Shiraz line drawings.",
     images: [
       {
-        src: "/products/shiraz-tote/01.svg",
-        alt: "Shiraz Collection calico tote bag",
-        placeholder: true,
+        src: "/products/shiraz-tote/01.webp",
+        alt: "A stack of folded yellow Shiraz Collection totes, the line drawing printed across the top fold",
       },
     ],
     available: true,
@@ -145,9 +148,8 @@ export const products: Product[] = [
     blurb: "A square fridge magnet from the Shiraz line drawings.",
     images: [
       {
-        src: "/products/shiraz-magnet/01.svg",
-        alt: "Shiraz Collection magnet",
-        placeholder: true,
+        src: "/products/shiraz-magnet/01.webp",
+        alt: "Three square Shiraz Collection magnets in white and yellow, one turned over to show its magnetic back",
       },
     ],
     available: true,
@@ -164,9 +166,8 @@ export const products: Product[] = [
     blurb: "A framed print from the Shiraz line drawings, ready to hang.",
     images: [
       {
-        src: "/products/shiraz-frame/01.svg",
-        alt: "Shiraz Collection decorative framed print",
-        placeholder: true,
+        src: "/products/shiraz-frame/01.webp",
+        alt: "The Shiraz Collection print in a slim black frame, held upright on a white plinth",
       },
     ],
     available: true,
