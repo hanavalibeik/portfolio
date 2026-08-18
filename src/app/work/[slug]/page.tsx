@@ -83,14 +83,16 @@ export default async function ProjectPage({
             </dl>
           </aside>
 
-          <div className="cs-sections">
-            <section aria-labelledby="caption-h">
-              <h2 id="caption-h">About the project</h2>
-              {(caption?.paragraphs ?? [project.summary]).map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </section>
-          </div>
+          {caption ? (
+            <div className="cs-sections">
+              <section aria-labelledby="caption-h">
+                <h2 id="caption-h">About the project</h2>
+                {caption.paragraphs.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </section>
+            </div>
+          ) : null}
         </div>
 
         <div className="container cs-figures">
