@@ -18,6 +18,16 @@ type InstagramFeedData = {
 
 const feed = feedJson as InstagramFeedData;
 
+/**
+ * The synced feed depends on a Meta access token that expires. When it is empty
+ * — token missing, expired, or the first sync hasn't run — fall back to posts
+ * curated by hand in src/data/site.ts so this section never looks broken.
+ */
+const visiblePosts: InstagramPost[] =
+  feed.posts.length > 0
+    ? feed.posts
+    : (site.instagram.curated as InstagramPost[]);
+
 function postDate(timestamp: string) {
   const date = new Date(timestamp);
   if (Number.isNaN(date.getTime())) return "Recent post";
@@ -41,9 +51,9 @@ export function InstagramFeed() {
           </div>
         </div>
 
-        {feed.posts.length > 0 ? (
+        {visiblePosts.length > 0 ? (
           <div className="instagram-feed__grid">
-            {feed.posts.slice(0, 4).map((post) => (
+            {visiblePosts.slice(0, 4).map((post) => (
               <article className="instagram-card" key={post.id}>
                 <a
                   className="instagram-card__media"
@@ -82,8 +92,8 @@ export function InstagramFeed() {
             target="_blank"
             rel="noreferrer"
           >
-            <span>Latest work is syncing.</span>
-            <strong>Browse Instagram in the meantime ↗</strong>
+            <span>New work goes up on Instagram first.</span>
+            <strong>See the latest posts ↗</strong>
           </a>
         )}
 
