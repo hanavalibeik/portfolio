@@ -179,17 +179,35 @@ export default function HomePage() {
           <h2 className="exact-heading" id="services-heading">
             Services
           </h2>
-          <div className="exact-services-rail">
-            {homeServices.map((service) => (
-              <Link
-                className="exact-service-card"
-                href="/work/"
-                key={service}
-                aria-label={`View ${service} work`}
-              >
-                <h3>{service}</h3>
-              </Link>
-            ))}
+          {/* The rail auto-scrolls, so it needs a clipping frame. The card set
+              is rendered twice: the animation travels exactly one set's width,
+              which makes the loop seamless instead of snapping back. The second
+              copy is hidden from assistive tech and taken out of the tab order
+              so the same three links aren't announced or focused twice. */}
+          <div className="exact-services-main">
+            <div className="exact-services-rail">
+              {homeServices.map((service) => (
+                <Link
+                  className="exact-service-card"
+                  href="/work/"
+                  key={service}
+                  aria-label={`View ${service} work`}
+                >
+                  <h3>{service}</h3>
+                </Link>
+              ))}
+              {homeServices.map((service) => (
+                <Link
+                  className="exact-service-card"
+                  href="/work/"
+                  key={`${service}-loop`}
+                  aria-hidden="true"
+                  tabIndex={-1}
+                >
+                  <h3>{service}</h3>
+                </Link>
+              ))}
+            </div>
           </div>
           <Link className="exact-pill exact-services-more" href="/work/">
             View all work
