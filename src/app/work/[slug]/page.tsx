@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { adjacentProjects, getProject, projects } from "@/data/projects";
+import { getProjectCaption } from "@/data/projectCaptions";
 import { ContactCta } from "@/components/ContactCta";
 import { assetPath } from "@/lib/assetPath";
 
@@ -34,6 +35,7 @@ export default async function ProjectPage({
   const project = getProject(slug);
   if (!project) notFound();
 
+  const caption = getProjectCaption(slug);
   const { prev, next } = adjacentProjects(slug);
 
   return (
@@ -56,7 +58,6 @@ export default async function ProjectPage({
         </header>
 
         <div className="container cs-body">
-          {/* Spec-sheet sidebar */}
           <aside className="spec" aria-label="Project details">
             <dl>
               <div className="spec-row">
@@ -82,24 +83,16 @@ export default async function ProjectPage({
             </dl>
           </aside>
 
-          {/* Case study copy */}
           <div className="cs-sections">
-            <section aria-labelledby="brief-h">
-              <h2 id="brief-h">The brief</h2>
-              <p>{project.brief}</p>
-            </section>
-            <section aria-labelledby="approach-h">
-              <h2 id="approach-h">The approach</h2>
-              <p>{project.approach}</p>
-            </section>
-            <section aria-labelledby="outcome-h">
-              <h2 id="outcome-h">The outcome</h2>
-              <p>{project.outcome}</p>
+            <section aria-labelledby="caption-h">
+              <h2 id="caption-h">About the project</h2>
+              {(caption?.paragraphs ?? [project.summary]).map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
             </section>
           </div>
         </div>
 
-        {/* Figures */}
         <div className="container cs-figures">
           {project.images.map((image) => (
             <figure key={image.src} className="cs-figure">
@@ -129,7 +122,6 @@ export default async function ProjectPage({
           ))}
         </div>
 
-        {/* Prev / next */}
         <nav className="container cs-pagination" aria-label="More projects">
           {prev ? (
             <Link href={`/work/${prev.slug}`} className="pag-link">
