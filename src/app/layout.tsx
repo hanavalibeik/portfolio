@@ -8,6 +8,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { site } from "@/data/site";
 import { assetPath } from "@/lib/assetPath";
+import { canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
   // Next.js applies `basePath` to metadata asset paths. Use the origin here so
@@ -23,7 +24,11 @@ export const metadata: Metadata = {
     shortcut: assetPath("/brand/hana-logo.svg"),
     apple: assetPath("/apple-icon.png"),
   },
+  alternates: { canonical: canonical("/") },
   openGraph: {
+    siteName: site.fullName,
+    locale: "en",
+    url: canonical("/"),
     title: `${site.fullName} — ${site.role}`,
     description: site.tagline,
     type: "website",

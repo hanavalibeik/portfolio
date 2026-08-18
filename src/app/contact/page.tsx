@@ -1,10 +1,17 @@
 import type { Metadata } from "next";
 import { site } from "@/data/site";
 import { assetPath } from "@/lib/assetPath";
+import { canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Contact",
   description: `Start a project with ${site.fullName}.`,
+  alternates: { canonical: canonical("/contact") },
+  openGraph: {
+    title: `Contact — ${site.fullName}`,
+    description: `Start a project with ${site.fullName}.`,
+    url: canonical("/contact"),
+  },
 };
 
 export default function ContactPage() {

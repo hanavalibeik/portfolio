@@ -12,6 +12,7 @@ import {
 } from "@/data/products";
 import { site } from "@/data/site";
 import { assetPath } from "@/lib/assetPath";
+import { JsonLd, absoluteAsset, breadcrumbs, canonical } from "@/lib/seo";
 
 type Params = { slug: string };
 
@@ -27,9 +28,20 @@ export async function generateMetadata({
   const { slug } = await params;
   const product = getProduct(slug);
   if (!product) return {};
+  const description = `${product.blurb} ${product.priceLabel}. Order by message from ${site.fullName}.`;
+  const route = `/products/${product.slug}`;
+
   return {
     title: `${product.name} — Products`,
-    description: `${product.blurb} ${product.priceLabel}. Order by message from ${site.fullName}.`,
+    description,
+    alternates: { canonical: canonical(route) },
+    openGraph: {
+      title: `${product.name} — ${site.fullName}`,
+      description,
+      url: canonical(route),
+      type: "website",
+      images: product.images.map((image) => ({ url: absoluteAsset(image.src) })),
+    },
   };
 }
 
@@ -45,33 +57,45 @@ export default async function ProductPage({
   const collection = getCollection(product.collection);
   const { prev, next } = adjacentProducts(slug);
 
+  /* Google will not show a product rich result without an image, so the
+     photography is part of the structured data rather than only the markup.
+     Prices are quoted in toman; schema.org needs a currency code, and the
+     ISO code for Iran is IRR (1 toman = 10 rial), so the figure is converted
+     rather than mislabelled. */
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
     name: product.name,
     alternateName: product.nameFa,
     description: product.blurb,
+    sku: product.slug,
     material: product.material,
     ...(product.size ? { size: product.size } : {}),
+    image: product.images.map((image) => absoluteAsset(image.src)),
     brand: { "@type": "Person", name: site.fullName },
     offers: {
       "@type": "Offer",
-      price: product.priceToman,
+      price: product.priceToman * 10,
       priceCurrency: "IRR",
+      itemCondition: "https://schema.org/NewCondition",
       availability: product.available
         ? "https://schema.org/InStock"
         : "https://schema.org/OutOfStock",
-      url: `${site.url.replace(/\/$/, "")}/products/${product.slug}/`,
+      url: canonical(`/products/${product.slug}`),
       seller: { "@type": "Person", name: site.fullName },
     },
   };
 
+  const crumbs = breadcrumbs([
+    { name: "Home", route: "/" },
+    { name: "Products", route: "/products" },
+    { name: product.name, route: `/products/${product.slug}` },
+  ]);
+
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
+      <JsonLd data={crumbs} />
 
       <article className="product">
         <div className="container">

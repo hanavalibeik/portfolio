@@ -5,6 +5,8 @@ import { adjacentProjects, getProject, projects } from "@/data/projects";
 import { getProjectCaption } from "@/data/projectCaptions";
 import { ContactCta } from "@/components/ContactCta";
 import { assetPath } from "@/lib/assetPath";
+import { site } from "@/data/site";
+import { JsonLd, absoluteAsset, breadcrumbs, canonical } from "@/lib/seo";
 
 type Params = { slug: string };
 
@@ -20,9 +22,21 @@ export async function generateMetadata({
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) return {};
+  const route = `/work/${project.slug}`;
+
   return {
     title: project.title,
     description: project.summary,
+    alternates: { canonical: canonical(route) },
+    openGraph: {
+      title: `${project.title} — ${project.category}`,
+      description: project.summary,
+      url: canonical(route),
+      type: "article",
+      // Per-project social image. A single site-wide og.png meant every case
+      // study shared one preview when the link was posted anywhere.
+      images: [{ url: absoluteAsset(project.cover.src) }],
+    },
   };
 }
 
@@ -38,8 +52,39 @@ export default async function ProjectPage({
   const caption = getProjectCaption(slug);
   const { prev, next } = adjacentProjects(slug);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: project.title,
+    headline: project.title,
+    description: project.summary,
+    genre: project.category,
+    dateCreated: project.year,
+    url: canonical(`/work/${project.slug}`),
+    image: [project.cover, ...project.images]
+      .filter((image) => image.type !== "video")
+      .map((image) => absoluteAsset(image.src)),
+    keywords: project.deliverables.join(", "),
+    author: {
+      "@type": "Person",
+      name: site.fullName,
+      jobTitle: site.role,
+      url: canonical("/"),
+    },
+    ...(project.client ? { sourceOrganization: { "@type": "Organization", name: project.client } } : {}),
+  };
+
+  const crumbs = breadcrumbs([
+    { name: "Home", route: "/" },
+    { name: "Work", route: "/work" },
+    { name: project.title, route: `/work/${project.slug}` },
+  ]);
+
   return (
     <>
+      <JsonLd data={jsonLd} />
+      <JsonLd data={crumbs} />
+
       <article>
         <header className="cs-hero">
           <div className="container">

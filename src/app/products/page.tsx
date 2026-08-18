@@ -4,11 +4,21 @@ import { OrderButton } from "@/components/OrderButton";
 import { ProductCard } from "@/components/ProductCard";
 import { collections, productsInCollection } from "@/data/products";
 import { site } from "@/data/site";
+import { absoluteAsset, canonical } from "@/lib/seo";
+
+const productsDescription =
+  "Printed pieces from Hana Valibeik's illustration work — postcards, magnets, mugs, tote bags and framed prints. Order by message.";
 
 export const metadata: Metadata = {
   title: "Products",
-  description:
-    "Printed pieces from Hana Valibeik's illustration work — postcards, magnets, mugs, tote bags and framed prints. Order by message.",
+  description: productsDescription,
+  alternates: { canonical: canonical("/products") },
+  openGraph: {
+    title: "Products",
+    description: productsDescription,
+    url: canonical("/products"),
+    images: [{ url: absoluteAsset("/products/shiraz-mug/01.webp") }],
+  },
 };
 
 export default function ProductsPage() {
