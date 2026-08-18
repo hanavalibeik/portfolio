@@ -32,8 +32,8 @@ export type Product = {
   material: string;
   /** Price in toman, as a number, for structured data and sorting. */
   priceToman: number;
-  /** Price formatted for display, Persian digits and separators. */
-  priceLabel: string;
+  /** Price formatted for display: Persian digits and separators, no unit. */
+  priceAmount: string;
   blurb: string;
   images: ProductImage[];
   available: boolean;
@@ -84,7 +84,7 @@ export const products: Product[] = [
     size: "15 × 21 cm",
     material: "Printed card", // TODO(owner): confirm stock and weight.
     priceToman: 98000,
-    priceLabel: "۹۸٬۰۰۰ تومان",
+    priceAmount: "۹۸٬۰۰۰",
     blurb: "A postcard from the Shiraz line drawings.",
     images: [
       {
@@ -104,7 +104,7 @@ export const products: Product[] = [
     size: null, // TODO(owner): capacity?
     material: "Ceramic",
     priceToman: 230000,
-    priceLabel: "۲۳۰٬۰۰۰ تومان",
+    priceAmount: "۲۳۰٬۰۰۰",
     blurb: "A ceramic mug printed with the Shiraz line drawings.",
     images: [
       {
@@ -126,7 +126,7 @@ export const products: Product[] = [
     size: null, // TODO(owner): finished dimensions?
     material: "Calico cotton",
     priceToman: 320000,
-    priceLabel: "۳۲۰٬۰۰۰ تومان",
+    priceAmount: "۳۲۰٬۰۰۰",
     blurb: "A cotton calico tote printed with the Shiraz line drawings.",
     images: [
       {
@@ -144,7 +144,7 @@ export const products: Product[] = [
     size: "9 × 9 cm",
     material: "Printed magnet",
     priceToman: 83000,
-    priceLabel: "۸۳٬۰۰۰ تومان",
+    priceAmount: "۸۳٬۰۰۰",
     blurb: "A square fridge magnet from the Shiraz line drawings.",
     images: [
       {
@@ -162,7 +162,7 @@ export const products: Product[] = [
     size: "20 × 30 cm",
     material: "Framed print", // TODO(owner): frame material and finish?
     priceToman: 350000,
-    priceLabel: "۳۵۰٬۰۰۰ تومان",
+    priceAmount: "۳۵۰٬۰۰۰",
     blurb: "A framed print from the Shiraz line drawings, ready to hang.",
     images: [
       {
@@ -173,6 +173,23 @@ export const products: Product[] = [
     available: true,
   },
 ];
+
+/**
+ * The currency unit, kept apart from the digits on purpose.
+ *
+ * "۹۸٬۰۰۰ تومان" as one string does not render the way it reads. Persian digits
+ * are bidi class EN and "تومان" is AL, so in an LTR block the whole span sits
+ * at bidi level 1-2 with no level-0 character to break it — the Unicode
+ * algorithm then reverses the lot and paints the unit to the LEFT of the
+ * number. Storing the two separately, and isolating them at render time, is
+ * what keeps the number first.
+ */
+export const PRICE_UNIT = "تومان";
+
+/** Plain-string price, for message bodies and metadata. */
+export function priceLabel(product: Product): string {
+  return `${product.priceAmount} ${PRICE_UNIT}`;
+}
 
 export function getProduct(slug: string): Product | undefined {
   return products.find((p) => p.slug === slug);

@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Product } from "@/data/products";
 import { assetPath } from "@/lib/assetPath";
 import { Registration } from "./Marks";
+import { Price } from "./Price";
 
 /**
  * A product reads as a print spec plate rather than a shop tile: trim marks at
@@ -46,7 +47,7 @@ export function ProductCard({ product }: { product: Product }) {
             {product.nameFa}
           </em>
         </span>
-        <span className="product-card__price">{product.priceLabel}</span>
+        <Price product={product} className="product-card__price" />
       </span>
 
       <span className="product-card__blurb">{product.blurb}</span>

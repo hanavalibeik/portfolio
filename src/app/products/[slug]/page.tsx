@@ -3,11 +3,13 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import "../../products.css";
 import { OrderButton } from "@/components/OrderButton";
+import { Price } from "@/components/Price";
 import { Registration } from "@/components/Marks";
 import {
   adjacentProducts,
   getCollection,
   getProduct,
+  priceLabel,
   products,
 } from "@/data/products";
 import { site } from "@/data/site";
@@ -28,7 +30,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const product = getProduct(slug);
   if (!product) return {};
-  const description = `${product.blurb} ${product.priceLabel}. Order by message from ${site.fullName}.`;
+  const description = `${product.blurb} ${priceLabel(product)}. Order by message from ${site.fullName}.`;
   const route = `/products/${product.slug}`;
 
   return {
@@ -165,7 +167,7 @@ export default async function ProductPage({
                 </div>
               </dl>
 
-              <p className="product__price">{product.priceLabel}</p>
+              <Price product={product} className="product__price" />
 
               <OrderButton product={product} collection={collection} />
 

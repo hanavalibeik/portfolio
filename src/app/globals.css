@@ -2425,14 +2425,26 @@ body:has(.home-page) ::selection {
   letter-spacing: -0.02em;
 }
 
+/* The pill is sized by its contents, not by a fixed width and aspect ratio.
+   Previously it was `width: min(64%, 47rem)` with `aspect-ratio: 4.08 / 1`,
+   which pins the width at 47rem above ~1175px while the handle keeps growing
+   with 5.6vw until ~1543px. Past that the text simply outgrew its container
+   and the trailing underscore punched through the right-hand curve.
+
+   Two rules keep it honest now: the box grows with the text, and the inline
+   padding is never smaller than the cap radius (half the height), because a
+   999px radius means the border is already curving inward at the height the
+   underscore sits at. Space inside the padding box is not the same as space
+   inside the outline. */
 .instagram-feed__closing-link {
-  display: flex;
-  width: min(64%, 47rem);
-  aspect-ratio: 4.08 / 1;
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+  min-height: clamp(6rem, 11.5vw, 11rem);
   align-items: center;
   gap: clamp(1.1rem, 2.4vw, 2.3rem);
   margin-block-start: clamp(4rem, 9vw, 8.5rem);
-  padding-inline: clamp(1.5rem, 5vw, 5rem);
+  padding-inline: clamp(3.25rem, 6vw, 6rem);
   border: 2px solid rgba(255, 255, 255, 0.94);
   border-radius: 999px;
   color: #f1f1f1;
@@ -2581,8 +2593,19 @@ body:has(.home-page) ::selection {
   border-radius: 50%;
   background: #fff;
   color: #000;
-  font-size: 0.7em;
   transition: color 240ms ease, background 240ms ease, transform 300ms ease;
+}
+
+.unified-footer__arrow svg {
+  /* 55% reproduces the ink width of the glyph this replaced (24px in a 57px
+     circle), so the button reads at the weight it was designed at. */
+  width: 55%;
+  height: 55%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .unified-footer__cta:hover .unified-footer__arrow,
@@ -2695,19 +2718,21 @@ body:has(.home-page) ::selection {
   }
 
   .instagram-feed__closing-link {
-    width: 100%;
-    min-height: 6.25rem;
-    aspect-ratio: auto;
+    width: fit-content;
+    max-width: 100%;
+    min-height: 5rem;
     margin-block-start: 4.5rem;
-    padding-inline: 1.5rem;
+    /* 2.6rem clears the 2.5rem cap radius of a 5rem-tall pill. */
+    padding-inline: 2.6rem;
+    gap: 0.9rem;
   }
 
   .instagram-feed__closing-link strong {
-    font-size: clamp(1.65rem, 9.5vw, 2.8rem);
+    font-size: clamp(1.35rem, 7vw, 2.8rem);
   }
 
   .instagram-feed__search {
-    width: clamp(2.25rem, 11vw, 3.35rem);
+    width: clamp(1.75rem, 8vw, 3.35rem);
   }
 
   .site-cta.unified-footer__cta {

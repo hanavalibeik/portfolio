@@ -42,7 +42,16 @@ export function SiteFooter() {
         <h2 className="unified-footer__cta-heading" id="footer-cta-heading">
           <a className="site-cta unified-footer__cta" href={`mailto:${site.email}`}>
             <span>Got a vision? Let’s bring it to life</span>
-            <span className="unified-footer__arrow" aria-hidden="true">→</span>
+            <span className="unified-footer__arrow" aria-hidden="true">
+            {/* An SVG, not a "→" glyph. Text is centred on the font's ascent
+                and descent, not on the ink of the character, and Archivo's
+                arrow sits low in its em box — it landed 7px below the middle
+                of a 57px circle. A path centred in its own viewBox cannot
+                drift with the font. */}
+            <svg viewBox="0 0 24 24" focusable="false">
+              <path d="M4 12h16M14 6l6 6-6 6" />
+            </svg>
+          </span>
           </a>
         </h2>
         <p className="unified-footer__note">{site.availability}</p>
