@@ -20,6 +20,8 @@
     sans-serif;
   --font-mono: "Spline Sans Mono Variable", "Spline Sans Mono", ui-monospace,
     "SF Mono", Menlo, monospace;
+  /* Persian product names — Archivo has no Arabic-script coverage. */
+  --font-fa: "Vazirmatn Variable", "Vazirmatn", "IRANSans", Tahoma, sans-serif;
 
   --container: 76rem;
   --gutter: clamp(1.25rem, 4vw, 2.5rem);
@@ -2691,4 +2693,128 @@ body:has(.home-page) ::selection {
   .unified-footer__socials {
     justify-content: flex-start;
   }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   MOBILE NAVIGATION
+
+   The nav carries four items. Below 40rem they collapse behind a
+   disclosure button. The links are always in the HTML — only the
+   visibility is CSS — so they stay reachable without JavaScript.
+   ───────────────────────────────────────────────────────────── */
+.nav-toggle {
+  display: none;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 2.75rem;
+  min-width: 2.75rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.nav-toggle__bars {
+  display: grid;
+  gap: 4px;
+  width: 1rem;
+}
+
+.nav-toggle__bars span {
+  display: block;
+  height: 1px;
+  background: currentColor;
+}
+
+@media (max-width: 40rem) {
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .site-header .container {
+    flex-wrap: wrap;
+    row-gap: 0;
+  }
+
+  .site-nav {
+    display: none;
+    order: 3;
+    flex-basis: 100%;
+    flex-direction: column;
+    gap: 0;
+    margin-inline: calc(-1 * var(--gutter));
+    padding-inline: var(--gutter);
+    padding-block-end: 0.75rem;
+    /* Opaque: on the home page the header floats over the artwork. */
+    background: #000;
+  }
+
+  .site-header--open .site-nav {
+    display: flex;
+  }
+
+  .site-nav a {
+    display: flex;
+    align-items: center;
+    min-height: 3rem;
+    border-bottom: 1px solid var(--line);
+    font-size: 1.0625rem;
+  }
+
+  .site-nav a::after {
+    display: none;
+  }
+
+  .site-header--home.site-header--open {
+    background: #000;
+  }
+}
+
+/* ─── Skip link ────────────────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--gutter);
+  z-index: 999;
+  padding: 0.75rem 1.25rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.skip-link:focus {
+  top: 0.75rem;
+}
+
+/* ─── Footer navigation ────────────────────────────────────── */
+.unified-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin-block-start: 1.5rem;
+}
+
+.unified-footer__links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+.unified-footer__links a:hover,
+.unified-footer__links a:focus-visible {
+  color: var(--ink);
 }

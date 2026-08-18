@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "@fontsource-variable/archivo/wdth.css";
 import "@fontsource-variable/spline-sans-mono";
+import "@fontsource-variable/vazirmatn";
 import "./globals.css";
 import "./services-motion.css";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -48,8 +49,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <a className="skip-link" href="#main">
+          Skip to content
+        </a>
         <SiteHeader />
-        <main>{children}</main>
+        <main id="main">{children}</main>
         <SiteFooter />
       </body>
     </html>
