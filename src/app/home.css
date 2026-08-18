@@ -451,13 +451,15 @@ body:has(.exact-home) .site-header--home .site-nav a::after {
   border-bottom: 1px solid rgba(0, 0, 0, 0.72);
 }
 
-.exact-projects-more {
+.exact-home .site-cta.exact-projects-more {
   position: absolute;
   z-index: 3;
   top: 99.9vw;
   right: 9.53vw;
   width: 12.77vw;
   height: 3.31vw;
+  max-width: none;
+  min-height: 0;
   display: grid;
   place-items: center;
   border: clamp(1.3px, 0.135vw, 2.6px) solid rgba(255, 255, 255, 0.96);
@@ -472,8 +474,8 @@ body:has(.exact-home) .site-header--home .site-nav a::after {
   transition: border-color 220ms ease, background 220ms ease, box-shadow 220ms ease, transform 220ms ease;
 }
 
-.exact-projects-more:hover,
-.exact-projects-more:focus-visible {
+.exact-home .site-cta.exact-projects-more:hover,
+.exact-home .site-cta.exact-projects-more:focus-visible {
   border-color: #3774ff;
   background: #0b4ad0;
   box-shadow: 0 0 1.8rem rgba(18, 88, 255, 0.42);
@@ -545,12 +547,14 @@ body:has(.exact-home) .site-header--home .site-nav a::after {
     height: 1rem;
   }
 
-  .exact-projects-more {
+  .exact-home .site-cta.exact-projects-more {
     position: relative;
     top: auto;
     right: auto;
     width: 9.5rem;
     height: 3rem;
+    max-width: none;
+    min-height: 0;
     margin: 2rem 0 0 auto;
     font-size: 0.9rem;
   }
