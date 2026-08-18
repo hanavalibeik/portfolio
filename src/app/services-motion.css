@@ -1,0 +1,124 @@
+/* Homepage services section — match supplied 1920×1080 artwork and auto-scroll cards. */
+.exact-home .exact-services {
+  position: relative;
+  width: 100%;
+  height: 56.25vw;
+  min-height: 0;
+  overflow: hidden;
+  background: #000;
+}
+
+.exact-home .exact-services-main {
+  overflow: hidden;
+}
+
+.exact-home .exact-services-rail {
+  display: flex;
+  width: max-content;
+  gap: 2.84vw;
+  overflow: visible;
+  will-change: transform;
+  animation: exactServicesAutoScroll 15s linear infinite;
+}
+
+.exact-home .exact-services-rail:hover,
+.exact-home .exact-services-rail:focus-within {
+  animation-play-state: paused;
+}
+
+.exact-home .exact-service-card {
+  flex: 0 0 19.77vw;
+  width: 19.77vw;
+  height: 12.86vw;
+  min-width: 19.77vw;
+  aspect-ratio: auto;
+  overflow: hidden;
+  border: 0;
+  border-radius: 2.24vw;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(ellipse at 56% 82%, rgba(17, 84, 255, .98) 0 22%, rgba(30, 101, 255, .88) 35%, transparent 64%),
+    radial-gradient(ellipse at 12% 14%, rgba(228, 235, 242, .98) 0 20%, rgba(209, 219, 232, .78) 38%, transparent 67%),
+    radial-gradient(ellipse at 91% 9%, rgba(239, 242, 245, .98) 0 18%, rgba(214, 222, 233, .76) 37%, transparent 68%),
+    linear-gradient(155deg, #dce4ec 0%, #a7badd 32%, #477ff2 67%, #e3e8ee 100%);
+  box-shadow: none;
+  filter: saturate(1.05) contrast(1.02);
+  transform: none;
+  transition: filter 250ms ease;
+}
+
+.exact-home .exact-service-card::before {
+  content: "";
+  position: absolute;
+  inset: -15%;
+  z-index: 0;
+  opacity: .92;
+  background:
+    radial-gradient(ellipse at 44% 72%, rgba(0, 72, 255, .72), transparent 51%),
+    radial-gradient(ellipse at 10% 4%, rgba(255,255,255,.72), transparent 42%),
+    radial-gradient(ellipse at 90% 8%, rgba(255,255,255,.68), transparent 44%);
+  filter: blur(17px);
+  transform: scale(1.07);
+  pointer-events: none;
+}
+
+.exact-home .exact-service-card h3 {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: #050505;
+  font-size: 1.77vw;
+  font-weight: 500;
+  letter-spacing: -.025em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.exact-home .exact-service-card:hover,
+.exact-home .exact-service-card:focus-visible {
+  transform: none;
+  filter: brightness(1.05) saturate(1.08);
+}
+
+@keyframes exactServicesAutoScroll {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-22.61vw, 0, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .exact-home .exact-services-rail {
+    animation: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .exact-home .exact-services {
+    height: auto;
+    min-height: 0;
+  }
+
+  .exact-home .exact-services-rail {
+    gap: 1rem;
+    animation-duration: 12s;
+  }
+
+  .exact-home .exact-service-card {
+    flex-basis: min(78vw, 22rem);
+    width: min(78vw, 22rem);
+    min-width: min(78vw, 22rem);
+    height: auto;
+    aspect-ratio: 379.63 / 247;
+    border-radius: 1.75rem;
+  }
+
+  .exact-home .exact-service-card h3 {
+    font-size: 1.15rem;
+  }
+
+  @keyframes exactServicesAutoScroll {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(calc(-1 * (min(78vw, 22rem) + 1rem)), 0, 0); }
+  }
+}
