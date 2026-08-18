@@ -38,8 +38,37 @@
 }
 
 .exact-home .exact-services-rail:hover,
-.exact-home .exact-services-rail:focus-within {
+.exact-home .exact-services-rail:focus-within,
+.exact-home .exact-services-rail[data-paused="true"] {
   animation-play-state: paused;
+}
+
+/* Explicit pause control — hover and focus-within cover mouse and keyboard,
+   but not touch. WCAG 2.2.2 wants a mechanism, not just an interaction. */
+.exact-home .exact-services-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 2.75rem;
+  margin-block-start: clamp(1rem, 2vw, 1.5rem);
+  padding: 0.5rem 1.15rem;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.86);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+}
+
+.exact-home .exact-services-toggle:hover,
+.exact-home .exact-services-toggle:focus-visible {
+  border-color: #fff;
+  background: #fff;
+  color: #000;
 }
 
 .exact-home .exact-service-card {
