@@ -17,6 +17,60 @@ body:has(.landing-art-hero) .site-header--home {
   object-fit: contain;
 }
 
+.landing-orbit-cleaner,
+.landing-orbit-text {
+  position: absolute;
+  left: 59.65%;
+  top: 24.35%;
+  width: 15.35%;
+  aspect-ratio: 1;
+  pointer-events: none;
+}
+
+/* The sentence is baked into the supplied artwork. This narrow, feathered
+   backdrop layer softens only that original ring before the live SVG sits on
+   top, keeping the portrait and the rest of the composition untouched. */
+.landing-orbit-cleaner {
+  z-index: 2;
+  -webkit-backdrop-filter: blur(clamp(6px, 0.72vw, 14px));
+  backdrop-filter: blur(clamp(6px, 0.72vw, 14px));
+  -webkit-mask-image: radial-gradient(
+    circle,
+    transparent 0 38%,
+    #000 44% 58%,
+    transparent 64%
+  );
+  mask-image: radial-gradient(
+    circle,
+    transparent 0 38%,
+    #000 44% 58%,
+    transparent 64%
+  );
+}
+
+.landing-orbit-text {
+  z-index: 3;
+  overflow: visible;
+  color: #f7f7f5;
+  animation: landing-orbit-spin 24s linear infinite;
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+.landing-orbit-text text {
+  fill: currentColor;
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 430;
+  letter-spacing: 0.7px;
+}
+
+@keyframes landing-orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .landing-art-title {
   position: absolute;
   width: 1px;
@@ -88,6 +142,10 @@ body:has(.landing-art-hero) .site-header--home {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .landing-orbit-text {
+    animation: none;
+  }
+
   .landing-hotspot--cta {
     transition-duration: 0.01ms;
   }
