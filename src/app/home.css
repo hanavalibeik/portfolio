@@ -279,77 +279,31 @@ body:has(.exact-home) .site-header--home .site-nav a::after {
   border-bottom: 1px solid;
 }
 
-/* About */
-.exact-about {
+/* Section 2 — supplied 1920 × 1080 artwork */
+.section-two-art {
   position: relative;
-  height: min(48.7vw, 42rem);
-}
-
-.exact-about > .exact-heading {
-  position: absolute;
-  top: 5.1vw;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.exact-about-grid {
-  position: absolute;
-  top: 12.6vw;
-  left: 0;
   width: 100%;
-  height: 33.6vw;
-  max-height: 29.5rem;
-  display: grid;
-  place-items: center;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.48) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.48) 1px, transparent 1px);
-  background-size: 4.15vw 4.15vw;
-}
-
-.exact-about-card {
-  position: relative;
-  z-index: 4;
-  width: 46.8vw;
-  height: 33.6vw;
-  max-width: 42rem;
-  max-height: 29.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border: 1px solid #fff;
-  border-radius: min(4vw, 3.5rem);
-  padding: 3vw 3.2vw;
-  background: rgba(0, 0, 0, 0.96);
-  text-align: center;
-  font-size: clamp(0.46rem, 1.42vw, 1.08rem);
-  line-height: 1.35;
-}
-
-.exact-about-card p + p {
-  margin-top: 1.8vw;
-}
-
-.exact-discipline {
-  position: absolute;
-  z-index: 3;
-  padding: 0.2em 0.45em;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
   background: #000;
-  color: #0759ff;
-  font-family: var(--font-mono);
-  font-size: clamp(0.34rem, 0.9vw, 0.75rem);
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
 }
 
-.discipline-packaging { top: 1.1vw; left: 13.2vw; }
-.discipline-advertising { top: 5.2vw; right: 2.1vw; }
-.discipline-poster { top: 9.3vw; left: 4.3vw; }
-.discipline-ui { top: 13.2vw; right: 17.5vw; }
-.discipline-typography { bottom: 9.5vw; left: 12.4vw; }
-.discipline-identity { bottom: 4.2vw; right: 5.1vw; }
-.discipline-logo { bottom: 0.7vw; left: 0.8vw; }
+.section-two-art__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.section-two-art__copy {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
 
 /* Projects */
 .exact-projects {
@@ -845,8 +799,6 @@ body:has(.exact-home) .site-header--home .site-nav a::after {
 @media (min-width: 1440px) {
   .exact-hero-copy { top: 16.5rem; }
   .exact-pill--cta { margin-top: 4rem; }
-  .exact-about > .exact-heading { top: 3rem; }
-  .exact-about-grid { top: 9.6rem; }
 }
 
 @media (max-width: 520px) {
@@ -857,10 +809,6 @@ body:has(.exact-home) .site-header--home .site-nav a::after {
   .exact-hero-copy p { margin-top: 0.5rem; }
   .exact-pill--cta { margin-top: 1rem; }
   .exact-pill { min-height: 1.35rem; }
-  .exact-about { height: 74vw; min-height: 17.5rem; }
-  .exact-about > .exact-heading { top: 6vw; }
-  .exact-about-grid { top: 17vw; height: 55vw; }
-  .exact-about-card { width: 72vw; height: 55vw; padding: 4vw 5vw; }
   .exact-projects {
     aspect-ratio: auto;
     min-height: 44rem;

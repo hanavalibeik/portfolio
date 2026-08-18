@@ -11,13 +11,6 @@ const homeProjects = [
   { title: "Shokouh Miyami", meta: "Visual identity · 2025", image: "/work/shokouh-miyami/01.webp", href: "/work/shokouh-miyami", alt: "Shokouh Miyami identity applied to business cards" },
 ];
 
-const disciplines = [
-  ["Packaging", "discipline-packaging"], ["Advertising campaign", "discipline-advertising"],
-  ["Poster", "discipline-poster"], ["UI", "discipline-ui"],
-  ["Typography", "discipline-typography"], ["Visual identity", "discipline-identity"],
-  ["Logo", "discipline-logo"],
-] as const;
-
 const homeServices = [
   "Branding & Identity",
   "Packaging Design",
@@ -49,15 +42,21 @@ export default function HomePage() {
         <a className="site-cta landing-hotspot landing-hotspot--cta" href={`mailto:${site.email}`}>Let’s collaborate</a>
       </section>
 
-      <section className="exact-about" aria-labelledby="about-heading">
-        <h2 className="exact-heading" id="about-heading">About me</h2>
-        <div className="exact-about-grid">
-          {disciplines.map(([label, className]) => <span className={`exact-discipline ${className}`} key={label}>{label}</span>)}
-          <div className="exact-about-card">
-            <p>I’m a self-taught Senior Graphic Designer and Illustrator with over 7 years of experience in branding, UI design and visual communication. I create visually strong, functional solutions that clarify brand identity, improve usability, and make communication more effective. My work starts with understanding context and goals, then translating them into clear, consistent, and scalable visual systems. I pay close attention to typography, layout, and color—always in service of the overall experience.</p>
-            <p>I’ve worked with teams across different industries, from cultural projects to digital products, delivering work that is both effective and user-focused.</p>
-          </div>
+      <section className="section-two-art" aria-labelledby="about-heading">
+        <div className="section-two-art__copy">
+          <h2 id="about-heading">About me</h2>
+          <p>I’m a self-taught Senior Graphic Designer and Illustrator with over 7 years of experience in branding, UI design and visual communication. I create visually strong, functional solutions that clarify brand identity, improve usability, and make communication more effective. My work starts with understanding context and goals, then translating them into clear, consistent, and scalable visual systems. I pay close attention to typography, layout, and color—always in service of the overall experience.</p>
+          <p>I’ve worked with teams across different industries, from cultural projects to digital products, delivering work that is both effective and user-focused.</p>
+          <p>Disciplines: Packaging, Advertising Campaign, Poster, UI, Typography, Visual Identity and Logo.</p>
         </div>
+        <img
+          className="section-two-art__image"
+          src={assetPath("/sections/sections-01.svg")}
+          alt=""
+          aria-hidden="true"
+          width="1920"
+          height="1080"
+        />
       </section>
 
       <section className="exact-projects" aria-labelledby="projects-heading">
