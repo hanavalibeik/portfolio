@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "sync:instagram": "node scripts/sync-instagram.mjs"
   },
   "dependencies": {
     "@fontsource-variable/archivo": "^5.2.5",

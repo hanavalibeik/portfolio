@@ -91,20 +91,16 @@ public/
 
 Accessibility & performance are part of the build: fully static pages, semantic landmarks, visible focus states, `prefers-reduced-motion` respected, and no client JS except the nav's active state and the work-page filters.
 
-## Instagram embeds
+## Automated Instagram feed
 
-The home page shows an Instagram band linking to the work account. To embed real posts inline, add their permalinks in `src/data/site.ts`:
+The home page reads its four latest Instagram cards from `src/data/instagram.json`. The scheduled workflow at `.github/workflows/sync-instagram.yml` refreshes that file and the matching images once per day, then rebuilds and deploys GitHub Pages. Each card is generated from one API object so its image, caption, date and permalink cannot become mismatched.
 
-```ts
-instagram: {
-  handle: "hanavalibeik_",
-  url: "https://www.instagram.com/hanavalibeik_/",
-  posts: [
-    "https://www.instagram.com/p/POST_ID_1/",
-    "https://www.instagram.com/p/POST_ID_2/",
-    "https://www.instagram.com/p/POST_ID_3/",
-  ],
-},
-```
+One-time GitHub setup:
 
-Get a permalink via ⋯ → Copy link on any post. Embeds load Instagram's official script on the live site only.
+1. Create a long-lived access token for the Instagram account through Meta's Instagram API.
+2. In the repository, open **Settings → Secrets and variables → Actions → Secrets**, then add `INSTAGRAM_ACCESS_TOKEN`. Never commit the token to the repository.
+3. If the token does not resolve the intended account through `me`, add an Actions variable named `INSTAGRAM_USER_ID` with the numeric Instagram user ID.
+4. Optionally set `INSTAGRAM_API_VERSION` as an Actions variable when upgrading from the script's default (`v24.0`).
+5. The workflow attempts its first sync when these files are deployed. You can also run **Actions → Sync Instagram and deploy → Run workflow** at any time; scheduled refreshes run every day at 03:17 UTC.
+
+The public website never receives the access token. The workflow downloads the media into `public/instagram/`, and a failed API request leaves the last known-good feed unchanged. Long-lived Meta tokens expire and must be replaced before expiry; the workflow notice remains harmless until the secret is configured.
