@@ -74,13 +74,18 @@ export default function HomePage() {
         <span className="exact-projects-tail-line" aria-hidden="true" />
       </section>
 
-      <section className="section-four-art" aria-label="Selected visual work">
+      <section
+        className="section-four-art"
+        aria-label="Selected visual work"
+        style={{ position: "relative", width: "100%", aspectRatio: "16 / 9", overflow: "hidden", background: "#000" }}
+      >
         <img
           className="section-four-art__image"
           src={assetPath("/sections/section-04.svg")}
           alt="Selected portfolio work"
           width="1920"
           height="1080"
+          style={{ display: "block", width: "100%", height: "100%", objectFit: "contain" }}
         />
       </section>
 
