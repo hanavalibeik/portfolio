@@ -62,10 +62,14 @@ export default function HomePage() {
               <span className="exact-project-media">
                 <img src={assetPath(project.image)} alt={project.alt} loading="lazy" />
               </span>
-              <span className="exact-project-info" aria-hidden="true">
+              <span
+                className="exact-project-info"
+                aria-hidden="true"
+                style={{ background: "rgba(0, 0, 0, 0.5)", color: "#fff" }}
+              >
                 <strong>{project.title}</strong>
                 <em>view more</em>
-                <i aria-hidden="true" />
+                <i aria-hidden="true" style={{ borderColor: "rgba(255, 255, 255, 0.82)" }} />
               </span>
             </Link>
           ))}
