@@ -66,11 +66,17 @@ array.
 
 ### Adding a product
 
-1. Create `public/products/<slug>/` and add a square photo as `01.webp`
-   (1200 × 1200, under 250 KB). See `public/products/README.md`.
+1. Create `public/products/<slug>/` and add a **square** photo as `01.webp`
+   (aim for 1200 × 1200, under 250 KB). Square matters: both the card and the
+   detail plate render inside an `aspect-ratio: 1` box with `object-fit: cover`,
+   so a landscape photo gets centre-cropped by the browser. Add `02.webp`,
+   `03.webp` and so on for extra angles.
 2. Copy an entry in `src/data/products.ts` and fill in the name in both English
    and Persian, size, material, price and blurb.
-3. Delete `placeholder: true` from the image once a real photo is in place.
+3. Write real `alt` text describing the photo, not the product name — the name
+   is already in the heading next to it.
+4. Set `placeholder: true` on an image only while waiting on real photography;
+   it renders a visible "photo coming soon" badge.
 
 The index page, detail pages, sitemap entries and structured data all derive
 from that array.
@@ -85,8 +91,15 @@ alternative. There is no cart, no payment gateway and no backend — by design.
 
 The home page reads its four latest Instagram cards from
 `src/data/instagram.json`. The scheduled workflow at
-`.github/workflows/sync-instagram.yml` refreshes that file and the matching
-images once a day, then rebuilds and deploys.
+`.github/workflows/sync-instagram.yml` refreshes that file and downloads the
+matching images into `public/instagram/` once a day, then commits the result to
+`main`. That commit is what triggers the deploy workflow — the sync itself does
+not build or deploy, so there is exactly one deploy path.
+
+Clicking a card opens a lightbox with the full image, the full caption, the post
+date and a link through to Instagram. It is a native `<dialog>`, so the focus
+trap, the Escape key and the return of focus to the thumbnail all come from the
+browser; left and right arrows move between posts.
 
 One-time setup:
 
@@ -99,12 +112,31 @@ One-time setup:
 4. Optionally set `INSTAGRAM_API_VERSION` when upgrading from the script default.
 
 Scheduled refreshes run daily at 03:17 UTC; you can also run the workflow
-manually. The public site never receives the token, and a failed API request
-leaves the last known-good feed in place.
+manually from the Actions tab. The public site never receives the token, and a
+failed API request leaves the last known-good feed in place.
 
-Meta tokens expire. When the synced feed is empty for any reason, the home page
-falls back to the hand-curated posts in `site.instagram.curated`, so the section
-never renders as a broken loading state.
+### Keeping the token alive
+
+Instagram long-lived tokens expire after **60 days**. Without renewal the feed
+silently freezes about two months after launch — the site keeps working, it just
+stops being current, which is the failure mode worth guarding against.
+
+The workflow renews the token on every run and writes the new value back. That
+write needs a token of its own: create a **fine-grained personal access token**
+scoped to this repository with **Secrets: read and write**, and store it as the
+secret `INSTAGRAM_TOKEN_ROTATION_PAT`.
+
+Without that PAT the sync still runs — it just stops working whenever the
+current Instagram token lapses, and you re-issue it by hand from the Meta app
+dashboard.
+
+### When the feed is empty
+
+If the token is missing, expired, or the first sync has not run yet, the home
+page falls back to the hand-curated posts in `site.instagram.curated`. If that
+is empty too, the section collapses to a single link across to the profile — it
+never renders as a broken loading state. A missing token also raises a workflow
+warning rather than failing silently.
 
 ---
 
@@ -116,4 +148,11 @@ never renders as a broken loading state.
 - Fonts are self-hosted through Fontsource: Archivo (display and body), Spline
   Sans Mono (metadata), Vazirmatn (Persian).
 - Accessibility is part of the build: semantic landmarks, a skip link, visible
-  focus states, 44px touch targets and `prefers-reduced-motion` respected.
+  focus states, 44px touch targets and `prefers-reduced-motion` respected. The
+  auto-scrolling services rail has an explicit pause control, since pausing on
+  hover and focus alone never reaches a touch user (WCAG 2.2.2).
+- SEO is derived, not hand-maintained: canonical URLs, per-page Open Graph
+  images and the sitemap all run through `src/lib/seo.tsx`, so they cannot drift
+  apart. Structured data covers `Person` and `WebSite` on the home page,
+  `CreativeWork` on case studies, `Product` on shop pages and `BreadcrumbList`
+  on both detail types.
