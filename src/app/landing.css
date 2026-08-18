@@ -10,6 +10,13 @@ body:has(.landing-art-hero) .site-header--home {
   background: #000;
 }
 
+/* Keep the two supplied 16:9 artworks on the same raster edge. Without this
+   tiny overlap, fractional viewport scaling can expose a clipped seam exactly
+   where the white transition strokes cross from section 1 into section 2. */
+.landing-art-hero + .section-two-art {
+  margin-top: -1px;
+}
+
 .landing-art-image {
   display: block;
   width: 100%;
