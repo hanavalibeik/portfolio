@@ -46,6 +46,17 @@ const homeServices = [
   "Advertising Campaign",
 ];
 
+/* Slot names drive placement on the grid band; order here is reading order. */
+const aboutDisciplines = [
+  { label: "Packaging", slot: "packaging" },
+  { label: "Advertising campaign", slot: "advertising" },
+  { label: "Poster", slot: "poster" },
+  { label: "Ui", slot: "ui" },
+  { label: "Typography", slot: "typography" },
+  { label: "Visual identity", slot: "identity" },
+  { label: "Logo", slot: "logo" },
+] as const;
+
 export default function HomePage() {
   const collection = collections[0];
   const featuredProducts = products.slice(0, 3);
@@ -105,6 +116,7 @@ export default function HomePage() {
               of Hana. Only the drawn ornaments inside it are. */}
           <div className="exact-portrait-stage">
             <span className="exact-blue-glow" aria-hidden="true" />
+            <span className="exact-hero-bracket" aria-hidden="true" />
             <span className="exact-portrait-mask">
               <img
                 src={assetPath("/about/portrait.webp")}
@@ -128,10 +140,13 @@ export default function HomePage() {
                   d="M100 25a75 75 0 1 1 0 150a75 75 0 1 1 0-150"
                 />
               </defs>
+              {/* One sentence, not two. The string used to be repeated, which
+                  made it 610 user units long on a 471-unit circle — it ran past
+                  its own start and printed "GrGraphic Designer" at the seam. It
+                  reads as a loop anyway once the ring turns. */}
               <text>
-                <textPath href="#landing-orbit-path" startOffset="0%">
-                  Graphic Designer  I&rsquo;m here, if you are looking for a Graphic
-                  Designer
+                <textPath href="#landing-orbit-path" startOffset="4%">
+                  I&rsquo;m here, if you are looking for a Graphic Designer
                 </textPath>
               </text>
             </svg>
@@ -143,10 +158,30 @@ export default function HomePage() {
           Previously a 16:9 SVG with every glyph outlined, and the
           real copy hidden from sight. Now it is ordinary text. */}
       <section className="home-about" aria-labelledby="about-heading">
-        <div className="exact-shell home-about__inner">
-          <div className="home-about__copy">
-            <p className="eyebrow">About</p>
-            <h2 id="about-heading">About me</h2>
+        <h2 className="home-about__title" id="about-heading">
+          About me
+          <span className="corner-mark" aria-hidden="true" />
+        </h2>
+
+        {/* Full-bleed modular grid carrying the disciplines as pinned labels,
+            with the copy centred on top of it. The labels are a real list, so
+            the disciplines stay readable in source order for anyone not seeing
+            the layout; the grid itself is decoration. */}
+        <div className="home-about__band">
+          <span className="home-about__grid" aria-hidden="true" />
+
+          <ul className="home-about__labels">
+            {aboutDisciplines.map((discipline) => (
+              <li
+                className={`home-about__label home-about__label--${discipline.slot}`}
+                key={discipline.label}
+              >
+                {discipline.label}
+              </li>
+            ))}
+          </ul>
+
+          <div className="home-about__card">
             <p>
               I&rsquo;m a self-taught Senior Graphic Designer and Illustrator
               with over 7 years of experience in branding, UI design and visual
@@ -162,16 +197,12 @@ export default function HomePage() {
               cultural projects to digital products, delivering work that is both
               effective and user-focused.
             </p>
-            <p className="home-about__disciplines">
-              Disciplines: Packaging, Advertising Campaign, Poster, UI,
-              Typography, Visual Identity and Logo.
-            </p>
-            <Link className="exact-pill" href="/about/">
-              More about me
-            </Link>
           </div>
-          <span className="home-about__arc" aria-hidden="true" />
         </div>
+
+        <Link className="exact-pill home-about__more" href="/about/">
+          More about me
+        </Link>
       </section>
 
       {/* ── Projects ──────────────────────────────────────────── */}
@@ -215,6 +246,19 @@ export default function HomePage() {
 
       {/* ── Services ──────────────────────────────────────────── */}
       <section className="exact-services" aria-labelledby="services-heading">
+        {/* Decorative thread continuing down from the projects curve. */}
+        <span className="exact-services-thread" aria-hidden="true" />
+        <svg
+          className="exact-services-diagonal"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          {/* non-scaling-stroke keeps the hairline at 1px however the box is
+              stretched, which preserveAspectRatio="none" would otherwise skew. */}
+          <line x1="100" y1="0" x2="0" y2="100" vectorEffect="non-scaling-stroke" />
+        </svg>
+
         <div className="exact-shell">
           <h2 className="exact-heading" id="services-heading">
             Services

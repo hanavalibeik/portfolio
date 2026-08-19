@@ -17,6 +17,8 @@
   --exact-white: #f7f7f5;
   --exact-blue: #064de7;
   --exact-line: rgba(255, 255, 255, 0.76);
+  --exact-blue: #1d66ff;
+  --about-grid: rgba(255, 255, 255, 0.34);
   position: relative;
   overflow: hidden;
   background: #000;
@@ -198,6 +200,27 @@ body:has(.exact-home) {
   filter: grayscale(1) contrast(1.06);
 }
 
+/* Hairline bracket under the portrait: a long horizontal rule with a short
+   riser at its right end. Sits behind the photograph (the mask is z-index 3),
+   so the portrait interrupts it exactly as it does in the design. */
+.exact-hero-bracket {
+  position: absolute;
+  z-index: 1;
+  right: -22%;
+  bottom: 15%;
+  width: 250%;
+  height: 16%;
+  border-right: 1px solid var(--exact-line);
+  border-bottom: 1px solid var(--exact-line);
+  pointer-events: none;
+}
+
+@media (max-width: 52rem) {
+  .exact-hero-bracket {
+    display: none;
+  }
+}
+
 .exact-node-line {
   position: absolute;
   z-index: 7;
@@ -230,12 +253,25 @@ body:has(.exact-home) {
 
 /* Rotating ring of type — this was always live SVG, and it is the one
    part of the old hero that never needed rebuilding. */
+/* The badge is centred on the vertex where the portrait's slanted top edge
+   meets its left edge — the `0 18%` point of the clip-path below. Percentage
+   margins resolve against the containing block's WIDTH, and the element is
+   square, so -26% pulls it back by exactly half its own width and half its own
+   height. That keeps it locked to the corner at every viewport size, and it
+   avoids putting a translate on `transform`, which the spin animation owns. */
 .landing-orbit-text {
   position: absolute;
   z-index: 8;
-  bottom: 4%;
-  left: -34%;
-  width: clamp(6rem, 14vw, 9.5rem);
+  /* Centred on the portrait's left edge, a third of the way down. The design
+     centres it on the vertex of the slanted top edge; this frame's slant is
+     shallower than the design's, so the true vertex sits high enough that a
+     ring this size would crown the photograph instead of resting against it.
+     Same relationship, adjusted to the frame that exists. */
+  top: 32%;
+  left: 0;
+  width: 56%;
+  margin-top: -28%;
+  margin-left: -28%;
   aspect-ratio: 1;
   overflow: visible;
   color: #f7f7f5;
@@ -245,7 +281,22 @@ body:has(.exact-home) {
   will-change: transform;
 }
 
-@media (max-width: 52rem) {
+/* Between the stacking breakpoint and roughly 1240px the columns are tight
+   enough that the nowrap h1 overruns its track, and the badge — which reaches
+   left of the portrait by half its own width — lands on top of it. Measured:
+   the two stop overlapping at 1240px. Below that the badge shrinks and tucks
+   against the photo instead of reaching past it. */
+@media (max-width: 77.5rem) {
+  .landing-orbit-text {
+    width: 42%;
+    margin-top: -21%;
+    margin-left: -14%;
+  }
+}
+
+/* Measured: even at the reduced size the badge and the h1 still touch below
+   1120px, so that is where it is dropped rather than at the layout breakpoint. */
+@media (max-width: 70rem) {
   .landing-orbit-text {
     display: none;
   }
@@ -272,65 +323,151 @@ body:has(.exact-home) {
 
 /* ─── About ────────────────────────────────────────────────── */
 .home-about {
-  padding-block: clamp(3rem, 8vw, 6rem);
+  padding-block: clamp(3rem, 8vw, 6rem) clamp(2rem, 5vw, 4rem);
 }
 
-.home-about__inner {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: clamp(2rem, 5vw, 4rem);
-  align-items: start;
-}
-
-@media (min-width: 52rem) {
-  .home-about__inner {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 0.55fr);
-  }
-}
-
-.home-about__copy h2 {
-  margin-block: 0.75rem 1.5rem;
+.home-about__title {
+  margin: 0 0 clamp(2rem, 5vw, 3.5rem);
+  color: #f1f1f1;
   font-size: clamp(1.75rem, 4.5vw, 2.75rem);
   font-weight: 760;
   font-variation-settings: "wdth" 110;
   line-height: 1;
   letter-spacing: -0.045em;
+  text-align: center;
 }
 
-.home-about__copy p {
-  max-width: 40em;
-  font-family: var(--font-body);
-  font-size: 1.0625rem;
-  line-height: 1.65;
-  color: rgba(255, 255, 255, 0.86);
-}
-
-.home-about__copy p + p {
-  margin-block-start: 1.25rem;
-}
-
-.home-about__disciplines {
-  color: var(--gray) !important;
-  font-size: 0.9375rem !important;
-}
-
-.home-about__copy .exact-pill {
-  margin-block-start: 2rem;
-}
-
-/* Hairline arc, drawn rather than shipped as a 310 KB SVG. */
-.home-about__arc {
-  position: relative;
-  display: block;
-  min-height: 10rem;
-  border-top: 1px solid var(--exact-line);
+/* The small right-angle tick that sits after each section heading. */
+.corner-mark {
+  display: inline-block;
+  width: 0.6em;
+  height: 0.6em;
+  margin-inline-start: 0.28em;
   border-right: 1px solid var(--exact-line);
-  border-top-right-radius: 12rem 8rem;
+  border-bottom: 1px solid var(--exact-line);
+  vertical-align: baseline;
 }
 
-@media (max-width: 52rem) {
-  .home-about__arc {
-    display: none;
+/* Full-bleed band. 100vw rather than 100% so it escapes the shell, with the
+   scrollbar allowance that `100vw` alone would get wrong. */
+.home-about__band {
+  position: relative;
+  width: 100%;
+  padding-block: clamp(2.5rem, 5vw, 4rem);
+  padding-inline: clamp(1rem, 4vw, 3rem);
+}
+
+.home-about__grid {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  /* Two periods per axis, deliberately non-multiples, so the modular grid
+     reads as irregular rather than as graph paper. */
+  background-image:
+    repeating-linear-gradient(to right, var(--about-grid) 0 1px, transparent 1px 9.3%),
+    repeating-linear-gradient(to right, var(--about-grid) 0 1px, transparent 1px 14.7%),
+    repeating-linear-gradient(to bottom, var(--about-grid) 0 1px, transparent 1px 5.2rem),
+    repeating-linear-gradient(to bottom, var(--about-grid) 0 1px, transparent 1px 8.5rem);
+  pointer-events: none;
+}
+
+.home-about__labels {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.home-about__label {
+  position: absolute;
+  color: var(--exact-blue);
+  font-family: var(--font-display);
+  font-size: clamp(0.68rem, 1.2vw, 1.12rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transform: translate(-50%, -50%);
+}
+
+.home-about__label--packaging   { top: 8%;  left: 18.5%; }
+.home-about__label--poster      { top: 32%; left: 8%; }
+.home-about__label--typography  { top: 69%; left: 18.5%; }
+.home-about__label--logo        { top: 93%; left: 5.5%; }
+.home-about__label--advertising { top: 19%; left: 86%; }
+.home-about__label--ui          { top: 44%; left: 81.5%; }
+.home-about__label--identity    { top: 82%; left: 87%; }
+
+.home-about__card {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 47%);
+  margin-inline: auto;
+  padding: clamp(1.75rem, 3.2vw, 3.25rem) clamp(1.5rem, 2.8vw, 3rem);
+  border: 1px solid var(--exact-line);
+  border-radius: clamp(1.5rem, 3vw, 2.75rem);
+  background: var(--paper);
+  text-align: center;
+}
+
+.home-about__card p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: var(--font-body);
+  /* The design sets roughly 45 characters to the line inside a card just under
+     half the page wide, which is a much larger setting than body copy. */
+  font-size: clamp(0.95rem, 1.18vw, 1.32rem);
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+.home-about__card p + p {
+  margin-block-start: 1rem;
+}
+
+.home-about__more {
+  display: block;
+  width: fit-content;
+  margin-inline: auto;
+  margin-block-start: clamp(2rem, 5vw, 3rem);
+}
+
+/* Below the breakpoint the labels cannot be pinned without colliding with the
+   card, so the band becomes an ordinary centred block and the disciplines
+   become a wrapped row underneath. */
+@media (max-width: 62rem) {
+  /* Stacked, with the copy ahead of the disciplines — the card is the point of
+     the section and the labels are supporting detail once they can no longer
+     be pinned around it. */
+  .home-about__band {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .home-about__card {
+    order: 1;
+    width: 100%;
+  }
+
+  .home-about__grid {
+    opacity: 0.5;
+  }
+
+  .home-about__labels {
+    order: 2;
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1.25rem;
+    margin-block-start: clamp(1.5rem, 4vw, 2.5rem);
+  }
+
+  .home-about__label {
+    position: static;
+    transform: none;
   }
 }
 
@@ -341,17 +478,64 @@ body:has(.exact-home) {
   overflow: hidden;
 }
 
+/* Runs in from the left edge, holds a straight horizontal for most of its
+   length, then turns down. The corner radius used to be 38vw wide against a
+   14rem-tall box, which meant the curve consumed the whole width and no
+   straight run survived — it read as a lone arc floating on the right. */
 .exact-project-curve {
   position: absolute;
   top: -1.85vw;
-  left: -10.4vw;
-  width: 78vw;
-  height: 17vw;
-  max-height: 14rem;
+  left: 0;
+  width: 68%;
+  height: clamp(6rem, 13vw, 12rem);
   border-top: 1px solid var(--exact-line);
   border-right: 1px solid var(--exact-line);
-  border-top-right-radius: 38vw 22vw;
+  border-top-right-radius: clamp(5rem, 12vw, 13rem) clamp(6rem, 13vw, 12rem);
   pointer-events: none;
+}
+
+@media (max-width: 52rem) {
+  .exact-project-curve {
+    display: none;
+  }
+}
+
+/* Continues the same thread past the projects grid: down the left, then a
+   right-angle turn out to the right edge, with a diagonal falling away to the
+   bottom-left corner. */
+.exact-services-thread {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  left: 27.5%;
+  height: 64%;
+  border-bottom: 1px solid var(--exact-line);
+  border-left: 1px solid var(--exact-line);
+  pointer-events: none;
+}
+
+.exact-services-diagonal {
+  position: absolute;
+  z-index: 0;
+  top: 64%;
+  left: 0;
+  width: 27.5%;
+  height: 22%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.exact-services-diagonal line {
+  stroke: var(--exact-line);
+  stroke-width: 1;
+}
+
+@media (max-width: 52rem) {
+  .exact-services-thread,
+  .exact-services-diagonal {
+    display: none;
+  }
 }
 
 .exact-projects-heading {
