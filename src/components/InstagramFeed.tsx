@@ -15,9 +15,9 @@ export function InstagramFeed() {
           rel="noreferrer"
           aria-label={`Follow ${site.instagram.handle} on Instagram`}
         >
-          <svg className="instagram-feed__search" viewBox="0 0 96 96" aria-hidden="true">
-            <circle cx="55" cy="41" r="24" />
-            <path d="m37.5 58.5-18 18a8 8 0 0 0 11.3 11.3l18-18" />
+          <svg className="instagram-feed__search" viewBox="0 0 114 130" aria-hidden="true">
+            <path d="M41 72 23.5 89.5a8.5 8.5 0 0 0 12 12L53 84" />
+            <circle cx="68.5" cy="58.5" r="29.5" />
           </svg>
           <strong>{site.instagram.handle}</strong>
         </a>
