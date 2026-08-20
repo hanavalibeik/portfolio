@@ -2,14 +2,9 @@
    PRODUCTS
 
    Stays inside the site's existing language — black field,
-   off-white ink, Archivo display, Spline Sans Mono metadata,
-   hairline construction marks. One addition: the collection's
-   printed ink colour, scoped to price, rules and the order
+   off-white ink, Archivo display and Spline Sans Mono metadata.
+   The collection's printed ink colour is scoped to price and the order
    button and used nowhere else on the site.
-
-   These are physical printed objects, so each one is presented
-   as a print spec plate: trim marks at the corners of the image
-   and a drawn dimension rule carrying its real size.
 
    Breakpoints follow the site scale: 40rem / 52rem / 64rem.
    ───────────────────────────────────────────────────────────── */
@@ -152,60 +147,6 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   text-align: center;
-}
-
-/* Trim marks — the same registration mark the project cards use, read here
-   as the die-cut marks that actually appear on printed goods. */
-.trim {
-  position: absolute;
-  width: 0.75rem;
-  height: 0.75rem;
-  transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.trim--tl { top: -0.375rem; left: -0.375rem; }
-.trim--tr { top: -0.375rem; right: -0.375rem; }
-.trim--br { bottom: -0.375rem; right: -0.375rem; }
-.trim--bl { bottom: -0.375rem; left: -0.375rem; }
-
-.product-card:hover .trim--tl { transform: translate(-2px, -2px); }
-.product-card:hover .trim--tr { transform: translate(2px, -2px); }
-.product-card:hover .trim--br { transform: translate(2px, 2px); }
-.product-card:hover .trim--bl { transform: translate(-2px, 2px); }
-
-/* Dimension rule — a measured line carrying the object's real size. */
-.product-card__rule {
-  position: relative;
-  display: block;
-  margin-block-start: 1.25rem;
-  border-top: 1px solid var(--line);
-}
-
-.product-card__rule::before,
-.product-card__rule::after {
-  content: "";
-  position: absolute;
-  top: -0.25rem;
-  width: 0;
-  height: 0.5rem;
-  border-left: 1px solid var(--line);
-}
-
-.product-card__rule::before { left: 0; }
-.product-card__rule::after { right: 0; }
-
-.product-card__rule span {
-  position: absolute;
-  top: -0.7rem;
-  left: 50%;
-  transform: translateX(-50%);
-  padding-inline: 0.6rem;
-  background: var(--paper);
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
-  color: var(--gray);
-  white-space: nowrap;
 }
 
 .product-card__meta {

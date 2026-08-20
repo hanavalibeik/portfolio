@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import "../../products.css";
 import { OrderButton } from "@/components/OrderButton";
 import { Price } from "@/components/Price";
-import { Registration } from "@/components/Marks";
 import {
   adjacentProducts,
   getCollection,
@@ -126,10 +125,6 @@ export default async function ProductPage({
                         Photo coming soon
                       </span>
                     )}
-                    <Registration className="trim trim--tl" />
-                    <Registration className="trim trim--tr" />
-                    <Registration className="trim trim--br" />
-                    <Registration className="trim trim--bl" />
                   </span>
                   {image.caption && <figcaption>{image.caption}</figcaption>}
                 </figure>
