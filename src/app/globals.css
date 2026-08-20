@@ -28,6 +28,101 @@
   --section-gap: clamp(4.5rem, 10vw, 8rem);
 }
 
+/* ─── Unified service-style CTA buttons ─────────────────────
+   The Services button is the source of truth. Large editorial links in the
+   Instagram section and footer keep their section-specific composition. */
+.exact-home .exact-pill:not(.exact-services-more),
+.exact-home .home-products__link,
+body .site-cta:not(.unified-footer__cta):not(.exact-footer-cta),
+.order .order__dm,
+.order .order__copy {
+  position: relative;
+  isolation: isolate;
+  z-index: 1;
+  display: inline-grid;
+  width: fit-content;
+  min-width: clamp(11rem, 12.7724vw, 15.328rem);
+  max-width: 100%;
+  min-height: clamp(3.25rem, 3.308vw, 3.97rem);
+  place-items: center;
+  gap: 0.5rem;
+  margin-inline: 0;
+  padding: 0.6rem 2rem;
+  overflow: hidden;
+  border: 2px solid #f1f1f1;
+  border-radius: clamp(1.625rem, 1.62vw, 1.944rem) 0
+    clamp(1.625rem, 1.62vw, 1.944rem)
+    clamp(1.625rem, 1.62vw, 1.944rem);
+  background: #231f20;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: clamp(0.9375rem, 1.35vw, 1.62rem);
+  font-weight: 700;
+  font-variation-settings: normal;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-align: center;
+  text-transform: none;
+  cursor: pointer;
+  transition: border-color 240ms ease, box-shadow 240ms ease,
+    transform 240ms ease;
+}
+
+.exact-home .exact-pill:not(.exact-services-more)::before,
+.exact-home .home-products__link::before,
+body .site-cta:not(.unified-footer__cta):not(.exact-footer-cta)::before,
+.order .order__dm::before,
+.order .order__copy::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0 100% 0 0;
+  border-radius: inherit;
+  background: linear-gradient(100deg, #0639ae, #0d63ff);
+  transition: inset 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.exact-home .exact-pill:not(.exact-services-more):hover,
+.exact-home .exact-pill:not(.exact-services-more):focus-visible,
+.exact-home .home-products__link:hover,
+.exact-home .home-products__link:focus-visible,
+body .site-cta:not(.unified-footer__cta):not(.exact-footer-cta):hover,
+body .site-cta:not(.unified-footer__cta):not(.exact-footer-cta):focus-visible,
+.order .order__dm:hover,
+.order .order__dm:focus-visible,
+.order .order__copy:hover,
+.order .order__copy:focus-visible {
+  border-color: #2f79ff;
+  background: #231f20;
+  color: #fff;
+  box-shadow: 0 0 1.5rem rgba(20, 92, 255, 0.38);
+  transform: translateY(-1px);
+}
+
+.exact-home .exact-pill:not(.exact-services-more):hover::before,
+.exact-home .exact-pill:not(.exact-services-more):focus-visible::before,
+.exact-home .home-products__link:hover::before,
+.exact-home .home-products__link:focus-visible::before,
+body .site-cta:not(.unified-footer__cta):not(.exact-footer-cta):hover::before,
+body .site-cta:not(.unified-footer__cta):not(.exact-footer-cta):focus-visible::before,
+.order .order__dm:hover::before,
+.order .order__dm:focus-visible::before,
+.order .order__copy:hover::before,
+.order .order__copy:focus-visible::before {
+  inset: 0;
+}
+
+@media (max-width: 36rem) {
+  .exact-home .exact-pill:not(.exact-services-more),
+  .exact-home .home-products__link,
+  body .site-cta:not(.unified-footer__cta):not(.exact-footer-cta),
+  .order .order__dm,
+  .order .order__copy {
+    min-width: min(11rem, 100%);
+    min-height: 3.25rem;
+  }
+}
+
 /* ─── Reset & base ─────────────────────────────────────────── */
 *,
 *::before,
