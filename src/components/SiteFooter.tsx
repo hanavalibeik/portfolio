@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { site } from "@/data/site";
 
 const footerLinks = [
@@ -34,33 +33,32 @@ export function SiteFooter() {
   return (
     <footer className="unified-footer" aria-labelledby="footer-cta-heading">
       <span className="unified-footer__glow" aria-hidden="true" />
+      <svg
+        className="unified-footer__curve"
+        viewBox="0 0 1496 513"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path
+          d="M 0 221.5 H 1044 C 1220 221.5 1364 350 1364 513"
+          vectorEffect="non-scaling-stroke"
+        />
+      </svg>
+
       <div className="unified-footer__shell">
-        {/* The link sits inside the heading, not the other way round. An <a>
-            wrapping an <h2> is valid HTML but announces as a link whose name is
-            the whole heading, and it drops the heading out of the rotor in some
-            screen readers. */}
         <h2 className="unified-footer__cta-heading" id="footer-cta-heading">
           <a className="site-cta unified-footer__cta" href={`mailto:${site.email}`}>
-            <span>Got a vision? Let’s bring it to life</span>
+            <span>Got a vision? Let&rsquo;s bring it to life</span>
             <span className="unified-footer__arrow" aria-hidden="true">
-            {/* An SVG, not a "→" glyph. Text is centred on the font's ascent
-                and descent, not on the ink of the character, and Archivo's
-                arrow sits low in its em box — it landed 7px below the middle
-                of a 57px circle. A path centred in its own viewBox cannot
-                drift with the font. */}
-            <svg viewBox="0 0 24 24" focusable="false">
-              <path d="M4 12h16M14 6l6 6-6 6" />
-            </svg>
-          </span>
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M4 12h16M14 6l6 6-6 6" />
+              </svg>
+            </span>
           </a>
         </h2>
         <p className="unified-footer__note">{site.availability}</p>
-        <nav className="unified-footer__links" aria-label="Footer">
-          <Link href="/work/">Work</Link>
-          <Link href="/products/">Products</Link>
-          <Link href="/about/">About</Link>
-          <Link href="/contact/">Contact</Link>
-        </nav>
+
         <div className="unified-footer__bottom">
           <div className="unified-footer__identity">
             <strong>{site.fullName}</strong>
