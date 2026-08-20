@@ -412,6 +412,18 @@ body:has(.exact-home) {
   pointer-events: none;
 }
 
+/* On the desktop artwork every blue label occupies one merged grid row.
+   Make the knockout almost as tall as that row, leaving only a narrow gap for
+   its horizontal borders. This removes the stray vertical line fragments
+   above and below the text without erasing the surrounding grid. */
+@media (min-width: 62.001rem) {
+  .home-about__label::before {
+    inset: 50% -0.72em auto;
+    height: calc(4.2047vw - 6px);
+    transform: translateY(-50%);
+  }
+}
+
 .home-about__label--packaging   { top: 6.03%;  left: 18.41%; }
 .home-about__label--poster      { top: 31.38%; left: 7.97%; }
 .home-about__label--typography  { top: 68.32%; left: 18.39%; }
