@@ -293,26 +293,32 @@ export default function HomePage() {
 
       {/* ── Services ──────────────────────────────────────────── */}
       <section className="exact-services" aria-labelledby="services-heading">
-        {/* Decorative thread continuing down from the projects curve. */}
-        <span className="exact-services-thread" aria-hidden="true" />
         <svg
-          className="exact-services-diagonal"
-          viewBox="0 0 100 100"
+          className="exact-services-lines"
+          viewBox="0 0 1920 1080"
           preserveAspectRatio="none"
           aria-hidden="true"
+          focusable="false"
         >
-          {/* non-scaling-stroke keeps the hairline at 1px however the box is
-              stretched, which preserveAspectRatio="none" would otherwise skew. */}
-          <line x1="100" y1="0" x2="0" y2="100" vectorEffect="non-scaling-stroke" />
+          <path
+            className="exact-services-axis"
+            d="M 606.28 -322.32 V 566.5 H 1920 M 606.28 566.5 L 0 910.5"
+            vectorEffect="non-scaling-stroke"
+          />
+          <path
+            className="exact-services-title-mark"
+            d="M 1094 28.65 V 58 H 1063"
+            vectorEffect="non-scaling-stroke"
+          />
         </svg>
 
-        <div className="exact-shell">
-          <h2 className="exact-heading" id="services-heading">
+        <div className="exact-shell exact-services-shell">
+          <h2 className="exact-heading exact-services-heading" id="services-heading">
             Services
           </h2>
           <ServicesRail services={homeServices} />
           <Link className="site-cta exact-pill exact-services-more" href="/work/">
-            View all work
+            view more
           </Link>
         </div>
       </section>

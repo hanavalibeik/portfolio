@@ -488,40 +488,38 @@ body:has(.exact-home) {
   }
 }
 
-/* Continues the same thread past the projects grid: down the left, then a
-   right-angle turn out to the right edge, with a diagonal falling away to the
-   bottom-left corner. */
-.exact-services-thread {
+/* Exact service-section construction lines from the supplied 1920 × 1080
+   artwork, including the small right-angle mark beside the heading. */
+.exact-services-lines {
   position: absolute;
   z-index: 0;
   top: 0;
-  right: 0;
-  left: 27.5%;
-  height: 64%;
-  border-bottom: 1px solid var(--exact-line);
-  border-left: 1px solid var(--exact-line);
-  pointer-events: none;
-}
-
-.exact-services-diagonal {
-  position: absolute;
-  z-index: 0;
-  top: 64%;
-  left: 0;
-  width: 27.5%;
-  height: 22%;
+  left: 50%;
+  width: min(100%, 120rem);
+  height: 100%;
+  transform: translateX(-50%);
   overflow: visible;
   pointer-events: none;
 }
 
-.exact-services-diagonal line {
-  stroke: var(--exact-line);
-  stroke-width: 1;
+.exact-services-axis {
+  fill: none;
+  stroke: #f1f1f1;
+  stroke-width: 3.27px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.exact-services-title-mark {
+  fill: none;
+  stroke: #f1f1f1;
+  stroke-width: 2px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 @media (max-width: 52rem) {
-  .exact-services-thread,
-  .exact-services-diagonal {
+  .exact-services-lines {
     display: none;
   }
 }
@@ -649,16 +647,105 @@ body:has(.exact-home) {
 }
 
 /* ─── Services ─────────────────────────────────────────────── */
-/* The rail and the cards are owned entirely by services-motion.css so that no
-   property is declared in two files. This section only supplies the container,
-   the heading and the trailing link. */
+/* Desktop reproduces the supplied 1920 × 1080 composition. */
 .exact-services {
   position: relative;
-  padding-block: clamp(4rem, 9vw, 8rem);
+  height: min(56.25vw, 67.5rem);
+  overflow: hidden;
+}
+
+.exact-services-shell {
+  position: relative;
+  width: min(100%, 120rem);
+  height: 100%;
+  margin-inline: auto;
+}
+
+.exact-services-heading {
+  position: absolute;
+  z-index: 2;
+  top: -0.55vw;
+  left: 50%;
+  margin: 0;
+  color: #f1f1f1;
+  font-family: var(--font-display);
+  font-size: min(3vw, 3.6rem);
+  font-weight: 760;
+  font-variation-settings: "wdth" 110;
+  line-height: 1;
+  letter-spacing: -0.055em;
+  transform: translateX(-50%);
+}
+
+.exact-services-heading::after {
+  display: none;
 }
 
 .exact-services-more {
-  margin-block-start: 2.5rem;
+  position: absolute;
+  z-index: 2;
+  top: 59.0935%;
+  left: 45.3385%;
+  width: 12.7724%;
+  min-width: 0;
+  height: 5.8815%;
+  min-height: 0;
+  margin: 0;
+  border: 2.6px solid #f1f1f1;
+  border-radius: 1.62vw 0 1.62vw 1.62vw;
+  padding: 0;
+  background: #231f20;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: min(1.35vw, 1.62rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 120rem) {
+  .exact-services-heading {
+    top: -0.66rem;
+  }
+
+  .exact-services-more {
+    border-radius: 1.944rem 0 1.944rem 1.944rem;
+  }
+}
+
+@media (max-width: 52rem) {
+  .exact-services {
+    height: auto;
+    padding-block: 4rem;
+  }
+
+  .exact-services-shell {
+    width: min(100% - 2 * var(--gutter), 82rem);
+    height: auto;
+  }
+
+  .exact-services-heading {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: fit-content;
+    margin-inline: auto;
+    font-size: clamp(2rem, 10vw, 3rem);
+    transform: none;
+  }
+
+  .exact-services-more {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: fit-content;
+    min-width: 11rem;
+    height: auto;
+    min-height: 3.25rem;
+    margin-block-start: 2.5rem;
+    border-radius: 1.625rem 0 1.625rem 1.625rem;
+    padding: 0.6rem 2rem;
+    font-size: 0.9375rem;
+  }
 }
 
 /* ─── Reduced motion ───────────────────────────────────────── */

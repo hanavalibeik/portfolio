@@ -6,26 +6,22 @@
    the heading and the trailing link, so no property is declared
    in two places.
 
-   Three changes from the original pass, all behaviour rather
-   than design — the card treatment and the motion are as
-   authored:
-
-   1. The loop is seamless. The card set is rendered twice in
-      page.tsx and the animation travels exactly one set's width,
-      so it no longer snaps back to the start.
-   2. The section is no longer a fixed 56.25vw band. That height
-      existed to match a 1920×1080 mockup while its contents were
-      absolutely positioned; with the contents in normal flow it
-      only produced dead space below the cards.
-   3. Sizes stop scaling above 1920px, so ultrawide monitors get
-      the 1920 design rather than a magnified one.
+   The desktop geometry is resolved directly from the supplied
+   1920×1080 artwork. The card set is rendered twice so the loop
+   stays seamless, and sizes stop scaling above 1920px so an
+   ultrawide display does not magnify the source composition.
    ───────────────────────────────────────────────────────────── */
 
-/* Clipping frame — cards scroll in and out of this, and without it the
-   rail would overflow and give the page a horizontal scrollbar. */
+/* Exact 1920 px placement from the supplied artwork: the visible rail starts
+   at x=848, y=154 and is clipped by the right edge of the viewport. */
 .exact-home .exact-services-main {
+  position: absolute;
+  top: 8.0208vw;
+  right: 0;
+  left: 44.1667vw;
+  height: 12.8646vw;
   overflow: hidden;
-  margin-block-start: clamp(2rem, 5vw, 3.5rem);
+  margin: 0;
 }
 
 .exact-home .exact-services-rail {
@@ -38,37 +34,8 @@
 }
 
 .exact-home .exact-services-rail:hover,
-.exact-home .exact-services-rail:focus-within,
-.exact-home .exact-services-rail[data-paused="true"] {
+.exact-home .exact-services-rail:focus-within {
   animation-play-state: paused;
-}
-
-/* Explicit pause control — hover and focus-within cover mouse and keyboard,
-   but not touch. WCAG 2.2.2 wants a mechanism, not just an interaction. */
-.exact-home .exact-services-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  min-height: 2.75rem;
-  margin-block-start: clamp(1rem, 2vw, 1.5rem);
-  padding: 0.5rem 1.15rem;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 999px;
-  background: transparent;
-  color: rgba(255, 255, 255, 0.86);
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
-}
-
-.exact-home .exact-services-toggle:hover,
-.exact-home .exact-services-toggle:focus-visible {
-  border-color: #fff;
-  background: #fff;
-  color: #000;
 }
 
 .exact-home .exact-service-card {
@@ -116,8 +83,10 @@
   z-index: 1;
   margin: 0;
   color: #050505;
+  font-family: var(--font-display);
   font-size: 1.77vw;
   font-weight: 500;
+  font-variation-settings: "wdth" 100;
   letter-spacing: -.025em;
   line-height: 1;
   white-space: nowrap;
@@ -141,6 +110,12 @@
    1920px, so an ultrawide monitor gets the intended design rather than a
    magnified one. */
 @media (min-width: 120rem) {
+  .exact-home .exact-services-main {
+    top: 9.625rem;
+    left: calc(50% - 7rem);
+    height: 15.432rem;
+  }
+
   .exact-home .exact-services-rail {
     gap: 3.408rem;
   }
@@ -166,6 +141,12 @@
 /* Below 52rem the vw-sized cards would drop the label under 12px, so they
    switch to a fixed comfortable size. */
 @media (max-width: 52rem) {
+  .exact-home .exact-services-main {
+    position: static;
+    height: auto;
+    margin-block-start: 2.5rem;
+  }
+
   .exact-home .exact-services-rail {
     gap: 1rem;
     animation-duration: 12s;
