@@ -201,35 +201,30 @@ body:has(.exact-home) {
   pointer-events: none;
 }
 
-.exact-node-line {
+.exact-frame-node {
   position: absolute;
   z-index: 7;
   display: block;
-  border-color: var(--exact-line);
+  top: -4.11%;
+  left: 87.75%;
+  width: 23.4%;
+  max-width: none;
+  overflow: visible;
+  pointer-events: none;
 }
 
-.exact-node-line--top {
-  top: -1.5rem;
-  right: 3rem;
-  width: 4rem;
-  height: 3rem;
-  border-top: 1px solid;
-  border-right: 1px solid;
-  transform: rotate(35deg) skewX(-20deg);
+.exact-frame-node line {
+  fill: none;
+  stroke: #f1f1f1;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-miterlimit: 10;
 }
 
-.exact-node-line--top::before,
-.exact-node-line--top::after {
-  content: "";
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: #fff;
+.exact-frame-node circle,
+.exact-frame-node rect {
+  fill: #f1f1f1;
 }
-
-.exact-node-line--top::before { top: -2px; left: -2px; }
-.exact-node-line--top::after { right: -2px; bottom: -2px; }
 
 /* The anchor owns positioning and the SVG owns rotation. Keeping those two
    transforms separate locks the badge to the frame vertex at every size. */

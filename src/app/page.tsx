@@ -150,7 +150,22 @@ export default function HomePage() {
                 />
               </g>
             </svg>
-            <span className="exact-node-line exact-node-line--top" aria-hidden="true" />
+            <svg
+              className="exact-frame-node"
+              viewBox="0 0 83.28 72.73"
+              aria-hidden="true"
+            >
+              <line x1="6.81" y1="6.67" x2="76.89" y2="66.92" />
+              <circle cx="6.24" cy="6.24" r="6.24" />
+              <circle cx="77.04" cy="66.49" r="6.24" />
+              <rect
+                x="36.63"
+                y="31.79"
+                width="11.08"
+                height="11.08"
+                transform="rotate(-5.23 42.17 37.33)"
+              />
+            </svg>
 
             {/* The rotating badge belongs to the portrait, so it is positioned
                 against the portrait. It used to sit outside this element and
