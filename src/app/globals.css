@@ -192,8 +192,8 @@ code {
 
 .site-logo {
   display: block;
-  width: 2.25rem;
-  height: 2.25rem;
+  width: 2.5rem;
+  height: 2.5rem;
   object-fit: contain;
 }
 
@@ -210,7 +210,7 @@ code {
 }
 
 .site-nav a {
-  font-size: clamp(0.95rem, 1.1vw, 1.0625rem);
+  font-size: clamp(1rem, 1.2vw, 1.125rem);
   font-weight: 500;
   padding-block: 0.35rem;
   border-bottom: 2px solid transparent;
@@ -1342,8 +1342,8 @@ body:has(.home-page) ::selection {
 
 .site-header--home .site-logo {
   display: block;
-  width: clamp(2.25rem, 2.5vw, 2.5rem);
-  height: clamp(2.25rem, 2.5vw, 2.5rem);
+  width: clamp(2.5rem, 2.8vw, 2.75rem);
+  height: clamp(2.5rem, 2.8vw, 2.75rem);
 }
 
 .site-header--home .site-nav {
@@ -1354,7 +1354,7 @@ body:has(.home-page) ::selection {
   position: relative;
   color: #fff;
   border: 0;
-  font-size: clamp(0.95rem, 1vw, 1.05rem);
+  font-size: clamp(1.05rem, 1.25vw, 1.2rem);
   font-weight: 600;
 }
 
