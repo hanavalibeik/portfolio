@@ -323,13 +323,16 @@ body:has(.exact-home) {
 
 /* ─── About ────────────────────────────────────────────────── */
 .home-about {
-  padding-block: clamp(3rem, 8vw, 6rem) clamp(2rem, 5vw, 4rem);
+  /* The source artwork is a 1920 × 1080 composition.  These dimensions keep
+     the title, grid band and central card on the same proportional system as
+     that artwork instead of letting three unrelated paddings drift apart. */
+  padding-block: 5.05vw clamp(2rem, 5vw, 4rem);
 }
 
 .home-about__title {
-  margin: 0 0 clamp(2rem, 5vw, 3.5rem);
+  margin: 0 0 4.55vw;
   color: #f1f1f1;
-  font-size: clamp(1.75rem, 4.5vw, 2.75rem);
+  font-size: clamp(2.5rem, 3vw, 3.6rem);
   font-weight: 760;
   font-variation-settings: "wdth" 110;
   line-height: 1;
@@ -353,21 +356,22 @@ body:has(.exact-home) {
 .home-about__band {
   position: relative;
   width: 100%;
-  padding-block: clamp(2.5rem, 5vw, 4rem);
-  padding-inline: clamp(1rem, 4vw, 3rem);
+  height: 33.6979vw;
 }
 
 .home-about__grid {
   position: absolute;
   z-index: 0;
   inset: 0;
-  /* Two periods per axis, deliberately non-multiples, so the modular grid
-     reads as irregular rather than as graph paper. */
+  /* Exact source grid: 80 px cells separated by a 0.73 px stroke in the
+     1920 px master.  The small negative x offset preserves the partial first
+     and last columns visible in the supplied SVG. */
   background-image:
-    repeating-linear-gradient(to right, var(--about-grid) 0 1px, transparent 1px 9.3%),
-    repeating-linear-gradient(to right, var(--about-grid) 0 1px, transparent 1px 14.7%),
-    repeating-linear-gradient(to bottom, var(--about-grid) 0 1px, transparent 1px 5.2rem),
-    repeating-linear-gradient(to bottom, var(--about-grid) 0 1px, transparent 1px 8.5rem);
+    linear-gradient(to right, rgba(241, 241, 241, 0.72) 0 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(241, 241, 241, 0.72) 0 1px, transparent 1px);
+  background-position: -0.4401vw 0;
+  background-size: 4.2047vw 4.2047vw;
+  background-repeat: repeat;
   pointer-events: none;
 }
 
@@ -382,44 +386,52 @@ body:has(.exact-home) {
 
 .home-about__label {
   position: absolute;
-  color: var(--exact-blue);
+  color: #0358d0;
   font-family: var(--font-display);
-  font-size: clamp(0.68rem, 1.2vw, 1.12rem);
-  font-weight: 700;
-  letter-spacing: 0.06em;
+  font-size: clamp(0.75rem, 1.55vw, 1.86rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
   text-transform: uppercase;
   white-space: nowrap;
   transform: translate(-50%, -50%);
+  /* In the source each label sits on a black knockout so grid lines never
+     run through its letters. */
+  background: #000;
+  padding: 0.2em 0.55em;
 }
 
-.home-about__label--packaging   { top: 8%;  left: 18.5%; }
-.home-about__label--poster      { top: 32%; left: 8%; }
-.home-about__label--typography  { top: 69%; left: 18.5%; }
-.home-about__label--logo        { top: 93%; left: 5.5%; }
-.home-about__label--advertising { top: 19%; left: 86%; }
-.home-about__label--ui          { top: 44%; left: 81.5%; }
-.home-about__label--identity    { top: 82%; left: 87%; }
+.home-about__label--packaging   { top: 6.03%;  left: 18.41%; }
+.home-about__label--poster      { top: 31.38%; left: 7.97%; }
+.home-about__label--typography  { top: 68.32%; left: 18.39%; }
+.home-about__label--logo        { top: 93.82%; left: 3.96%; }
+.home-about__label--advertising { top: 18.39%; left: 87.58%; }
+.home-about__label--ui          { top: 43.74%; left: 81.51%; }
+.home-about__label--identity    { top: 81.14%; left: 87.86%; }
 
 .home-about__card {
   position: relative;
   z-index: 2;
-  width: min(100%, 47%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: min(100%, 46.6146vw);
+  height: 100%;
   margin-inline: auto;
-  padding: clamp(1.75rem, 3.2vw, 3.25rem) clamp(1.5rem, 2.8vw, 3rem);
-  border: 1px solid var(--exact-line);
-  border-radius: clamp(1.5rem, 3vw, 2.75rem);
+  padding: clamp(1.75rem, 2.5vw, 3rem) clamp(1.5rem, 2.9vw, 3.5rem);
+  border: 2px solid #f1f1f1;
+  border-radius: 3.995vw;
   background: var(--paper);
   text-align: center;
 }
 
 .home-about__card p {
   margin: 0;
-  color: rgba(255, 255, 255, 0.9);
+  color: #cbcbcb;
   font-family: var(--font-body);
-  /* The design sets roughly 45 characters to the line inside a card just under
-     half the page wide, which is a much larger setting than body copy. */
-  font-size: clamp(0.95rem, 1.18vw, 1.32rem);
-  line-height: 1.55;
+  font-size: clamp(0.95rem, 1.72vw, 2.06rem);
+  font-weight: 430;
+  line-height: 1.24;
+  letter-spacing: -0.035em;
   text-wrap: pretty;
 }
 
@@ -444,15 +456,23 @@ body:has(.exact-home) {
   .home-about__band {
     display: flex;
     flex-direction: column;
+    height: auto;
+    padding-block: clamp(2.5rem, 5vw, 4rem);
+    padding-inline: clamp(1rem, 4vw, 3rem);
   }
 
   .home-about__card {
     order: 1;
     width: 100%;
+    height: auto;
+    min-height: 0;
+    border-radius: clamp(1.5rem, 5vw, 2.75rem);
   }
 
   .home-about__grid {
     opacity: 0.5;
+    background-position: 0 0;
+    background-size: 3.5rem 3.5rem;
   }
 
   .home-about__labels {
@@ -468,6 +488,23 @@ body:has(.exact-home) {
   .home-about__label {
     position: static;
     transform: none;
+  }
+}
+
+@media (max-width: 40rem) {
+  .home-about {
+    padding-block-start: 3rem;
+  }
+
+  .home-about__title {
+    margin-block-end: 2rem;
+    font-size: clamp(1.75rem, 9vw, 2.5rem);
+  }
+
+  .home-about__card p {
+    font-size: clamp(0.95rem, 4.2vw, 1.1rem);
+    line-height: 1.5;
+    letter-spacing: -0.015em;
   }
 }
 
