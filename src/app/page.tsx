@@ -133,23 +133,21 @@ export default function HomePage() {
                 against the portrait. It used to sit outside this element and
                 resolve against the page shell at top/right, which parked it
                 under the navigation and hung it off the right edge. */}
-            <svg className="landing-orbit-text" viewBox="0 0 200 200" aria-hidden="true">
-              <defs>
-                <path
-                  id="landing-orbit-path"
-                  d="M100 25a75 75 0 1 1 0 150a75 75 0 1 1 0-150"
-                />
-              </defs>
-              {/* One sentence, not two. The string used to be repeated, which
-                  made it 610 user units long on a 471-unit circle — it ran past
-                  its own start and printed "GrGraphic Designer" at the seam. It
-                  reads as a loop anyway once the ring turns. */}
-              <text>
-                <textPath href="#landing-orbit-path" startOffset="4%">
-                  I&rsquo;m here, if you are looking for a Graphic Designer
-                </textPath>
-              </text>
-            </svg>
+            <span className="landing-orbit-anchor" aria-hidden="true">
+              <svg className="landing-orbit-text" viewBox="0 0 200 200">
+                <defs>
+                  <path
+                    id="landing-orbit-path"
+                    d="M100 25a75 75 0 1 1 0 150a75 75 0 1 1 0-150"
+                  />
+                </defs>
+                <text>
+                  <textPath href="#landing-orbit-path" startOffset="4%">
+                    I&rsquo;m here, if you are looking for a Graphic Designer
+                  </textPath>
+                </text>
+              </svg>
+            </span>
           </div>
         </div>
       </section>

@@ -251,54 +251,34 @@ body:has(.exact-home) {
 .exact-node-line--top::before { top: -2px; left: -2px; }
 .exact-node-line--top::after { right: -2px; bottom: -2px; }
 
-/* Rotating ring of type — this was always live SVG, and it is the one
-   part of the old hero that never needed rebuilding. */
-/* The badge is centred on the vertex where the portrait's slanted top edge
-   meets its left edge — the `0 18%` point of the clip-path below. Percentage
-   margins resolve against the containing block's WIDTH, and the element is
-   square, so -26% pulls it back by exactly half its own width and half its own
-   height. That keeps it locked to the corner at every viewport size, and it
-   avoids putting a translate on `transform`, which the spin animation owns. */
-.landing-orbit-text {
+/* The anchor owns positioning and the SVG owns rotation. Keeping those two
+   transforms separate locks the badge to the frame vertex at every size. */
+.landing-orbit-anchor {
   position: absolute;
   z-index: 8;
-  /* Centred on the portrait's left edge, a third of the way down. The design
-     centres it on the vertex of the slanted top edge; this frame's slant is
-     shallower than the design's, so the true vertex sits high enough that a
-     ring this size would crown the photograph instead of resting against it.
-     Same relationship, adjusted to the frame that exists. */
-  top: 32%;
+  top: 24.1%;
   left: 0;
-  width: 56%;
-  margin-top: -28%;
-  margin-left: -28%;
+  width: 57%;
   aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.landing-orbit-text {
+  width: 100%;
+  height: 100%;
   overflow: visible;
   color: #f7f7f5;
-  pointer-events: none;
   animation: landing-orbit-spin 24s linear infinite;
   transform-origin: 50% 50%;
   will-change: transform;
 }
 
-/* Between the stacking breakpoint and roughly 1240px the columns are tight
-   enough that the nowrap h1 overruns its track, and the badge — which reaches
-   left of the portrait by half its own width — lands on top of it. Measured:
-   the two stop overlapping at 1240px. Below that the badge shrinks and tucks
-   against the photo instead of reaching past it. */
+/* Tight desktop columns need a slightly smaller badge; it remains visible and
+   attached to the frame instead of disappearing at an arbitrary viewport. */
 @media (max-width: 77.5rem) {
-  .landing-orbit-text {
-    width: 42%;
-    margin-top: -21%;
-    margin-left: -14%;
-  }
-}
-
-/* Measured: even at the reduced size the badge and the h1 still touch below
-   1120px, so that is where it is dropped rather than at the layout breakpoint. */
-@media (max-width: 70rem) {
-  .landing-orbit-text {
-    display: none;
+  .landing-orbit-anchor {
+    width: 49%;
   }
 }
 
@@ -308,11 +288,6 @@ body:has(.exact-home) {
   font-size: 19px;
   font-weight: 430;
   letter-spacing: 0.7px;
-  /* The ring straddles the black ground and the edge of the photograph. */
-  paint-order: stroke fill;
-  stroke: rgba(0, 0, 0, 0.55);
-  stroke-width: 2.4px;
-  stroke-linejoin: round;
 }
 
 @keyframes landing-orbit-spin {
