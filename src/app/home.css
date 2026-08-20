@@ -386,18 +386,30 @@ body:has(.exact-home) {
 
 .home-about__label {
   position: absolute;
+  z-index: 1;
+  isolation: isolate;
   color: #0358d0;
   font-family: var(--font-display);
   font-size: clamp(0.75rem, 1.55vw, 1.86rem);
   font-weight: 800;
+  line-height: 1;
   letter-spacing: -0.035em;
   text-transform: uppercase;
   white-space: nowrap;
   transform: translate(-50%, -50%);
-  /* In the source each label sits on a black knockout so grid lines never
-     run through its letters. */
+  padding: 0.12em 0.45em;
+}
+
+/* A separate knockout sits above the grid and behind the live HTML text.
+   Its overscan removes the line ends as well as the line directly below the
+   glyphs, so no grid stroke can enter a label's visual frame. */
+.home-about__label::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -0.42em -0.72em;
   background: #000;
-  padding: 0.2em 0.55em;
+  pointer-events: none;
 }
 
 .home-about__label--packaging   { top: 6.03%;  left: 18.41%; }
