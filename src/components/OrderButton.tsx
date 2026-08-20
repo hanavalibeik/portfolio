@@ -95,18 +95,18 @@ export function OrderButton({
   return (
     <div className={`order${variant === "compact" ? " order--compact" : ""}`}>
       {mounted && (
-        <button type="button" className="order__copy" onClick={copy}>
+        <button type="button" className="site-cta order__copy" onClick={copy}>
           {status === "copied" ? "Copied — now paste it in the DM" : "Copy order details"}
         </button>
       )}
 
-      <a className="order__dm" href={dmUrl} target="_blank" rel="noreferrer">
+      <a className="site-cta order__dm" href={dmUrl} target="_blank" rel="noreferrer">
         Order on Instagram
         <span aria-hidden="true">↗</span>
       </a>
 
       {waUrl && (
-        <a className="order__alt" href={waUrl} target="_blank" rel="noreferrer">
+        <a className="site-cta order__alt" href={waUrl} target="_blank" rel="noreferrer">
           Or message on WhatsApp
         </a>
       )}

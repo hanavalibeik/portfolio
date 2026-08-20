@@ -107,7 +107,7 @@ export default function HomePage() {
               <span>Hana Vali</span>
             </h1>
             <p>Graphic design &amp; illustration portfolio</p>
-            <a className="exact-pill exact-pill--cta" href={`mailto:${site.email}`}>
+            <a className="site-cta exact-pill exact-pill--cta" href={`mailto:${site.email}`}>
               Let&rsquo;s collaborate
             </a>
           </div>
@@ -236,7 +236,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <Link className="exact-pill home-about__more" href="/about/">
+        <Link className="site-cta exact-pill home-about__more" href="/about/">
           More about me
         </Link>
       </section>
@@ -285,7 +285,7 @@ export default function HomePage() {
               </Link>
             ))}
           </div>
-          <Link className="exact-pill exact-projects-more" href="/work/">
+          <Link className="site-cta exact-pill exact-projects-more" href="/work/">
             View all work
           </Link>
         </div>
@@ -311,7 +311,7 @@ export default function HomePage() {
             Services
           </h2>
           <ServicesRail services={homeServices} />
-          <Link className="exact-pill exact-services-more" href="/work/">
+          <Link className="site-cta exact-pill exact-services-more" href="/work/">
             View all work
           </Link>
         </div>
