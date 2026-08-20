@@ -44,6 +44,14 @@ const homeServices = [
   "Branding & Identity",
   "Packaging Design",
   "Advertising Campaign",
+  "Poster",
+  "Logo",
+  "Catalog",
+  "Banner Design",
+  "Social Media",
+  "UI",
+  "Environmental Graphic",
+  "Illustration",
 ];
 
 /* Slot names drive placement on the grid band; order here is reading order. */
@@ -252,6 +260,34 @@ export default function HomePage() {
         >
           <path
             d="M -199.56 0 H 736.54 C 961.64 0 1131 4.71 1237.82 208.57 L 1299.81 338.44"
+            vectorEffect="non-scaling-stroke"
+          />
+        </svg>
+        <svg
+          className="exact-project-curve"
+          viewBox="0 0 1920 1080"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+          focusable="false"
+          style={{
+            top: "auto",
+            bottom: 0,
+            left: "50%",
+            width: "min(100%, 120rem)",
+            height: "100%",
+            maxWidth: "none",
+            transform: "translateX(-50%)",
+          }}
+        >
+          <line
+            x1="606.28"
+            y1="0"
+            x2="606.28"
+            y2="1080"
+            fill="none"
+            stroke="#f1f1f1"
+            strokeWidth="3.27"
+            strokeLinecap="round"
             vectorEffect="non-scaling-stroke"
           />
         </svg>
