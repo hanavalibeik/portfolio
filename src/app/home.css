@@ -151,25 +151,28 @@ body:has(.exact-home) {
 .exact-portrait-stage {
   position: relative;
   justify-self: center;
-  width: min(100%, 24rem);
-  aspect-ratio: 26 / 37;
+  width: min(68vw, 15rem);
+  aspect-ratio: 355.89 / 844;
 }
 
 @media (min-width: 52rem) {
   .exact-portrait-stage {
     justify-self: end;
-    width: min(100%, 27rem);
+    width: clamp(17rem, 18.54vw, 22.25rem);
   }
 }
 
 .exact-blue-glow {
   position: absolute;
-  inset: 8% -18% -5% -46%;
-  background:
-    radial-gradient(ellipse at 68% 48%, rgba(3, 68, 235, 0.94),
-      rgba(3, 52, 184, 0.57) 28%, transparent 66%),
-    radial-gradient(ellipse at 24% 69%, rgba(0, 51, 197, 0.55), transparent 56%);
-  filter: blur(17px);
+  z-index: 0;
+  top: 2.84%;
+  left: -125.32%;
+  width: 315.27%;
+  max-width: none;
+  height: 97.27%;
+  object-fit: fill;
+  opacity: 0.8;
+  pointer-events: none;
 }
 
 .exact-portrait-mask {
@@ -177,27 +180,10 @@ body:has(.exact-home) {
   z-index: 3;
   inset: 0;
   display: block;
-  overflow: hidden;
-  background: #d8d8d8;
-  clip-path: polygon(0 18%, 83% 0, 100% 10%, 100% 100%, 0 100%);
-}
-
-.exact-portrait-mask::after {
-  content: "";
-  position: absolute;
-  z-index: 3;
-  inset: 0;
-  background: linear-gradient(105deg, transparent 0 15%,
-    rgba(0, 0, 0, 0.38) 15.5% 29%, transparent 29.5%);
-  pointer-events: none;
-}
-
-.exact-portrait-mask img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: 50% 49%;
-  filter: grayscale(1) contrast(1.06);
+  max-width: none;
+  overflow: visible;
 }
 
 /* Hairline bracket under the portrait: a long horizontal rule with a short
@@ -206,19 +192,13 @@ body:has(.exact-home) {
 .exact-hero-bracket {
   position: absolute;
   z-index: 1;
-  right: -22%;
-  bottom: 15%;
-  width: 250%;
-  height: 16%;
+  top: 64.1%;
+  left: -142.74%;
+  width: 270.59%;
+  height: 17.06%;
   border-right: 1px solid var(--exact-line);
   border-bottom: 1px solid var(--exact-line);
   pointer-events: none;
-}
-
-@media (max-width: 52rem) {
-  .exact-hero-bracket {
-    display: none;
-  }
 }
 
 .exact-node-line {

@@ -115,18 +115,41 @@ export default function HomePage() {
           {/* The stage as a whole is not decorative — it contains a photograph
               of Hana. Only the drawn ornaments inside it are. */}
           <div className="exact-portrait-stage">
-            <span className="exact-blue-glow" aria-hidden="true" />
+            <img
+              className="exact-blue-glow"
+              src={assetPath("/hero/landing-glow.webp")}
+              alt=""
+              width="1122"
+              height="821"
+              aria-hidden="true"
+            />
             <span className="exact-hero-bracket" aria-hidden="true" />
-            <span className="exact-portrait-mask">
-              <img
-                src={assetPath("/about/portrait.webp")}
-                alt={`${site.fullName}, ${site.role}`}
-                width="1111"
-                height="1416"
-                fetchPriority="high"
-                decoding="async"
-              />
-            </span>
+            <svg
+              className="exact-portrait-mask"
+              viewBox="0 0 355.89 844"
+              role="img"
+              aria-labelledby="hero-portrait-title"
+            >
+              <title id="hero-portrait-title">
+                {site.fullName}, {site.role}
+              </title>
+              <defs>
+                <clipPath id="hero-portrait-clip">
+                  <path d="M0 203.43 355.89 0v300.35c0 209.38-4.39 366.92-194.01 466.28L0 844V203.43Z" />
+                </clipPath>
+              </defs>
+              <g clipPath="url(#hero-portrait-clip)">
+                <rect width="355.89" height="844" fill="#d8d8d8" />
+                <image
+                  href={assetPath("/about/portrait.webp")}
+                  x="-145.84"
+                  y="-10.62"
+                  width="666.6"
+                  height="849.6"
+                  preserveAspectRatio="none"
+                />
+              </g>
+            </svg>
             <span className="exact-node-line exact-node-line--top" aria-hidden="true" />
 
             {/* The rotating badge belongs to the portrait, so it is positioned
