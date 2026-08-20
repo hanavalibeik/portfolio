@@ -20,8 +20,8 @@ export const metadata: Metadata = {
   },
   description: site.tagline,
   icons: {
-    icon: assetPath("/brand/hana-logo.svg"),
-    shortcut: assetPath("/brand/hana-logo.svg"),
+    icon: assetPath("/brand/hana-favicon.svg"),
+    shortcut: assetPath("/brand/hana-favicon.svg"),
     apple: assetPath("/apple-icon.png"),
   },
   alternates: { canonical: canonical("/") },
