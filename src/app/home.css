@@ -537,25 +537,36 @@ body:has(.exact-home) {
 
 /* ─── Projects ─────────────────────────────────────────────── */
 .exact-projects {
+  --projects-grid-top: calc(
+    clamp(4rem, 9vw, 8rem) +
+    clamp(1.75rem, 4.5vw, 2.75rem) +
+    clamp(2rem, 5vw, 3.5rem)
+  );
   position: relative;
   padding-block: clamp(4rem, 9vw, 8rem);
-  overflow: hidden;
+  overflow: visible;
 }
 
-/* Runs in from the left edge, holds a straight horizontal for most of its
-   length, then turns down. The corner radius used to be 38vw wide against a
-   14rem-tall box, which meant the curve consumed the whole width and no
-   straight run survived — it read as a lone arc floating on the right. */
+/* Exact path from the supplied 1920 px artwork. Its shifted zero line sits
+   35.55 px above the Projects section in the source, while the final point is
+   scaled to meet the top edge of the live project grid. */
 .exact-project-curve {
   position: absolute;
-  top: -1.85vw;
+  z-index: 0;
+  top: -1.8516vw;
   left: 0;
-  width: 68%;
-  height: clamp(6rem, 13vw, 12rem);
-  border-top: 1px solid var(--exact-line);
-  border-right: 1px solid var(--exact-line);
-  border-top-right-radius: clamp(5rem, 12vw, 13rem) clamp(6rem, 13vw, 12rem);
+  width: 100%;
+  height: calc(1.8516vw + var(--projects-grid-top));
+  overflow: visible;
   pointer-events: none;
+}
+
+.exact-project-curve path {
+  fill: none;
+  stroke: #f1f1f1;
+  stroke-width: 2.02px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 @media (max-width: 52rem) {

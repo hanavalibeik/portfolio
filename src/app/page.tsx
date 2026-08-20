@@ -207,7 +207,18 @@ export default function HomePage() {
 
       {/* ── Projects ──────────────────────────────────────────── */}
       <section className="exact-projects" aria-labelledby="projects-heading">
-        <span className="exact-project-curve" aria-hidden="true" />
+        <svg
+          className="exact-project-curve"
+          viewBox="0 0 1920 338.44"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path
+            d="M -199.56 0 H 736.54 C 961.64 0 1131 4.71 1237.82 208.57 L 1299.81 338.44"
+            vectorEffect="non-scaling-stroke"
+          />
+        </svg>
         <div className="exact-shell">
           <h2 className="exact-projects-heading" id="projects-heading">
             Projects
