@@ -4,6 +4,7 @@ import "@fontsource-variable/spline-sans-mono";
 import "@fontsource-variable/vazirmatn";
 import "./globals.css";
 import "./services-motion.css";
+import "./hero-frame-fix.css";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { site } from "@/data/site";
