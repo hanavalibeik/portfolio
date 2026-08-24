@@ -380,11 +380,14 @@ body:has(.exact-home) {
 }
 
 .exact-home .home-about .exact-pill.home-about__more {
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: fit-content;
   margin-inline-start: max(var(--gutter), calc((100% - 82rem) / 2));
   margin-inline-end: 0;
   margin-block-start: clamp(2rem, 5vw, 3rem);
+  text-align: center;
 }
 
 /* Below the breakpoint the labels cannot be pinned without colliding with the
