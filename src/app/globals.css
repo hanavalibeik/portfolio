@@ -39,12 +39,13 @@ body .site-cta:not(.unified-footer__cta):not(.exact-footer-cta),
   position: relative;
   isolation: isolate;
   z-index: 1;
-  display: inline-grid;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: fit-content;
   min-width: clamp(11rem, 12.7724vw, 15.328rem);
   max-width: 100%;
   min-height: clamp(3.25rem, 3.308vw, 3.97rem);
-  place-items: center;
   gap: 0.5rem;
   margin-inline: 0;
   padding: 0.6rem 2rem;
@@ -66,6 +67,16 @@ body .site-cta:not(.unified-footer__cta):not(.exact-footer-cta),
   cursor: pointer;
   transition: border-color 240ms ease, box-shadow 240ms ease,
     transform 240ms ease;
+}
+
+/* The Services CTA keeps its artwork-specific dimensions, while sharing the
+   same geometric text centering as every other button. */
+.exact-home .exact-services-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  text-align: center;
 }
 
 .exact-home .exact-pill:not(.exact-services-more)::before,
