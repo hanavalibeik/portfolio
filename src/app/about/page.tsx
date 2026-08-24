@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { ContactCta } from "@/components/ContactCta";
 import { site } from "@/data/site";
 import { assetPath } from "@/lib/assetPath";
 import { absoluteAsset, canonical } from "@/lib/seo";
@@ -121,8 +120,6 @@ export default function AboutPage() {
           </ul>
         </div>
       </section>
-
-      <ContactCta />
     </>
   );
 }
