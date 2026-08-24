@@ -27,16 +27,16 @@ const homeProjects = [
   {
     title: "Chandmahameh",
     meta: "Social media design",
-    image: "/work/home-chandmahameh.webp",
+    image: "/work/home-project-03.webp",
     href: "/work/",
-    alt: "Chandmahameh social media post collection",
+    alt: "Black Persian calligraphy on a light gray background",
   },
   {
     title: "Tarazo",
     meta: "Brand and UI design",
-    image: "/work/home-tarazo.webp",
+    image: "/work/home-project-04.webp",
     href: "/work/",
-    alt: "Tarazo website shown on two desktop displays",
+    alt: "Website design displayed on two desktop monitors",
   },
 ];
 
