@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { site } from "@/data/site";
-import { priceLabel, type Collection, type Product } from "@/data/products";
+import type { Collection, Product } from "@/data/products";
 
 /**
  * Ordering happens in Instagram DMs — there is no cart and no checkout.
@@ -24,13 +24,12 @@ function orderMessage(product?: Product, collection?: Collection) {
       "مایل به سفارش این محصول هستم:",
       "",
       `• ${product.nameFa} — ${product.name}`,
-      `• قیمت: ${priceLabel(product)}`,
       "• تعداد: ۱",
       "",
       "لطفاً هزینه ارسال و روش پرداخت رو بفرمایید. ممنون!",
       "",
       "---",
-      `Hi! I came from your website. I'd like to order: ${product.name} (${product.nameFa}) — ${priceLabel(product)}, qty 1.`,
+      `Hi! I came from your website. I'd like to order: ${product.name} (${product.nameFa}), qty 1.`,
       "Could you confirm shipping cost and payment details? Thank you!",
     ].join("\n");
   }
@@ -86,8 +85,6 @@ export function OrderButton({
       await navigator.clipboard.writeText(message);
       setStatus("copied");
     } catch {
-      // Insecure context, Safari without a gesture, or an older browser —
-      // fall back to letting the person copy it themselves.
       setStatus("manual");
     }
   }
