@@ -665,7 +665,7 @@ body:has(.exact-home) {
 .exact-services-heading {
   position: absolute;
   z-index: 2;
-  top: -0.55vw;
+  top: 0.35vw;
   left: 50%;
   margin: 0;
   color: #f1f1f1;
@@ -705,7 +705,7 @@ body:has(.exact-home) {
 
 @media (min-width: 120rem) {
   .exact-services-heading {
-    top: -0.66rem;
+    top: 0.42rem;
   }
 
   .exact-services-more {

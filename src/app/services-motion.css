@@ -15,6 +15,7 @@
 /* Exact 1920 px placement from the supplied artwork: the visible rail starts
    at x=848, y=154 and is clipped by the right edge of the viewport. */
 .exact-home .exact-services-main {
+  --services-scroll-duration: 72s;
   position: absolute;
   top: 8.0208vw;
   right: 0;
@@ -30,7 +31,7 @@
   gap: 2.84vw;
   overflow: visible;
   will-change: transform;
-  animation: exactServicesAutoScroll 15s linear infinite;
+  animation: exactServicesAutoScroll var(--services-scroll-duration) linear infinite;
 }
 
 .exact-home .exact-services-rail:hover,
@@ -142,6 +143,7 @@
    switch to a fixed comfortable size. */
 @media (max-width: 52rem) {
   .exact-home .exact-services-main {
+    --services-scroll-duration: 64s;
     position: static;
     height: auto;
     margin-block-start: 2.5rem;
@@ -149,7 +151,6 @@
 
   .exact-home .exact-services-rail {
     gap: 1rem;
-    animation-duration: 12s;
   }
 
   .exact-home .exact-service-card {
