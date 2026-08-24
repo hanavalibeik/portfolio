@@ -1,0 +1,13 @@
+/* Shared header/label refinements requested for the live site. */
+
+/* Home uses an 82rem content shell, so align the header logo/navigation to
+   that same desktop grid without changing the narrower internal-page grid. */
+.site-header--home .container {
+  max-width: 82rem;
+}
+
+/* Remove the decorative plus/crosshair marker from Shop and every other
+   eyebrow label that uses the shared eyebrow pattern. */
+.eyebrow::before {
+  content: none;
+}
