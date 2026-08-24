@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CtaArrow } from "@/components/CtaArrow";
 import { site } from "@/data/site";
 import { assetPath } from "@/lib/assetPath";
 import { canonical } from "@/lib/seo";
@@ -43,12 +44,12 @@ export default function ContactPage() {
                 rel="noreferrer"
                 className="site-cta cv-link cv-link--solid"
               >
-                Message on WhatsApp →
+                Message on WhatsApp <CtaArrow />
               </a>
             )}
             {site.cv && (
               <a href={assetPath(site.cv)} download className="site-cta cv-link">
-                Download CV ↓
+                Download CV <CtaArrow direction="down" />
               </a>
             )}
             {site.portfolioPdf && (
@@ -57,7 +58,7 @@ export default function ContactPage() {
                 download
                 className="site-cta cv-link"
               >
-                Download Portfolio ↓
+                Download Portfolio <CtaArrow direction="down" />
               </a>
             )}
           </p>
