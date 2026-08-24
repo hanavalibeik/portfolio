@@ -29,9 +29,6 @@ export function ProductCard({ product }: { product: Product }) {
       <span className="product-card__meta">
         <span className="product-card__names">
           <strong>{product.name}</strong>
-          <em lang="fa" dir="rtl">
-            {product.nameFa}
-          </em>
         </span>
         <Price product={product} className="product-card__price" />
       </span>
