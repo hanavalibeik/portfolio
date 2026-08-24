@@ -1,6 +1,7 @@
 import Link from "next/link";
 import "./home.css";
 import "./products.css";
+import { CtaArrow } from "@/components/CtaArrow";
 import { InstagramFeed } from "@/components/InstagramFeed";
 import { ProductCard } from "@/components/ProductCard";
 import { ServicesRail } from "@/components/ServicesRail";
@@ -344,7 +345,7 @@ export default function HomePage() {
               </p>
             </div>
             <Link className="home-products__link" href="/products/">
-              See all products <span aria-hidden="true">→</span>
+              See all products <CtaArrow />
             </Link>
           </div>
           <div className="product-grid">
