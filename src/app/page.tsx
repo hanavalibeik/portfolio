@@ -263,34 +263,6 @@ export default function HomePage() {
             vectorEffect="non-scaling-stroke"
           />
         </svg>
-        <svg
-          className="exact-project-curve"
-          viewBox="0 0 1920 1080"
-          preserveAspectRatio="none"
-          aria-hidden="true"
-          focusable="false"
-          style={{
-            top: "auto",
-            bottom: 0,
-            left: "50%",
-            width: "min(100%, 120rem)",
-            height: "100%",
-            maxWidth: "none",
-            transform: "translateX(-50%)",
-          }}
-        >
-          <line
-            x1="606.28"
-            y1="0"
-            x2="606.28"
-            y2="1080"
-            fill="none"
-            stroke="#f1f1f1"
-            strokeWidth="3.27"
-            strokeLinecap="round"
-            vectorEffect="non-scaling-stroke"
-          />
-        </svg>
         <div className="exact-shell">
           <h2 className="exact-projects-heading" id="projects-heading">
             Projects
