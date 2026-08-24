@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { CtaArrow } from "@/components/CtaArrow";
 import { site } from "@/data/site";
 import type { Collection, Product } from "@/data/products";
 
@@ -98,8 +99,7 @@ export function OrderButton({
       )}
 
       <a className="site-cta order__dm" href={dmUrl} target="_blank" rel="noreferrer">
-        Order on Instagram
-        <span aria-hidden="true">↗</span>
+        Order on Instagram <CtaArrow direction="external" />
       </a>
 
       {waUrl && (
