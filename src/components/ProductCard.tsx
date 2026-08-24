@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { Product } from "@/data/products";
 import { assetPath } from "@/lib/assetPath";
-import { Price } from "./Price";
 
 export function ProductCard({ product }: { product: Product }) {
   const image = product.images[0];
@@ -30,7 +29,6 @@ export function ProductCard({ product }: { product: Product }) {
         <span className="product-card__names">
           <strong>{product.name}</strong>
         </span>
-        <Price product={product} className="product-card__price" />
       </span>
 
       <span className="product-card__blurb">{product.blurb}</span>
