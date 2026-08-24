@@ -22,7 +22,7 @@ export default function ContactPage() {
       <section className="page-intro">
         <div className="container">
           <p className="eyebrow">Contact</p>
-          <h1 className="page-title">Say hello</h1>
+          <h1 className="page-title">Got a vision? Let&rsquo;s bring it to life</h1>
           <p className="page-lede">
             {site.availability}. The best briefs fit in one honest email: who
             you are, what you make, and why now.
