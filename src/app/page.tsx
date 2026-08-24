@@ -25,17 +25,17 @@ const homeProjects = [
     alt: "Shokouh Miyami identity applied to business cards",
   },
   {
-    title: "Chandmahameh",
-    meta: "Social media design",
+    title: "France Café",
+    meta: "Identity · 2025",
     image: "/work/home-project-03.webp",
-    href: "/work/",
+    href: "/work/france-cafe/",
     alt: "Black Persian calligraphy on a light gray background",
   },
   {
-    title: "Tarazo",
-    meta: "Brand and UI design",
+    title: "Mizan Gostar",
+    meta: "Identity & UI · 2020–2023",
     image: "/work/home-project-04.webp",
-    href: "/work/",
+    href: "/work/mizan-gostar/",
     alt: "Website design displayed on two desktop monitors",
   },
 ];
