@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { WorkGrid } from "@/components/WorkGrid";
-import { ContactCta } from "@/components/ContactCta";
 import { canonical } from "@/lib/seo";
 
 const workDescription =
@@ -36,8 +35,6 @@ export default function WorkPage() {
           <WorkGrid />
         </div>
       </section>
-
-      <ContactCta />
     </>
   );
 }
