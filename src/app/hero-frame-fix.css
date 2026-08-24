@@ -1,0 +1,9 @@
+/* Hero portrait frame alignment override.
+   Keeps the lower rule inside the same visual page padding as the left side
+   while preserving one consistent hairline weight for both bracket arms. */
+.exact-home .exact-hero-bracket {
+  width: calc(270.59% - clamp(1.25rem, 2.25vw, 2.875rem));
+  box-sizing: border-box;
+  border-right: 1px solid var(--exact-line);
+  border-bottom: 1px solid var(--exact-line);
+}
