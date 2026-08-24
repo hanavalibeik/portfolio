@@ -60,10 +60,6 @@ export default function ProductsPage() {
                     <li key={note}>{note}</li>
                   ))}
                 </ul>
-                <p className="collection__stale">
-                  Prices last confirmed {collection.pricesUpdated} — I&rsquo;ll
-                  confirm the current price when you message.
-                </p>
               </header>
 
               <div className="product-grid">
@@ -89,8 +85,7 @@ export default function ProductsPage() {
             <li>
               <span className="order-steps__n">02</span>
               <span>
-                I confirm availability, the current price and the shipping cost
-                to your address.
+                I confirm availability and the shipping cost to your address.
               </span>
             </li>
             <li>
