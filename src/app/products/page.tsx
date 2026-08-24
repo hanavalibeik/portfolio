@@ -48,12 +48,7 @@ export default function ProductsPage() {
           >
             <div className="container">
               <header className="collection__head">
-                <h2 id={`collection-${collection.id}`}>
-                  {collection.name}
-                  <span lang="fa" dir="rtl">
-                    {collection.nameFa}
-                  </span>
-                </h2>
+                <h2 id={`collection-${collection.id}`}>{collection.name}</h2>
                 <p>{collection.intro}</p>
                 <ul className="collection__notes">
                   {collection.notes.map((note) => (
