@@ -15,6 +15,21 @@
   content: none;
 }
 
+/* Remove every decorative right-angle mark that has been used beside primary
+   section titles. This covers the current About/Services treatment as well as
+   the legacy section-heading pattern, so the ornament cannot reappear in a
+   different section or breakpoint. */
+.corner-mark,
+.exact-services-title-mark {
+  display: none !important;
+}
+
+.exact-heading::after,
+.home-section-title::after {
+  content: none !important;
+  display: none !important;
+}
+
 /* The Products CTA is a sibling of a block that starts with the Shop eyebrow.
    Offset the CTA by exactly that eyebrow line-height so its top edge aligns
    with the Products title instead of the eyebrow above it. */
