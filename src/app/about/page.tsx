@@ -22,7 +22,7 @@ export default function AboutPage() {
       <section className="page-intro">
         <div className="container">
           <p className="eyebrow">About</p>
-          <h1 className="page-title">{site.fullName}</h1>
+          <h1 className="page-title">Hana Vali</h1>
           <p className="page-lede">
             {site.role}, based in {site.location}. {site.workingNote}.
           </p>
