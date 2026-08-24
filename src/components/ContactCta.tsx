@@ -1,3 +1,4 @@
+import { CtaArrow } from "@/components/CtaArrow";
 import { site } from "@/data/site";
 
 export function ContactCta() {
@@ -8,7 +9,7 @@ export function ContactCta() {
           New project?
         </p>
         <a href={`mailto:${site.email}`} className="site-cta cta-link">
-          Say hello <span className="arrow" aria-hidden="true">→</span>
+          Say hello <CtaArrow />
         </a>
         <p className="cta-note">
           {site.availability} · {site.location} · {site.workingNote}
