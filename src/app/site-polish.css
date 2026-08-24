@@ -1,13 +1,26 @@
 /* Shared header/label refinements requested for the live site. */
 
-/* Home uses an 82rem content shell, so align the header logo/navigation to
-   that same desktop grid without changing the narrower internal-page grid. */
+/* Match the home header to the exact landing shell itself. `.container` normally
+   adds its own gutter inside max-width, which was why the logo still sat inward
+   even when both areas used 82rem. */
 .site-header--home .container {
-  max-width: 82rem;
+  width: min(100% - 2 * var(--gutter), 82rem);
+  max-width: none;
+  padding-inline: 0;
 }
 
 /* Remove the decorative plus/crosshair marker from Shop and every other
    eyebrow label that uses the shared eyebrow pattern. */
 .eyebrow::before {
   content: none;
+}
+
+/* The Products CTA is a sibling of a block that starts with the Shop eyebrow.
+   Offset the CTA by exactly that eyebrow line-height so its top edge aligns
+   with the Products title instead of the eyebrow above it. */
+@media (min-width: 40rem) {
+  .home-products__link {
+    align-self: flex-start;
+    margin-block-start: 1.2rem;
+  }
 }
