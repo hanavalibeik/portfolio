@@ -3,7 +3,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { adjacentProjects, getProject, projects } from "@/data/projects";
 import { getProjectCaption } from "@/data/projectCaptions";
-import { ContactCta } from "@/components/ContactCta";
 import { assetPath } from "@/lib/assetPath";
 import { site } from "@/data/site";
 import { JsonLd, absoluteAsset, breadcrumbs, canonical } from "@/lib/seo";
@@ -186,8 +185,6 @@ export default async function ProjectPage({
           ) : null}
         </nav>
       </article>
-
-      <ContactCta />
     </>
   );
 }
