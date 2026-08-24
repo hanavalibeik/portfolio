@@ -3,12 +3,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import "../../products.css";
 import { OrderButton } from "@/components/OrderButton";
-import { Price } from "@/components/Price";
 import {
   adjacentProducts,
   getCollection,
   getProduct,
-  priceLabel,
   products,
 } from "@/data/products";
 import { site } from "@/data/site";
@@ -29,7 +27,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const product = getProduct(slug);
   if (!product) return {};
-  const description = `${product.blurb} ${priceLabel(product)}. Order by message from ${site.fullName}.`;
+  const description = `${product.blurb} Order by message from ${site.fullName}.`;
   const route = `/products/${product.slug}`;
 
   return {
@@ -58,11 +56,6 @@ export default async function ProductPage({
   const collection = getCollection(product.collection);
   const { prev, next } = adjacentProducts(slug);
 
-  /* Google will not show a product rich result without an image, so the
-     photography is part of the structured data rather than only the markup.
-     Prices are quoted in toman; schema.org needs a currency code, and the
-     ISO code for Iran is IRR (1 toman = 10 rial), so the figure is converted
-     rather than mislabelled. */
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -74,17 +67,6 @@ export default async function ProductPage({
     ...(product.size ? { size: product.size } : {}),
     image: product.images.map((image) => absoluteAsset(image.src)),
     brand: { "@type": "Person", name: site.fullName },
-    offers: {
-      "@type": "Offer",
-      price: product.priceToman * 10,
-      priceCurrency: "IRR",
-      itemCondition: "https://schema.org/NewCondition",
-      availability: product.available
-        ? "https://schema.org/InStock"
-        : "https://schema.org/OutOfStock",
-      url: canonical(`/products/${product.slug}`),
-      seller: { "@type": "Person", name: site.fullName },
-    },
   };
 
   const crumbs = breadcrumbs([
@@ -161,8 +143,6 @@ export default async function ProductPage({
                   </dd>
                 </div>
               </dl>
-
-              <Price product={product} className="product__price" />
 
               <OrderButton product={product} collection={collection} />
 
