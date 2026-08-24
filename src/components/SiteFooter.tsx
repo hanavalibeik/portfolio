@@ -1,3 +1,4 @@
+import { CtaArrow } from "@/components/CtaArrow";
 import { site } from "@/data/site";
 
 const footerLinks = [
@@ -59,9 +60,7 @@ export function SiteFooter() {
           <a className="site-cta unified-footer__cta" href={`mailto:${site.email}`}>
             <span>Got a vision? Let&rsquo;s bring it to life</span>
             <span className="unified-footer__arrow" aria-hidden="true">
-              <svg viewBox="0 0 24 24" focusable="false">
-                <path d="M4 12h16M14 6l6 6-6 6" />
-              </svg>
+              <CtaArrow />
             </span>
           </a>
         </h2>
