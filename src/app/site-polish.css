@@ -39,3 +39,13 @@
     margin-block-start: 1.2rem;
   }
 }
+
+/* Remove the yellow product accent from the live UI. All current yellow product
+   states inherit from --shiraz-ink, so one white token keeps the order-step
+   numbers, product labels, status text and product CTA states consistent. */
+.collection,
+.order-band,
+.product,
+.home-products {
+  --shiraz-ink: #ffffff !important;
+}
