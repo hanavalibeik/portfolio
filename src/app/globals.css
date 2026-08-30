@@ -3518,7 +3518,22 @@ body:has(.home-page) ::selection {
   }
 
   .unified-footer__curve {
-    height: 100%;
+    display: none;
+  }
+
+  .unified-footer::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    display: block;
+    inset: 43.18% 8.82% 0 0;
+    width: auto;
+    height: auto;
+    border: 0;
+    border-top: 2px solid #f1f1f1;
+    border-right: 2px solid #f1f1f1;
+    border-top-right-radius: clamp(5.5rem, 24vw, 10rem);
+    pointer-events: none;
   }
 
   .unified-footer__shell {
