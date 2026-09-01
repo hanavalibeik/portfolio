@@ -46,6 +46,14 @@
   }
 }
 
+/* Remove the blue discipline keywords from the About section on phone layouts.
+   Desktop keeps the original pinned labels; mobile shows only the About copy. */
+@media (max-width: 40rem) {
+  .home-about__labels {
+    display: none !important;
+  }
+}
+
 /* Remove the yellow product accent from the live UI. All current yellow product
    states inherit from --shiraz-ink, so one white token keeps the order-step
    numbers, product labels, status text and product CTA states consistent. */
