@@ -62,8 +62,8 @@ export const collections: Collection[] = [
     sourcePost: "https://www.instagram.com/p/DIOuyjfpFbd/",
     notes: [
       "Order any quantity",
-      "Ships anywhere in Iran",
-      "Shipping charged separately",
+      "Available for orders within Iran only",
+      "Delivery arranged after ordering",
     ],
     pricesUpdated: "April 2025",
   },

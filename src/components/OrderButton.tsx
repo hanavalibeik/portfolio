@@ -31,7 +31,7 @@ function orderMessage(product?: Product, collection?: Collection) {
       "",
       "---",
       `Hi! I came from your website. I'd like to order: ${product.name} (${product.nameFa}), qty 1.`,
-      "Could you confirm shipping cost and payment details? Thank you!",
+      "Could you confirm delivery and payment details? Thank you!",
     ].join("\n");
   }
 

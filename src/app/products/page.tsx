@@ -80,7 +80,7 @@ export default function ProductsPage() {
             <li>
               <span className="order-steps__n">02</span>
               <span>
-                I confirm availability and the shipping cost to your address.
+                I confirm availability and the delivery details.
               </span>
             </li>
             <li>
