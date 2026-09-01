@@ -9,6 +9,12 @@
   padding-inline: 0;
 }
 
+/* Increase the header logo by 50% while preserving its current alignment. */
+.site-header .site-logo {
+  width: 3.75rem;
+  height: 3.75rem;
+}
+
 /* Remove the decorative plus/crosshair marker from Shop and every other
    eyebrow label that uses the shared eyebrow pattern. */
 .eyebrow::before {
