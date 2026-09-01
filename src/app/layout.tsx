@@ -35,13 +35,13 @@ export const metadata: Metadata = {
     title: `${site.fullName} — ${site.role}`,
     description: site.tagline,
     type: "website",
-    images: [{ url: assetPath("/og.png?v=20260901"), width: 1200, height: 630 }],
+    images: [{ url: assetPath("/og-hana-vali-20260901.png"), width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${site.fullName} — ${site.role}`,
     description: site.tagline,
-    images: [assetPath("/og.png?v=20260901")],
+    images: [assetPath("/og-hana-vali-20260901.png")],
   },
 };
 
