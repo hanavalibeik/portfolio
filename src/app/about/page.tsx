@@ -23,7 +23,7 @@ export default function AboutPage() {
           <p className="eyebrow">About</p>
           <h1 className="page-title">Hana Vali</h1>
           <p className="page-lede">
-            {site.role}, based in {site.location}. {site.workingNote}.
+            {site.role}. {site.workingNote}.
           </p>
         </div>
       </section>

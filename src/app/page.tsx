@@ -82,7 +82,6 @@ export default function HomePage() {
     url: canonical("/"),
     image: absoluteAsset("/about/portrait.webp"),
     email: `mailto:${site.email}`,
-    address: { "@type": "PostalAddress", addressLocality: site.location },
     knowsAbout: site.services,
     sameAs: [
       ...site.socials.map((social) => social.url),
@@ -337,11 +336,11 @@ export default function HomePage() {
         <div className="exact-shell">
           <div className="home-products__head">
             <div>
-              <p className="eyebrow">Shop</p>
+              <p className="eyebrow">Independent project · Iran</p>
               <h2 id="home-products-heading">Products</h2>
               <p>
-                {collection.name} — printed pieces from my illustration work.
-                Order by message.
+                {collection.name} — a side project for the Iranian market,
+                turning my illustrations into small-run printed pieces.
               </p>
             </div>
             <Link className="home-products__link" href="/products/">

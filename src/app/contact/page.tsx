@@ -34,7 +34,7 @@ export default function ContactPage() {
           <p className="cta-note">
             <a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a>
             {" · "}
-            {site.location} · {site.workingNote}
+            {site.workingNote}
           </p>
           <p className="contact-actions">
             {site.whatsapp && (

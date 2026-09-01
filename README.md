@@ -1,6 +1,6 @@
-# Hana Valibeik — portfolio & shop
+# Hana Vali — portfolio & shop
 
-Portfolio site for **Hana Valibeik**, graphic designer and illustrator: case
+Portfolio site for **Hana Vali**, graphic designer and illustrator: case
 studies, an about page, and a small shop for her printed products.
 
 Built with **Next.js 15** as a fully static site and deployed to **GitHub Pages**

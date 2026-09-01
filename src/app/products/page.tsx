@@ -7,7 +7,7 @@ import { site } from "@/data/site";
 import { absoluteAsset, canonical } from "@/lib/seo";
 
 const productsDescription =
-  "Printed pieces from Hana Valibeik's illustration work — postcards, magnets, mugs, tote bags and framed prints. Order by message.";
+  "An independent side project for the Iranian market, turning Hana Vali's illustration work into small-run printed pieces ordered directly by message.";
 
 export const metadata: Metadata = {
   title: "Products",
@@ -26,12 +26,12 @@ export default function ProductsPage() {
     <>
       <section className="page-intro">
         <div className="container">
-          <p className="eyebrow">Shop</p>
+          <p className="eyebrow">Independent project · Iran</p>
           <h1 className="page-title">Products</h1>
           <p className="page-lede">
-            Printed pieces drawn from my illustration work. Ordering happens by
-            message — tell me what you want and I&rsquo;ll confirm shipping and
-            payment.
+            An independent side project for the Iranian market, turning selected
+            illustrations into small-run printed pieces. Orders are handled
+            directly by message.
           </p>
         </div>
       </section>

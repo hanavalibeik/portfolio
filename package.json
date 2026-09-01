@@ -2,7 +2,7 @@
   "name": "hanavalibeik-portfolio",
   "version": "1.0.0",
   "private": true,
-  "description": "Portfolio and shop for Hana Valibeik, graphic designer & illustrator. Static Next.js site deployed to GitHub Pages.",
+  "description": "Portfolio and shop for Hana Vali, graphic designer & illustrator. Static Next.js site deployed to GitHub Pages.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

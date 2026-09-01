@@ -1,22 +1,21 @@
 /**
  * ─────────────────────────────────────────────────────────────
- *  SITE IDENTITY — Hana Valibeik
+ *  SITE IDENTITY — Hana Vali
  *  Edit this file to update contact details, clients, services.
  * ─────────────────────────────────────────────────────────────
  */
 
 export const site = {
   /** Shown in the header, hero wordmark and footer. */
-  name: "Valibeik",
+  name: "Vali",
   /** Full name, used in longer copy and metadata. */
-  fullName: "Hana Valibeik",
+  fullName: "Hana Vali",
   /** One-line role, appears under the wordmark and in metadata. */
   role: "Senior Graphic Designer — Brand & UI",
   /** Short positioning line for the hero. */
   tagline:
     "I help brands stand out with custom logo & identity design — 7+ years in branding, UI and illustration, building clear, consistent, scalable visual systems.",
-  /** Where you are + how you work. */
-  location: "Muscat, Oman",
+  /** How you work. */
   workingNote: "Working remotely across industries and time zones",
   /** Availability line shown on the home page and contact page. */
   availability: "Open to new projects, roles and collaborations",

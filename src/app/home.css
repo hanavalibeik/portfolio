@@ -433,6 +433,10 @@ body:has(.exact-home) {
     position: static;
     transform: none;
   }
+
+  .home-about__label--logo {
+    display: none;
+  }
 }
 
 @media (max-width: 40rem) {
