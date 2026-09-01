@@ -5,6 +5,9 @@
  * ─────────────────────────────────────────────────────────────
  */
 
+const productionUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://hanavalibeik.github.io/portfolio";
+
 export const site = {
   /** Shown in the header, hero wordmark and footer. */
   name: "Vali",
@@ -105,6 +108,6 @@ export const site = {
   ],
   /** Languages */
   languages: ["English", "Persian"],
-  /** Used for metadata; set to your production URL after deploying. */
-  url: "https://hanavalibeik.github.io/portfolio",
+  /** Used for metadata; resolved from the current GitHub Pages repository. */
+  url: productionUrl,
 };
