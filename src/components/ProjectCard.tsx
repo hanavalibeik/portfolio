@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { Project } from "@/data/projects";
 import { assetPath } from "@/lib/assetPath";
-import { Registration } from "./Marks";
 
 export function ProjectCard({ project }: { project: Project }) {
   return (
@@ -23,10 +22,6 @@ export function ProjectCard({ project }: { project: Project }) {
           <em>view project</em>
           <i />
         </span>
-        <Registration className="crop crop--tl" />
-        <Registration className="crop crop--tr" />
-        <Registration className="crop crop--br" />
-        <Registration className="crop crop--bl" />
       </span>
       <span className="card-meta">
         <span className="card-title">{project.title}</span>
