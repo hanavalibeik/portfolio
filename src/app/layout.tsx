@@ -9,6 +9,7 @@ import "./site-polish.css";
 import "./cta-system.css";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { Analytics } from "@/components/Analytics";
 import { site } from "@/data/site";
 import { assetPath } from "@/lib/assetPath";
 import { canonical } from "@/lib/seo";
@@ -63,6 +64,7 @@ export default function RootLayout({
         <SiteHeader />
         <main id="main">{children}</main>
         <SiteFooter />
+        <Analytics />
       </body>
     </html>
   );

@@ -41,6 +41,13 @@ rm -rf /tmp/site && mkdir -p /tmp/site/portfolio && cp -r out/* /tmp/site/portfo
 npx serve /tmp/site        # → http://localhost:3000/portfolio/
 ```
 
+## Analytics
+
+The site uses Umami Cloud for cookieless, client-side analytics. Set the public
+website ID in `NEXT_PUBLIC_UMAMI_WEBSITE_ID`. For production builds, add it as a
+GitHub Actions repository variable under **Settings → Secrets and variables →
+Actions → Variables**.
+
 ---
 
 ## Where the content lives
