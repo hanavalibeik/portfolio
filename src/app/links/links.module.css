@@ -1,0 +1,242 @@
+/* The bio route is a standalone launcher. Keep the site's normal chrome out
+   of this route without adding route-detection JavaScript. */
+:global(body):has(.page) > :global(.site-header),
+:global(body):has(.page) > :global(.unified-footer) {
+  display: none;
+}
+
+:global(body):has(.page) > :global(#main) {
+  min-height: 100svh;
+}
+
+.page {
+  width: min(100%, 34rem);
+  min-height: 100svh;
+  margin-inline: auto;
+  padding: max(1rem, env(safe-area-inset-top))
+    max(1rem, env(safe-area-inset-right))
+    max(1rem, env(safe-area-inset-bottom))
+    max(1rem, env(safe-area-inset-left));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(1rem, 3svh, 1.75rem);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(33, 68, 224, 0.16), transparent 32%),
+    var(--paper);
+}
+
+.identity {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding-block-end: 0.9rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.logoLink {
+  flex: 0 0 auto;
+  display: block;
+  border-radius: 50%;
+}
+
+.logo {
+  width: clamp(3rem, 14vw, 3.75rem);
+  height: clamp(3rem, 14vw, 3.75rem);
+}
+
+.identityCopy {
+  min-width: 0;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 5vw, 1.4rem);
+  font-weight: 800;
+  font-variation-settings: "wdth" 110;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.role {
+  margin-block-start: 0.2rem;
+  color: var(--gray);
+  font-family: var(--font-mono);
+  font-size: clamp(0.62rem, 2.7vw, 0.74rem);
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+.launcher {
+  display: grid;
+  gap: clamp(0.85rem, 2.5svh, 1.35rem);
+}
+
+.group {
+  min-width: 0;
+}
+
+.groupLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0 0 0.45rem;
+  color: var(--gray);
+  font-family: var(--font-mono);
+  font-size: 0.63rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.groupLabel::before {
+  content: "+";
+  color: var(--sketch-strong);
+  font-size: 0.78rem;
+}
+
+.group ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.onsiteGrid {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.contactGrid,
+.elsewhereGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.4rem;
+}
+
+.link {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
+}
+
+.link:focus-visible {
+  outline: 2px solid #5f82ff;
+  outline-offset: 2px;
+}
+
+.linkCopy {
+  min-width: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+}
+
+.linkCopy > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.linkCopy small {
+  flex: 0 0 auto;
+  color: var(--gray);
+  font-family: var(--font-mono);
+  font-size: 0.61rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
+.glyph {
+  flex: 0 0 auto;
+  color: var(--sketch-strong);
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  line-height: 1;
+}
+
+.onsiteLink {
+  min-height: 3.5rem;
+  padding: 0.72rem 0.9rem 0.72rem 1rem;
+  border-left: 3px solid var(--blue);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.contactLink {
+  min-height: 3rem;
+  padding: 0.55rem 0.6rem;
+  font-family: var(--font-mono);
+  font-size: clamp(0.62rem, 2.8vw, 0.72rem);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.elsewhereLink {
+  min-height: 3rem;
+  padding: 0.5rem 0.55rem;
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: clamp(0.59rem, 2.7vw, 0.7rem);
+  line-height: 1;
+}
+
+.pdfItem {
+  grid-column: span 3;
+}
+
+.pdfItem .elsewhereLink {
+  justify-content: flex-start;
+  min-height: 3rem;
+  padding-inline: 0.7rem;
+  border-color: rgba(158, 200, 221, 0.38);
+}
+
+.pdfItem .glyph {
+  margin-inline-start: auto;
+}
+
+@media (hover: hover) {
+  .link:hover {
+    border-color: var(--sketch-strong);
+    background: #101010;
+  }
+
+  .onsiteLink:hover {
+    border-left-color: #5f82ff;
+  }
+}
+
+@media (max-height: 40rem) {
+  .page {
+    justify-content: flex-start;
+    gap: 0.8rem;
+  }
+
+  .launcher {
+    gap: 0.7rem;
+  }
+
+  .onsiteLink {
+    min-height: 3.1rem;
+  }
+}
+
+@media (max-width: 20rem) {
+  .contactGrid,
+  .elsewhereGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .pdfItem {
+    grid-column: auto;
+  }
+}
