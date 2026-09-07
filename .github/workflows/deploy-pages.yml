@@ -46,6 +46,12 @@ jobs:
             echo "NEXT_PUBLIC_SITE_URL=https://${OWNER_NAME}.github.io/${REPO_NAME}" >> "$GITHUB_ENV"
           fi
 
+      - name: Rebuild portfolio PDF
+        shell: bash
+        run: |
+          cat .pdf-parts/Hana-Valibeik-Portfolio-2026.pdf.part-* > public/Hana-Valibeik-Portfolio-2026.pdf
+          echo "662feefd3807cfba759cbeeb43daaab7669ab7a6f7d6fa9cd7bf40405072ac64  public/Hana-Valibeik-Portfolio-2026.pdf" | sha256sum --check --strict
+
       - name: Build with Next.js
         run: npm run build
         env:
